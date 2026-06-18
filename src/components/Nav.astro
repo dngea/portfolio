@@ -1,0 +1,66 @@
+---
+const menu = [
+  {
+    id: "portfolio",
+    label: "Portfolio",
+    path: "/",
+  },
+  {
+    id: "projects",
+    label: "Projects",
+    path: "/projects",
+  },
+  {
+    id: "photography",
+    label: "Photography",
+    path: "/photography",
+  },
+  {
+    id: "publications",
+    label: "Publications",
+    path: "/publications",
+  },
+  {
+    id: "about",
+    label: "About",
+    path: "/about",
+  },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header
+  class="fixed top-8 z-20 left-1/2 -translate-x-1/2 rounded-full py-2 px-4 bg-light/95
+   shadow-xl"
+>
+  <nav>
+    <ul class="flex gap-2 relative">
+      {
+        menu.map((item) => {
+          const isActive =
+            currentPath === item.path ||
+            currentPath.startsWith(item.path + "/");
+
+          return (
+            <li class="relative px-4 py-2">
+              <a
+                href={item.path}
+                class={`relative z-10 font-medium ${isActive ? "text-light" : "text-dark"}`}
+              >
+                {item.label}
+              </a>
+
+              {isActive && (
+                <span
+                  transition:name="nav-pill"
+                  class="absolute left-0 right-0 min-w-14 top-1/2 h-10 -translate-y-1/2 rounded-full bg-clay"
+                />
+              )}
+            </li>
+          );
+        })
+      }
+    </ul>
+  </nav>
+</header>

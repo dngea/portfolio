@@ -1,0 +1,24 @@
+---
+const skills = [
+  "Next.js",
+  "React",
+  "TypeScript",
+  "Tailwind CSS",
+  "REST",
+  "JavaScript",
+  "CSS",
+  "HTML",
+  "Astro",
+  "Alpine.js",
+  "Sass",
+  "Figma",
+];
+---
+
+<!-- todo: scroll top -margin -->
+<section class="max-w-4xl mx-auto space-y-8" id="skills">
+  <h2 class="text-light font-bold text-3xl">Stack</h2>
+  <ul class="grid grid-flow-col grid-rows-4 gap-2 w-full h-full">
+    {skills.map((i) => <li class="w-fit text-light">{i}</li>)}
+  </ul>
+</section>

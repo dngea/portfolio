@@ -1,0 +1,101 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import FeatureExample from "@/components/Feature";
+
+const presentation =
+  "Originally from Granada, in southern Spain,  where I began my studies in Information Science.  After my bachelor's, I moved to Portugal to pursue a  master's in Human Computer Interaction (HCI) in the beautiful and rainy city of  Porto, where I spent two years. Having completed my  studies, I moved to Vienna, Austria, to kickstart my  career as a UX/UI designer and Front-end developer.";
+
+const languages = ["English", "German", "Spanish", "Portuguese"];
+
+const STUDIES = [
+  {
+    dates: "2022 - 2024",
+    study: `[Master’s Degree] <strong>Human Computer Interaction</strong> · Faculty of Engineering at University of Porto, Portugal`,
+    highlights: [
+      "UX/UI design",
+      "Frontend development",
+      "Interactive installations",
+      "Creative coding",
+      "Game development",
+    ],
+  },
+  {
+    dates: "2018 - 2022",
+    study: `[Bachellor’s Degree] <strong>Information Science</strong> · University of Granada, Spain`,
+    highlights: [
+      "Databases",
+      "CMS",
+      "Information architecture",
+      "Web architecture",
+    ],
+  },
+];
+---
+
+<Layout>
+  <MainLayout>
+    <section class="grid grid-cols-2">
+      <figure>
+        <Image
+          src={"/public/images/profile.webp"}
+          alt="todo"
+          width={350}
+          height={500}
+          sizes="350px"
+          class="h-full w-full object-contain"
+        />
+      </figure>
+
+      <div>
+        <p>Hola!</p>
+        <p>It's Daniel</p>
+        <div>
+          <span>Location</span>
+          <span class="bg-clay text-light px-2 py-px">Vienna, Austria</span>
+        </div>
+
+        <p>{presentation}</p>
+
+        <div class="flex-warp flex items-center gap-2">
+          {
+            languages.map((lang) => (
+              <Badge className="capitalize" key={lang}>
+                {lang}
+              </Badge>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Studies</h2>
+      <div class="space-y-4">
+        {
+          STUDIES.map((study, index) => (
+            <div class="flex gap-2">
+              <div class="w-30">
+                <span>{study.dates}</span>
+              </div>
+
+              <div class="space-y-1">
+                <p set:html={study.study} />
+                <p class="italic">{study.highlights.join(" | ")}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+      <Button>Download CV</Button>
+    </section>
+
+    <section>
+      <h2>Behind the work</h2>
+      <FeatureExample client:visible />
+    </section>
+  </MainLayout>
+</Layout>

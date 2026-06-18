@@ -1,0 +1,42 @@
+---
+import { Badge } from "@/components/ui/badge";
+import { Image } from "astro:assets";
+import { formatMonthYear } from "@/utils/helper";
+
+const { data } = Astro.props;
+
+const item = data.data;
+---
+
+<article class="flex items-stretch gap-8">
+  <div class="w-full max-w-100">
+    <figure class="relative w-full shrink-0 aspect-4/3">
+      <Image
+        src={item.img}
+        alt=""
+        class="object-cover w-full h-full"
+        width={850}
+        height={850}
+        aria-hidden="true"
+      />
+    </figure>
+  </div>
+  <div class="space-y-4 flex justify-end flex-col p-1 max-w-160 w-full">
+    <div>
+      <time datetime={item.date} class="text-sm"
+        >{formatMonthYear(item.date, true)}</time
+      >
+      <h3 class="text-3xl font-medium py-1">{item.title}</h3>
+    </div>
+    <p class="text-balance">
+      {item.description}
+    </p>
+    <div class="flex gap-2 flex-wrap">
+      {
+        item.technologies.map((i: string) => (
+          <Badge variant="default">{i}</Badge>
+        ))
+      }
+    </div>
+  </div>
+</article>

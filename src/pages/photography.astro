@@ -1,0 +1,52 @@
+---
+import { Badge } from "@/components/ui/badge";
+import Layout from "../layouts/Layout.astro";
+import MainLayout from "@/layouts/MainLayout.astro";
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import Image from "astro/components/Image.astro";
+
+const photographyProjects: CollectionEntry<"photography">[] =
+  await getCollection("photography");
+
+console.log("photographyProjects >>", photographyProjects);
+---
+
+<Layout>
+  <MainLayout>
+    <div class="space-y-8">
+      <h1 class="text-4xl font-bold uppercase">Photography</h1>
+    </div>
+
+    <div class="grid-cols-3 grid gap-8">
+      {
+        photographyProjects.map((project) => (
+          <article class="aspect-3/4 relative overflow-hidden">
+            <Image
+              src={project.data.img}
+              class="absolute object-cover w-full h-full"
+              width={500}
+              height={500}
+              alt=""
+            />
+
+            <div class="absolute bottom-4 gap-1 left-4 flex flex-col">
+              <Badge
+                variant="secondary"
+                className=" bg-dark! text-light! border-none! "
+              >
+                {project.data.dates}
+              </Badge>
+              <Badge
+                variant="secondary"
+                className=" text-sm! bg-dark! text-light! border-none! "
+              >
+                {project.data.title}
+              </Badge>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </MainLayout>
+</Layout>

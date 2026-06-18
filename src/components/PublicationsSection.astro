@@ -1,0 +1,23 @@
+---
+import { Button } from "@/components/ui/button";
+import PublicationCard from "./atoms/PublicationCard.astro";
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+
+const publications: CollectionEntry<"publications">[] =
+  await getCollection("publications");
+---
+
+<section class="max-w-4xl mx-auto space-y-8">
+  <h2 class="text-light font-bold text-3xl">Publications</h2>
+
+  <div class="space-y-12 w-full flex flex-col">
+    {
+      publications.map((publication) => (
+        <PublicationCard data={publication} dark={true} />
+      ))
+    }
+
+    <Button className="ml-auto mt-4">More projects</Button>
+  </div>
+</section>

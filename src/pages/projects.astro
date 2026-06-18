@@ -1,0 +1,34 @@
+---
+import { Badge } from "@/components/ui/badge";
+import Layout from "@/layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import MainLayout from "@/layouts/MainLayout.astro";
+import Card from "@/components/atoms/ProjectCard.astro";
+
+const categories = ["UX/UI", "frontend", "creative coding"];
+
+const projects: CollectionEntry<"projects">[] = await getCollection("projects");
+---
+
+<Layout>
+  <MainLayout>
+    <div class="space-y-8">
+      <h1 class="text-4xl font-bold uppercase">Projects</h1>
+
+      <div class="gap-4 flex flex-wrap">
+        {
+          categories.map((category) => (
+            <Badge variant="outline" className="px-3 py-1 capitalize">
+              {category}
+            </Badge>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="space-y-16">
+      {projects.map((project) => <Card data={project} />)}
+    </div>
+  </MainLayout>
+</Layout>

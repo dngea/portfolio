@@ -1,0 +1,37 @@
+---
+import { Image } from "astro:assets";
+
+const name = "Daniel Gea";
+const rol = "Frontend Developer | UX Designer";
+const description =
+  "I am a Frontend Developer focused on building web applications. I translate design specifications into clean and scalable code, prioritising best practices and organisation. I complement my technical focus with a commitment to responsive design, web accessibility standards and UX principles. I strongly value clear documentation and open, transparent communication.";
+---
+
+<section class="bg-light h-[95vh] flex p-4 items-center justify-center w-full">
+  <div
+    class="max-w-4xl w-full max-h-130 gap-4 flex justify-between h-full mx-auto items-stretch"
+  >
+    <div class="flex justify-end gap-8 flex-col">
+      <header class="space-y-2">
+        <h1 class="text-4xl font-bold text-dark">{name}</h1>
+        <small class="text-lg font-medium text-clay">
+          {rol}
+        </small>
+      </header>
+      <p class="w-full text-dark">
+        {description}
+      </p>
+    </div>
+    <figure
+      class="relative flex items-end h-full aspect-3/4 w-full shrink-0 max-w-75 overflow-hidden"
+    >
+      <Image
+        src="/src/images/profile.webp"
+        alt="Profile Picture"
+        layout="full-width"
+        width={850}
+        height={850}
+      />
+    </figure>
+  </div>
+</section>

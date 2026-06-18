@@ -1,0 +1,99 @@
+---
+const links = [
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/dngea/",
+    external: true,
+  },
+  {
+    label: "GitHub",
+    href: "https://github.com/dngea",
+    external: true,
+  },
+  {
+    label: "Contact",
+    href: "#",
+    id: "contactButton2",
+  },
+  {
+    label: "Resume",
+    href: "img/home/Daniel_Gea_Resume.pdf",
+    download: "Daniel_Gea_Resume.pdf",
+  },
+  {
+    label: "Publications",
+    href: "https://www.researchgate.net/publication/388475957_Semantic_and_Spatial_Sound-Object_Recognition_for_Assistive_Navigation",
+    external: true,
+  },
+  {
+    label: "Sound Navigation Interactive Demo",
+    href: "../sound-navigation/index.html",
+    external: true,
+  },
+];
+
+const sitemap = [
+  { label: "Portfolio", href: "/" },
+  { label: "Frontend", href: "/frontend" },
+  { label: "UX/UI", href: "/ux_ui" },
+  { label: "Multimedia", href: "/multimedia" },
+  { label: "Skills", href: "/#skills" },
+  { label: "About", href: "/about" },
+];
+---
+
+<footer class="w-full p-8 sm:p-4">
+  <div class="w-full max-w-6xl mx-auto">
+    <div class="flex gap-12 justify-between">
+      <section class="space-y-8">
+        <h3 class="text-4xl underline">dngeap@gmail.com</h3>
+        <p class="text-balance">
+          Designed in Figma and built using Astro with React and Tailwind CSS.
+          The code is available on <a
+            href="https://github.com/dngea"
+            class="hover:text-dark hover:bg-cream transition-all w-fit"
+            target="_blank">github.com/dngea</a
+          >.
+        </p>
+      </section>
+
+      <section class="flex gap-8">
+        <!-- links -->
+        <div class="flex flex-col gap-2">
+          <p class="font-medium uppercase px-0.5 text-light">LINKS</p>
+          {
+            links.map((link) => (
+              <a
+                href={link.href}
+                class="hover:text-dark px-0.5 hover:bg-cream  transition-all w-fit"
+                target={link.external ? "_blank" : "_self"}
+              >
+                {link.label}
+              </a>
+            ))
+          }
+        </div>
+        <!-- sitemap -->
+        <div class="flex flex-col gap-2">
+          <p class="font-medium uppercase px-0.5 text-light">SITEMAP</p>
+          {
+            sitemap.map((link) => (
+              <a
+                class="hover:text-dark px-0.5  hover:bg-cream transition-all w-fit"
+                href={link.href}
+              >
+                {link.label}
+              </a>
+            ))
+          }
+        </div>
+      </section>
+    </div>
+
+    <!-- Daniel Gea -- 2025 -->
+    <section class="flex justify-between items-end">
+      <h1 class="text-7xl font-semibold">Daniel Gea</h1>
+      <h4>2025</h4>
+    </section>
+  </div>
+</footer>
