@@ -134,5 +134,5 @@ html {
 }
 
 .debug {
-  @apply border border-dashed border-red-500;
+  @apply border border-dashed border-red-600;
 }
