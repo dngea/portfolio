@@ -8,7 +8,7 @@ technologies:
   - Pure data
   - TouchDesigner
   - Processing
-img: /src/images/prev/metamorphosis-prev.webp
+img: /images/prev/metamorphosis-prev.webp
 collection: creative-coding
 ---
 

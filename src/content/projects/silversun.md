@@ -7,6 +7,6 @@ technologies:
   - CSS
   - JavaScript
   - Bootstrap
-img: /src/images/prev/silversun-prev.jpg
+img: /images/prev/silversun-prev.jpg
 collection: frontend
 ---

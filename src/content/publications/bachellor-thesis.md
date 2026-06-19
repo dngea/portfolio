@@ -3,7 +3,7 @@ title: Preservación y difusión digital del acervo cultural saharaui
 publisher: University of Granada
 keywords: digital preservation, web dissemination, thesaurus, dublin core, Omeka, saharawi people
 date: 06/2022
-img: /src/images/prev/bachellor-thesis-prev.png
+img: /images/prev/bachellor-thesis-prev.png
 link: https://digibug.ugr.es/handle/10481/77184
 ---
 

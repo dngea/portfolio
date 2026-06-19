@@ -5,7 +5,7 @@ date: 10/2023
 technologies:
   - Figma
   - Arduino
-img: /src/images/prev/purpulse-prev.png
+img: /images/prev/purpulse-prev.png
 collection: ux
 ---
 

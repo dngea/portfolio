@@ -3,7 +3,7 @@ title: Semantic and Spatial Sound-Object Recognition for Assistive Navigation
 publisher: Conference on Sonification of Health and Environmental Data
 keywords: Sonification, Auditory Navigation, Human Sound Perception, Non-Speech Audio
 date: 01/2025
-img: /src/images/prev/best-thesis-prev.jpeg
+img: /images/prev/best-thesis-prev.jpeg
 link: https://www.researchgate.net/publication/388475957_Semantic_and_Spatial_Sound-Object_Recognition_for_Assistive_Navigation
 ---
 

@@ -1,37 +1,81 @@
 ---
 import { Image } from "astro:assets";
+import { Button } from "./ui/button";
+import { buttonVariants } from "./ui/button";
 
 const name = "Daniel Gea";
-const rol = "Frontend Developer | UX Designer";
+const rol = "Frontend Developer · UX Designer";
+const image = "/images/profile.webp";
 const description =
-  "I am a Frontend Developer focused on building web applications. I translate design specifications into clean and scalable code, prioritising best practices and organisation. I complement my technical focus with a commitment to responsive design, web accessibility standards and UX principles. I strongly value clear documentation and open, transparent communication.";
+  "I build web applications with a focus on clean, scalable code and thoughtful organisation. Responsive design, accessibility, and UX principles are at the core of how I work.";
 ---
 
-<section class="bg-light h-[95vh] flex p-4 items-center justify-center w-full">
+<section
+  class="bg-light relative flex min-h-[92vh] items-center justify-center overflow-hidden p-8"
+>
+  <!-- Dot grid texture -->
   <div
-    class="max-w-4xl w-full max-h-130 gap-4 flex justify-between h-full mx-auto items-stretch"
+    class="pointer-events-none absolute inset-0"
+    style="background-image: radial-gradient(circle, rgba(0,0,0,0.15) 1px, transparent 1px); background-size: 28px 28px;"
   >
-    <div class="flex justify-end gap-8 flex-col">
-      <header class="space-y-2">
-        <h1 class="text-4xl font-bold text-dark">{name}</h1>
-        <small class="text-lg font-medium text-clay">
-          {rol}
-        </small>
-      </header>
-      <p class="w-full text-dark">
+  </div>
+
+  <!-- Fade overlay -->
+  <!-- <div
+    class="pointer-events-none absolute inset-0"
+    style="background: radial-gradient(ellipse 70% 70% at 30% 50%, transparent 40%, white 100%);"
+  >
+  </div> -->
+
+  <div class="relative z-10 flex w-full max-w-5xl items-center gap-12">
+    <!-- Text -->
+    <div class="text-dark flex flex-1 translate-y-8 flex-col gap-8 pb-2">
+      <div>
+        <h1 class="text-5xl leading-tight font-semibold">
+          {name}
+        </h1>
+        <p class="mt-2.5 text-lg font-normal opacity-70">{rol}</p>
+      </div>
+
+      <p class="max-w-[44ch] text-sm leading-relaxed opacity-80">
         {description}
       </p>
+
+      <div class="flex items-center gap-3">
+        <a
+          href="#work"
+          class={buttonVariants({ variant: "default", size: "default" })}
+        >
+          View work
+        </a>
+
+        <a href="/about#contact" class={buttonVariants({ variant: "outline" })}>
+          Get in touch
+        </a>
+      </div>
     </div>
-    <figure
-      class="relative flex items-end h-full aspect-3/4 w-full shrink-0 max-w-75 overflow-hidden"
-    >
-      <Image
-        src="/src/images/profile.webp"
-        alt="Profile Picture"
-        layout="full-width"
-        width={850}
-        height={850}
-      />
-    </figure>
+
+    <!-- Image -->
+    <div class="relative w-80 shrink-0">
+      <figure
+        class="aspect-3/4 w-full overflow-hidden rounded-sm border border-current/10"
+      >
+        <Image
+          src={image}
+          alt="Daniel Gea"
+          width={480}
+          height={640}
+          class="h-full w-full object-cover"
+        />
+      </figure>
+    </div>
+  </div>
+
+  <!-- Scroll hint -->
+  <div
+    class="absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-1.5"
+  >
+    <div class="h-9 w-px bg-gradient-to-b from-current/30 to-transparent"></div>
+    <span class="text-[10px] tracking-widest uppercase opacity-30">scroll</span>
   </div>
 </section>

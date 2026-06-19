@@ -7,7 +7,7 @@ technologies:
   - Pure data
   - Unity
   - C#
-img: /src/images/prev/chroma-prev.webp
+img: /images/prev/chroma-prev.webp
 collection: creative-coding
 ---
 

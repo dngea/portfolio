@@ -4,7 +4,7 @@ description: A 12-week UX/UI design project focused on improving communication a
 date: 06/2023
 technologies:
   - Figma
-img: /src/images/prev/nai-prev.jpg
+img: /images/prev/nai-prev.jpg
 collection: ux
 ---
 

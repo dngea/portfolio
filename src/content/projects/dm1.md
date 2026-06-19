@@ -6,7 +6,7 @@ technologies:
   - Figma
   - React
   - CSS
-img: /src/images/prev/dm1-prev.jpg
+img: /images/prev/dm1-prev.jpg
 collection: ux
 ---
 
