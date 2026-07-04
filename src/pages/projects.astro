@@ -56,51 +56,60 @@ projects.sort((a, b) => {
   .active {
     background-color: var(--color-cream);
     color: var(--color-dark);
+
+    span {
+      outline-color: var(--color-cream) !important;
+      border-color: var(--color-cream) !important;
+    }
   }
 </style>
 
 <script>
-  const buttons = document.querySelectorAll(
-    "button[data-category]",
-  ) as NodeListOf<HTMLButtonElement>;
+  function initFiltering() {
+    const buttons = document.querySelectorAll(
+      "button[data-category]",
+    ) as NodeListOf<HTMLButtonElement>;
 
-  const cards = document.querySelectorAll(
-    "article[data-category]",
-  ) as NodeListOf<HTMLElement>;
+    const cards = document.querySelectorAll(
+      "article[data-category]",
+    ) as NodeListOf<HTMLElement>;
 
-  buttons.forEach((button) => {
-    button.addEventListener("click", filterProjects);
-  });
-
-  function filterProjects(event: Event) {
-    const button = event.currentTarget;
-
-    if (!button || !(button instanceof HTMLButtonElement)) {
-      console.warn("not a button detected");
-      return;
-    }
-
-    if (!cards) return;
-
-    // reset filter
-    if (button.classList.contains("active")) {
-      buttons.forEach((button) => button.classList.remove("active"));
-
-      cards.forEach((card) => (card.style.display = ""));
-      return;
-    }
-
-    // set filters
-    buttons.forEach((button) => button.classList.remove("active"));
-    button.classList.add("active");
-    const category = button.dataset.category;
-
-    cards.forEach((card) => {
-      if (card.dataset.category != category) {
-        card.style.display = "none";
-      } else {
-        card.style.display = "";
-      }
+    buttons.forEach((button) => {
+      button.addEventListener("click", filterProjects);
     });
+
+    function filterProjects(event: Event) {
+      const button = event.currentTarget;
+
+      if (!button || !(button instanceof HTMLButtonElement)) {
+        console.warn("not a button detected");
+        return;
+      }
+
+      if (!cards) return;
+
+      // reset filter
+      if (button.classList.contains("active")) {
+        buttons.forEach((button) => button.classList.remove("active"));
+
+        cards.forEach((card) => (card.style.display = ""));
+        return;
+      }
+
+      // set filters
+      buttons.forEach((button) => button.classList.remove("active"));
+      button.classList.add("active");
+      const category = button.dataset.category;
+
+      cards.forEach((card) => {
+        if (card.dataset.category != category) {
+          card.style.display = "none";
+        } else {
+          card.style.display = "";
+        }
+      });
+    }
   }
+
+  document.addEventListener("astro:page-load", initFiltering);
 </script>
