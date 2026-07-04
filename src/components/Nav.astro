@@ -1,4 +1,7 @@
 ---
+import { isActionError } from "astro:actions";
+import clsx from "clsx";
+
 const menu = [
   {
     id: "portfolio",
@@ -43,26 +46,29 @@ const currentPath = Astro.url.pathname;
 
           return (
             <>
-              <li class="relative px-4 py-2">
+              <li class={clsx("text-dark relative", isActive ? "active" : "")}>
                 <a
                   href={item.path}
-                  class={`relative z-10 font-medium ${isActive ? "text-light" : "text-dark"}`}
+                  class={`relative z-10 block px-4 py-2 font-medium`}
                 >
                   {item.label}
                 </a>
-                {isActive && (
+                {/* {isActive && (
                   <span
                     transition:name="nav-pill"
                     class="bg-clay absolute top-1/2 right-0 left-0 h-10 min-w-16 -translate-y-1/2 rounded-full"
                   />
-                )}
+                )} */}
               </li>
             </>
           );
         })
       }
 
-      <span class="hover-pill pointer-events-none absolute bg-black"> </span>
+      <span
+        class="hover-pill bg-clay pointer-events-none absolute rounded-full"
+      >
+      </span>
     </ul>
   </nav>
 </header>
@@ -77,31 +83,79 @@ const currentPath = Astro.url.pathname;
       transform 300ms,
       width 300ms;
   }
+
+  li {
+    color: var(--color-dark);
+    transition: color 150ms ease 100ms;
+
+    &.active {
+      color: var(--color-light);
+    }
+
+    &.pill-on {
+      color: var(--color-light);
+    }
+  }
+
+  ul:hover > li.active:not(.pill-on) {
+    color: var(--color-dark);
+    transition: color 150ms ease 0ms;
+  }
 </style>
 
 <script>
-  const nav = document.getElementById("nav");
+  function initNavHover() {
+    const nav = document.getElementById("nav");
+    const ul = nav?.querySelector("ul");
+    const hoverPill = nav?.querySelector(".hover-pill") as HTMLElement;
+    const lis = nav?.querySelectorAll("li");
+    const activeLi = nav?.querySelector(".active");
+    const activeLiRect = activeLi?.getBoundingClientRect();
+    const ulRect = ul?.getBoundingClientRect();
 
-  const ul = nav?.querySelector("ul");
-  const hoverPill = nav?.querySelector(".hover-pill") as HTMLElement;
-  const lis = nav?.querySelectorAll("li");
+    if (hoverPill) hoverPill.style.transition = "none";
 
-  function moveTo(event: Event) {
-    console.log("event.currentTarget >>", event.currentTarget);
+    defaultPropertiesActive();
 
-    const li = event.currentTarget as HTMLLIElement;
+    requestAnimationFrame(() => {
+      if (hoverPill) hoverPill.style.transition = "";
+    });
 
-    if (!ul || !li || !hoverPill) return;
+    function moveTo(event: Event) {
+      const li = event.currentTarget as HTMLLIElement;
 
-    const liRect = li.getBoundingClientRect();
-    const ulRect = ul.getBoundingClientRect();
+      if (!ulRect || !li || !hoverPill) return;
 
-    const x = liRect.left - ulRect.left;
+      const liRect = li.getBoundingClientRect();
 
-    hoverPill.style.setProperty("--x", `${x}px`);
+      const x = liRect.left - ulRect.left;
+      const w = liRect.width;
+
+      hoverPill.style.setProperty("--x", `${x}px`);
+      hoverPill.style.setProperty("--w", `${w}px`);
+
+      lis?.forEach((li) => li.classList.remove("pill-on"));
+      li.classList.add("pill-on");
+    }
+
+    function defaultPropertiesActive() {
+      if (!activeLiRect || !ulRect || !hoverPill) return;
+
+      const x = activeLiRect.left - ulRect.left;
+      const w = activeLiRect.width;
+
+      hoverPill.style.setProperty("--x", `${x}px`);
+      hoverPill.style.setProperty("--w", `${w}px`);
+
+      lis?.forEach((li) => li.classList.remove("pill-on"));
+    }
+
+    lis?.forEach((li: HTMLLIElement) => {
+      li.addEventListener("mouseenter", moveTo);
+    });
+
+    nav?.addEventListener("mouseleave", defaultPropertiesActive);
   }
 
-  lis?.forEach((li: HTMLLIElement) => {
-    li.addEventListener("mouseenter", moveTo);
-  });
+  document.addEventListener("astro:page-load", initNavHover);
 </script>

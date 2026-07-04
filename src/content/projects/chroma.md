@@ -1,7 +1,7 @@
 ---
 title: Chroma
 description: An 8-week team project developing Chroma, an immersive Unity-based indie mystery puzzle adventure game. The project focused on guiding players through a narrative-driven world using visual cues and cozy ambience. Contributions included interactive sound design with FMOD, Pure Data, and Reaper, and integration of audio with gameplay logic.
-date: 06/2023
+date: "2023-06-01"
 technologies:
   - FMOD
   - Pure data

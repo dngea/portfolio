@@ -1,7 +1,7 @@
 ---
 title: Mediartes Porto
 description: empty
-date: 02/2023
+date: "2023-03-01"
 technologies:
   - Arduino
 img: /images/prev/imtermediartes-prev.jpg

@@ -8,9 +8,20 @@ import Card from "@/components/atoms/ProjectCard.astro";
 
 // TODO añadir debajo de project un pequeño titulo aclaratoriom de cuando son y por qué están
 
-const categories = ["UX/UI", "frontend", "creative coding"];
+const categories = [
+  { label: "UX/UI", id: "ux" },
+  { label: "frontend", id: "frontend" },
+  { label: "creative coding", id: "creative-coding" },
+];
 
 const projects: CollectionEntry<"projects">[] = await getCollection("projects");
+
+projects.sort((a, b) => {
+  const projectA = a.data.date.getTime();
+  const projectB = b.data.date.getTime();
+
+  return projectB - projectA;
+});
 ---
 
 <Layout>
@@ -21,16 +32,75 @@ const projects: CollectionEntry<"projects">[] = await getCollection("projects");
       <div class="flex flex-wrap gap-4">
         {
           categories.map((category) => (
-            <Badge variant="outline" className="px-3 py-1 capitalize">
-              {category}
-            </Badge>
+            <button class="cursor-pointer" data-category={category.id}>
+              <Badge variant="outline" className="px-3 py-1 capitalize">
+                {category.label}
+              </Badge>
+            </button>
           ))
         }
       </div>
     </div>
 
     <div class="space-y-16">
-      {projects.map((project) => <Card data={project} />)}
+      {
+        projects.map((project) => {
+          return <Card data={project} />;
+        })
+      }
     </div>
   </MainLayout>
 </Layout>
+
+<style>
+  .active {
+    background-color: var(--color-cream);
+    color: var(--color-dark);
+  }
+</style>
+
+<script>
+  const buttons = document.querySelectorAll(
+    "button[data-category]",
+  ) as NodeListOf<HTMLButtonElement>;
+
+  const cards = document.querySelectorAll(
+    "article[data-category]",
+  ) as NodeListOf<HTMLElement>;
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", filterProjects);
+  });
+
+  function filterProjects(event: Event) {
+    const button = event.currentTarget;
+
+    if (!button || !(button instanceof HTMLButtonElement)) {
+      console.warn("not a button detected");
+      return;
+    }
+
+    if (!cards) return;
+
+    // reset filter
+    if (button.classList.contains("active")) {
+      buttons.forEach((button) => button.classList.remove("active"));
+
+      cards.forEach((card) => (card.style.display = ""));
+      return;
+    }
+
+    // set filters
+    buttons.forEach((button) => button.classList.remove("active"));
+    button.classList.add("active");
+    const category = button.dataset.category;
+
+    cards.forEach((card) => {
+      if (card.dataset.category != category) {
+        card.style.display = "none";
+      } else {
+        card.style.display = "";
+      }
+    });
+  }
+</script>

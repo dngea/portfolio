@@ -7,6 +7,8 @@ import type { CollectionEntry } from "astro:content";
 const publications: CollectionEntry<"publications">[] =
   await getCollection("publications");
 
+publications.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
 const visiblePublications = publications.slice(0, 2);
 ---
 

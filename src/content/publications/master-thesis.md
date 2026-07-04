@@ -2,7 +2,7 @@
 title: Sound-driven object recognition fostering semantic and spatial navigation for visually impaired individuals
 publisher: University of Porto
 keywords: Sonification, Auditory Navigation, Spatial Cognition, Human Sound Perception
-date: 06/2024
+date: "2024-04-01"
 img: /images/prev/uporto-prev.webp
 link: https://repositorio-aberto.up.pt/handle/10216/161378
 ---

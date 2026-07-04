@@ -3,7 +3,7 @@ title: Metamorphosis
 description:
   A four-week interactive performance project inspired by Kafka’s The Metamorphosis, combining real-time sound and generative visuals.
   he project featured four distinct soundscapes created in Pure Data and audio-reactive visuals developed in TouchDesigner. UI controls were built in Processing, with all components integrated via OSC for seamless transitions.
-date: 06/2023
+date: "2023-06-01"
 technologies:
   - Pure data
   - TouchDesigner

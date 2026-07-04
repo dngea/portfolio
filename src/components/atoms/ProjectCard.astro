@@ -2,36 +2,42 @@
 import { Badge } from "@/components/ui/badge";
 import { Image } from "astro:assets";
 import { formatMonthYear } from "@/utils/helper";
+import type { CollectionEntry } from "astro:content";
+import type { CollectionKey } from "astro:content";
+
+interface Props {
+  data: CollectionEntry<"projects">;
+}
 
 const { data } = Astro.props;
 
 const item = data.data;
 ---
 
-<article class="flex items-stretch gap-8">
+<article class="flex items-stretch gap-8" data-category={item.collection}>
   <div class="w-full max-w-100">
-    <figure class="relative w-full shrink-0 aspect-4/3">
+    <figure class="relative aspect-4/3 w-full shrink-0">
       <Image
         src={item.img}
         alt=""
-        class="object-cover w-full h-full"
+        class="h-full w-full object-cover"
         width={850}
         height={850}
         aria-hidden="true"
       />
     </figure>
   </div>
-  <div class="space-y-4 flex justify-end flex-col p-1 max-w-160 w-full">
+  <div class="flex w-full max-w-160 flex-col justify-end space-y-4 p-1">
     <div>
-      <time datetime={item.date} class="text-sm"
+      <time datetime={item.date.toISOString()} class="text-sm"
         >{formatMonthYear(item.date, true)}</time
       >
-      <h3 class="text-3xl font-medium py-1">{item.title}</h3>
+      <h3 class="py-1 text-3xl font-medium">{item.title}</h3>
     </div>
     <p class="text-balance">
       {item.description}
     </p>
-    <div class="flex gap-2 flex-wrap">
+    <div class="flex flex-wrap gap-2">
       {
         item.technologies.map((i: string) => (
           <Badge variant="default">{i}</Badge>
