@@ -6,6 +6,8 @@ import type { CollectionEntry } from "astro:content";
 import MainLayout from "@/layouts/MainLayout.astro";
 import Card from "@/components/atoms/ProjectCard.astro";
 
+// TODO añadir debajo de project un pequeño titulo aclaratoriom de cuando son y por qué están
+
 const categories = ["UX/UI", "frontend", "creative coding"];
 
 const projects: CollectionEntry<"projects">[] = await getCollection("projects");
@@ -16,7 +18,7 @@ const projects: CollectionEntry<"projects">[] = await getCollection("projects");
     <div class="space-y-8">
       <h1 class="text-4xl font-bold uppercase">Projects</h1>
 
-      <div class="gap-4 flex flex-wrap">
+      <div class="flex flex-wrap gap-4">
         {
           categories.map((category) => (
             <Badge variant="outline" className="px-3 py-1 capitalize">

@@ -41,29 +41,44 @@ const STUDIES = [
 
 <Layout>
   <MainLayout>
-    <section class="grid grid-cols-2">
-      <figure>
+    <!-- Dot grid texture -->
+    <div
+      slot="background"
+      class="pointer-events-none absolute inset-0"
+      style="background-image: radial-gradient(circle, rgba(0,0,0,0.15) 1px, transparent 1px); background-size: 28px 28px;"
+    >
+    </div>
+
+    <section class="grid grid-cols-2 items-center">
+      <figure
+        class="max-w-[350px] justify-self-center overflow-hidden rounded-2xl"
+      >
         <Image
           src={"/public/images/profile.webp"}
-          alt="todo"
+          alt="Profile picture of Daniel"
           width={350}
           height={500}
           sizes="350px"
-          class="h-full w-full object-contain"
+          class="h-auto w-full rounded-2xl object-cover"
         />
       </figure>
 
-      <div>
-        <p>Hola!</p>
-        <p>It's Daniel</p>
-        <div>
-          <span>Location</span>
-          <span class="bg-clay text-light px-2 py-px">Vienna, Austria</span>
+      <div class="flex flex-col justify-center gap-6">
+        <header class="space-y-px">
+          <p class="text-base opacity-70">Hola</p>
+          <h1 class="text-3xl font-semibold">I&apos;m Daniel</h1>
+        </header>
+
+        <div class="flex items-center gap-2 text-sm">
+          <span class="opacity-70">Location</span>
+          <span class="bg-clay text-light px-2 py-px"> Vienna, Austria </span>
         </div>
 
-        <p>{presentation}</p>
+        <p class="leading-relaxed">
+          {presentation}
+        </p>
 
-        <div class="flex-warp flex items-center gap-2">
+        <div class="flex flex-wrap items-center gap-2">
           {
             languages.map((lang) => (
               <Badge className="capitalize" key={lang}>
@@ -75,29 +90,35 @@ const STUDIES = [
       </div>
     </section>
 
-    <section>
-      <h2>Studies</h2>
+    <section class="space-y-8">
+      <h2 class="text-3xl font-bold">Studies</h2>
+
       <div class="space-y-4">
         {
-          STUDIES.map((study, index) => (
-            <div class="flex gap-2">
-              <div class="w-30">
+          STUDIES.map((study) => (
+            <div class="flex gap-4">
+              <div class="w-30 shrink-0 text-sm opacity-60">
                 <span>{study.dates}</span>
               </div>
 
               <div class="space-y-1">
-                <p set:html={study.study} />
-                <p class="italic">{study.highlights.join(" | ")}</p>
+                <p class="leading-snug" set:html={study.study} />
+
+                <p class="text-sm italic opacity-80">
+                  {study.highlights.join(" | ")}
+                </p>
               </div>
             </div>
           ))
         }
       </div>
-      <Button>Download CV</Button>
+
+      <div class="flex justify-end px-4 pt-2">
+        <Button>Download CV</Button>
+      </div>
     </section>
 
     <section>
-      <h2>Behind the work</h2>
       <FeatureExample client:visible />
     </section>
 
@@ -105,7 +126,7 @@ const STUDIES = [
       <div
         class="mx-auto flex w-full flex-col justify-center gap-8 p-8 lg:w-[80%]"
       >
-        <h2 class="text-4xl font-semibold">Get in touch</h2>
+        <h2 class="text-3xl font-bold">Get in touch</h2>
 
         <div class="divide-y divide-gray-300">
           <div class="flex items-center gap-3 py-4">

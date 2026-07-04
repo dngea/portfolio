@@ -6,6 +6,8 @@ import type { CollectionEntry } from "astro:content";
 
 const publications: CollectionEntry<"publications">[] =
   await getCollection("publications");
+
+const visiblePublications = publications.slice(0, 2);
 ---
 
 <section class="mx-auto max-w-5xl space-y-8">
@@ -13,7 +15,7 @@ const publications: CollectionEntry<"publications">[] =
 
   <div class="flex w-full flex-col space-y-12">
     {
-      publications.map((publication) => (
+      visiblePublications.map((publication) => (
         <PublicationCard data={publication} dark={true} />
       ))
     }

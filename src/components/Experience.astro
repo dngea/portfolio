@@ -1,5 +1,19 @@
 ---
+// TODO: add resaltado con underline quizas
+const abss = {
+  roleSummary:
+    "Focus on building and maintaining real-world web applications in collaboration with backend and design teams.",
 
+  highlights: [
+    "Integrated REST APIs and authentication flows into production applications.",
+    "Built headless frontend architectures connected to backend-driven systems.",
+    "Implemented multi-language (i18n) websites with consistent UX across locales.",
+    "Developed a reusable media library integrated into a custom CMS for client use.",
+    "Created and maintained static and dynamic pages based on product requirements.",
+    "Improved accessibility (a11y) and performance across key user-facing features.",
+    "Added automated tests to increase reliability and reduce regressions.",
+  ],
+};
 ---
 
 <section class="mx-auto max-w-5xl space-y-8">
@@ -26,13 +40,16 @@
               </span>
             </h6>
 
-            <p class="text-light/70">
-              Gained experience building digital products using React and
-              Next.js. Focused on delivering accessible and performant web
-              applications that are scalable and maintainable. I care about
-              understanding systems end-to-end and applying solid engineering
-              practices to build reliable software.
+            <p class="text-light">
+              {abss.roleSummary}
             </p>
+            <ul class="marker:text-light/80 list-disc space-y-3 pl-5">
+              {
+                abss.highlights.map((line) => (
+                  <li class="text-sm leading-relaxed">{line}</li>
+                ))
+              }
+            </ul>
           </section>
         </div>
       </div>

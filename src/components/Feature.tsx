@@ -23,37 +23,35 @@ const Feature = ({
   features = [
     {
       id: 1,
-      title: "Shadcn UI Blocks",
-      image:
-        "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/lummi/bw12.jpeg",
+      title: "Web development",
+      image: "/images/frontend/prev.webp",
       description:
-        "Browse through our extensive collection of pre-built UI blocks designed with shadcn/ui at shadcnblocks.com. Each block is carefully crafted to be responsive, accessible, and easily customizable.",
+        "Web development became my main passion almost by accident. As a teenager, I was deeply interested in photography and wanted to find new ways to share my work beyond physical exhibitions. That curiosity led me to explore websites as a creative medium. What started with a basic understanding of HTML quickly grew into a fascination with building digital experiences, combining creativity, problem-solving, and technology.",
     },
     {
       id: 2,
-      title: "Tailwind CSS & TypeScript",
-      image:
-        "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/lummi/bw15.jpeg",
+      title: "UX/UI Design",
+      image: "/images/ux/prev.png",
       description:
-        "Built with Tailwind CSS for rapid styling and TypeScript for type safety. Our blocks leverage the full power of Tailwind's utility classes while maintaining clean, type-safe code.",
+        "My interest in UX/UI design emerged naturally through web development. As I built websites, I became increasingly curious about how people interact with digital products and what makes an experience intuitive and enjoyable. Learning about user research, usability testing, and design methodologies helped me understand that successful products are built around people, not just technology.",
     },
+
     {
       id: 3,
-      title: "Dark Mode & Customization",
-      image:
-        "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/lummi/bw20.jpeg",
+      title: "Creative coding, sound and installations",
+      image: "/images/multimedia/prev.webp",
       description:
-        "Every block supports dark mode out of the box and can be customized to match your brand. Modify colors, spacing, and typography using Tailwind's configuration.",
+        "During my Master's in Multimedia at the University of Porto, I had the opportunity to explore technology beyond the browser. Through interactive installations, generative music, reactive visuals, Arduino projects, and digital storytelling, I discovered new ways of connecting creativity, art, and technology. These experiences continue to influence how I approach experimentation and innovation today.",
     },
     {
       id: 4,
-      title: "Accessibility First",
-      image:
-        "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/lummi/bw21.jpeg",
+      title: "Why Vienna",
+      image: "/images/home/vienna-prev.jpg",
       description:
-        "All blocks are built with accessibility in mind, following WCAG guidelines. They include proper ARIA labels, keyboard navigation, and semantic HTML.",
+        "I've always imagined myself living abroad. The challenge of adapting to new environments, meeting people from different cultures, and learning new languages has always excited me, even if languages don't come naturally to me. Vienna first entered my life through UXcon Vienna, but what started as a professional opportunity soon became something more. I found a city that constantly encourages growth, curiosity, and new perspectives, making it the perfect place to continue both my personal and professional journey.",
     },
   ],
+
   className,
 }: FeatureProps) => {
   const [activeTabId, setActiveTabId] = useState<number | null>(1);
@@ -61,8 +59,9 @@ const Feature = ({
 
   return (
     <section className={cn("py-16", className)}>
-      <div className="container mx-auto">
-        <h2 className="mb-12 text-3xl font-semibold md:text-4xl">Features</h2>
+      <div className="container mx-auto space-y-8">
+        <h2 className="text-3xl font-bold">Behind the work</h2>
+
         <div className="flex w-full items-start justify-between gap-12">
           <div className="w-full md:w-1/2">
             <Accordion
@@ -85,7 +84,7 @@ const Feature = ({
                     className="cursor-pointer py-5 !no-underline transition"
                   >
                     <h4
-                      className={`text-xl ${tab.id === activeTabId ? "text-foreground" : "text-muted-foreground"}`}
+                      className={`text-xl ${tab.id === activeTabId ? "text-dark" : "text-muted-foreground"}`}
                     >
                       {tab.title}
                     </h4>
@@ -106,7 +105,7 @@ const Feature = ({
               ))}
             </Accordion>
           </div>
-          <div className="bg-muted relative hidden w-1/2 overflow-hidden rounded-xl md:block">
+          <div className="bg-muted relative hidden w-1/2 overflow-hidden rounded-2xl shadow-xl md:block">
             <div className="relative aspect-[4/3]">
               {features.map((feature) => (
                 <img
@@ -114,7 +113,7 @@ const Feature = ({
                   src={feature.image}
                   alt={feature.title}
                   className={cn(
-                    "absolute inset-0 h-full w-full rounded-md object-cover transition-opacity duration-500",
+                    "absolute inset-0 h-full w-full object-cover transition-opacity duration-500",
                     activeImage === feature.image ? "opacity-100" : "opacity-0",
                   )}
                 />

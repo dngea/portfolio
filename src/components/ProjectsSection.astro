@@ -5,13 +5,15 @@ import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
 
 const projects: CollectionEntry<"projects">[] = await getCollection("projects");
+
+const visibleProjects = projects.slice(0, 3);
 ---
 
 <section class="mx-auto max-w-5xl space-y-8">
   <h2 class="text-light text-3xl font-bold">Projects</h2>
 
   <div class="flex w-full flex-col space-y-12">
-    {projects.map((project) => <ProjectCard data={project} />)}
+    {visibleProjects.map((project) => <ProjectCard data={project} />)}
 
     <Button className="mt-4 ml-auto">More projects</Button>
   </div>
