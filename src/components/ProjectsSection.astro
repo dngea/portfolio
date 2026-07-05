@@ -20,7 +20,13 @@ const visibleProjects = projects.slice(0, 3);
   <h2 class="text-light text-3xl font-bold">Projects</h2>
 
   <div class="flex w-full flex-col space-y-12">
-    {visibleProjects.map((project) => <ProjectCard data={project} />)}
+    {
+      visibleProjects.map((project) => (
+        <a href={`/projects/${project.id}`} class="block">
+          <ProjectCard data={project} />
+        </a>
+      ))
+    }
 
     <Button className="mt-4 ml-auto">More projects</Button>
   </div>

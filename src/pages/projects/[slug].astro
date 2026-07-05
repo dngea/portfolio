@@ -1,0 +1,85 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getEntry } from "astro:content";
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+import { formatMonthYear } from "@/utils/helper";
+import { Badge } from "@/components/ui/badge";
+import { Divide } from "lucide-react";
+import { render } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import MainLayout from "@/layouts/MainLayout.astro";
+
+export const prerender = true;
+
+export const getStaticPaths = (async () => {
+  const projects = await getCollection("projects");
+
+  return projects.map((p) => ({ params: { slug: p.id } }));
+}) satisfies GetStaticPaths;
+
+const { slug } = Astro.params;
+
+const project = await getEntry("projects", slug);
+
+if (!project) {
+  return Astro.redirect("/404");
+}
+
+// markdown
+const { Content } = await render(project);
+
+console.log("project >>", project);
+
+const { pathname } = Astro.url;
+if (!pathname) return Astro.redirect("/404");
+
+const backLink = `/${pathname.split("/").filter(Boolean).slice(0, -1)}`;
+---
+
+<Layout>
+  <MainLayout>
+    <div class="mx-auto space-y-12">
+      <a
+        href={backLink}
+        class="hover:text-clay flex w-fit items-center gap-2 font-semibold text-gray-600 transition transition-opacity"
+      >
+        ← Back to projects
+      </a>
+      <figure class="mb-12 aspect-video w-full overflow-hidden rounded-2xl">
+        <Image
+          src={project.data.img}
+          alt={project.data.title}
+          width={1200}
+          height={675}
+          class="h-full w-full object-cover"
+        />
+      </figure>
+
+      <div class="grid grid-cols-[1fr_280px] items-start gap-16">
+        <div>
+          <time class="text-xs tracking-widest uppercase opacity-50"
+            >{formatMonthYear(project.data.date, true)}</time
+          >
+          <h1 class="mt-2 mb-6 text-4xl font-medium">{project.data.title}</h1>
+          <p class="mb-10 leading-relaxed">
+            {project.data.description}
+          </p>
+
+          <div class="prose prose-neutral max-w-none space-y-6 border-t pt-8">
+            <Content />
+          </div>
+        </div>
+
+        <aside class="sticky top-8 space-y-4">
+          <div class="space-y-4 rounded-xs border-b p-4">
+            <p class="text-sm tracking-wider uppercase">Technologies</p>
+            <div class="flex flex-wrap gap-2">
+              {project.data.technologies.map((t: string) => <Badge>{t}</Badge>)}
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </MainLayout>
+</Layout>

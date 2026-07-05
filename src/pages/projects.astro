@@ -22,6 +22,8 @@ projects.sort((a, b) => {
 
   return projectB - projectA;
 });
+
+const { pathname } = Astro.url;
 ---
 
 <Layout>
@@ -45,7 +47,11 @@ projects.sort((a, b) => {
     <div class="space-y-16">
       {
         projects.map((project) => {
-          return <Card data={project} />;
+          return (
+            <a class="block" href={`${pathname}/${project.id}`}>
+              <Card data={project} />
+            </a>
+          );
         })
       }
     </div>

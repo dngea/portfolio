@@ -1,4 +1,5 @@
 ---
+id: brutal-delusions
 title: Brutal delusions
 description: A six-week collaborative project creating a 10-minute audio-reactive performance using TouchDesigner. The performance combined dark, emotional music with evolving visuals to evoke nostalgia and mystery. The focus was on developing reactive visuals synchronized with the soundscape to create an immersive, dreamy experience.
 date: "2023-06-01"

@@ -1,4 +1,5 @@
 ---
+id: viver-dm
 title: Viver con DM1
 description: A multidisciplinary project involving management, informatics, and UX/UI design master’s programs to develop a web portal for type 1 diabetes care. The project focused on improving communication, access to reliable information, and patient engagement.UX/UI work included user research, information architecture, and interface design in collaboration with the technical team.
 date: "2023-06-01"

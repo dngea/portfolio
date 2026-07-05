@@ -1,4 +1,5 @@
 ---
+id: nai
 title: NAI (Support Center for Inclusion)
 description: A 12-week UX/UI design project focused on improving communication and accessibility for the University of Porto’s Inclusion Support Center (NAI). The project involved user research, personas, information architecture, task flows, and iterative design in Figma. Accessibility and inclusivity guided the process, validated through two rounds of usability testing.
 date: "2023-06-01"

@@ -53,12 +53,12 @@ const currentPath = Astro.url.pathname;
                 >
                   {item.label}
                 </a>
-                {/* {isActive && (
+                {isActive && (
                   <span
-                    transition:name="nav-pill"
+                    id="initial-active"
                     class="bg-clay absolute top-1/2 right-0 left-0 h-10 min-w-16 -translate-y-1/2 rounded-full"
                   />
-                )} */}
+                )}
               </li>
             </>
           );
@@ -75,6 +75,7 @@ const currentPath = Astro.url.pathname;
 
 <style>
   .hover-pill {
+    opacity: 0;
     left: 0;
     transform: translateX(var(--x, 0px));
     width: var(--w, 4rem);
@@ -118,7 +119,10 @@ const currentPath = Astro.url.pathname;
     defaultPropertiesActive();
 
     requestAnimationFrame(() => {
-      if (hoverPill) hoverPill.style.transition = "";
+      if (hoverPill) {
+        hoverPill.style.opacity = "1";
+        hoverPill.style.transition = "";
+      }
     });
 
     function moveTo(event: Event) {
@@ -146,8 +150,15 @@ const currentPath = Astro.url.pathname;
 
       hoverPill.style.setProperty("--x", `${x}px`);
       hoverPill.style.setProperty("--w", `${w}px`);
+      hoverPill.style.setProperty("--opacity", "0");
 
       lis?.forEach((li) => li.classList.remove("pill-on"));
+
+      // remove initial span with active background
+      const span = activeLi?.querySelector("span");
+      if (span) {
+        span.style.display = "none";
+      }
     }
 
     lis?.forEach((li: HTMLLIElement) => {

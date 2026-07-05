@@ -1,4 +1,5 @@
 ---
+id: purpulse
 title: Purpulse
 description: A two-week EU-funded project involving six European universities, focused on accessible design. The first week centered on research and ideation at the home universities. The second week in Umeå, Sweden, involved designing an app in Figma and prototyping a connected wearable display.
 date: "2023-10-01"

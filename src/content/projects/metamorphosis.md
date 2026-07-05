@@ -1,4 +1,5 @@
 ---
+id: metamorphosis
 title: Metamorphosis
 description:
   A four-week interactive performance project inspired by Kafka’s The Metamorphosis, combining real-time sound and generative visuals.
