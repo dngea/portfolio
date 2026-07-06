@@ -100,7 +100,7 @@ export default function Form() {
           ></textarea>
         </fieldset>
 
-        <Button type="submit" size={"lg"} className="">
+        <Button type="submit" size={"lg"} className="ml-auto">
           Send
         </Button>
       </form>

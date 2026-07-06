@@ -3,7 +3,7 @@ import MainLayout from "@/layouts/MainLayout.astro";
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import FeatureExample from "@/components/Feature";
 import { Inbox } from "lucide-react";
 import Linkedin from "@/svg/Linkedin.astro";
@@ -114,7 +114,13 @@ const STUDIES = [
       </div>
 
       <div class="flex justify-end px-4 pt-2">
-        <Button>Download CV</Button>
+        <a
+          href="/images/home/Daniel_Gea_Resume.pdf"
+          download="Daniel_Gea_Resume.pdf"
+          class={buttonVariants()}
+        >
+          Download CV
+        </a>
       </div>
     </section>
 
@@ -122,7 +128,7 @@ const STUDIES = [
       <FeatureExample client:visible />
     </section>
 
-    <section class="grid w-full gap-8 md:grid-cols-2">
+    <section class="grid w-full gap-8 md:grid-cols-2" id="contact">
       <div
         class="mx-auto flex w-full flex-col justify-center gap-8 p-8 lg:w-[80%]"
       >

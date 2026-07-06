@@ -1,15 +1,15 @@
 ---
-import { Button } from "./ui/button";
+import { buttonVariants } from "./ui/button";
 import Linkedin from "@/svg/Linkedin.astro";
 import { Mail } from "lucide-react";
 ---
 
-<section class="bg-light relative w-full px-16 py-32">
-  <div
+<section class="relative w-full px-16 py-32">
+  <!-- <div
     class="pointer-events-none absolute inset-0"
     style="background-image: radial-gradient(circle, rgba(0,0,0,0.15) 1px, transparent 1px); background-size: 28px 28px;"
   >
-  </div>
+  </div> -->
 
   <div class="mx-auto flex max-w-3xl items-center justify-center gap-8">
     <div class="w-full space-y-1">
@@ -21,11 +21,20 @@ import { Mail } from "lucide-react";
     </div>
 
     <div class="grid shrink-0 grid-cols-2 gap-6">
-      <Button className="aspect-square! size-16 rounded-full!"
-        ><Linkedin class="size-8" /></Button
+      <a
+        href="https://www.linkedin.com/in/dngea/"
+        target="_blank"
+        class={buttonVariants({
+          className: "aspect-square! size-16! rounded-full!",
+        })}
       >
-      <Button className="aspect-square! size-16 rounded-full!"
-        ><Mail className="size-8" /></Button
+        <Linkedin class="size-8" />
+      </a>
+      <a
+        href="/about#contact"
+        class={buttonVariants({
+          className: "aspect-square! size-16! rounded-full!",
+        })}><Mail className="size-8" /></a
       >
     </div>
   </div>

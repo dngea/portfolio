@@ -16,7 +16,9 @@ const item = data.data;
 
 <article class="flex items-stretch gap-8" data-category={item.collection}>
   <div class="w-full max-w-100">
-    <figure class="relative aspect-4/3 w-full shrink-0">
+    <figure
+      class="relative aspect-4/3 w-full shrink-0 overflow-hidden rounded-xl"
+    >
       <Image
         src={item.img}
         alt=""

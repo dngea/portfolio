@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import ProjectCard from "@/components/atoms/ProjectCard.astro";
 import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
+import { buttonVariants } from "@/components/ui/button";
 
 const projects: CollectionEntry<"projects">[] = await getCollection("projects");
 
@@ -28,6 +29,8 @@ const visibleProjects = projects.slice(0, 3);
       ))
     }
 
-    <Button className="mt-4 ml-auto">More projects</Button>
+    <a href="/projects" class={buttonVariants({ className: " mt-4 ml-auto" })}>
+      More projects
+    </a>
   </div>
 </section>

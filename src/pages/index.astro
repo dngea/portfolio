@@ -9,10 +9,22 @@ import Cta from "@/components/Cta.astro";
 ---
 
 <Layout>
-  <Welcome />
-  <Experience />
-  <Skills />
-  <Projects />
-  <Publications />
-  <Cta />
+  <div class="bg-light relative">
+    <!-- Dot grid texture -->
+    <div
+      class="pointer-events-none fixed inset-0"
+      style="background-image: radial-gradient(circle, rgba(0,0,0,0.15) 1px, transparent 1px); background-size: 28px 28px;"
+    >
+    </div>
+
+    <Welcome />
+
+    <div class="bg-dark space-y-32 py-32">
+      <Experience />
+      <Skills />
+      <Projects />
+      <Publications />
+    </div>
+    <Cta />
+  </div>
 </Layout>

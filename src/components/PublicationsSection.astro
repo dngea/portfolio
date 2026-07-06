@@ -1,5 +1,5 @@
 ---
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import PublicationCard from "./atoms/PublicationCard.astro";
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
@@ -22,6 +22,11 @@ const visiblePublications = publications.slice(0, 2);
       ))
     }
 
-    <Button className="mt-4 ml-auto">More projects</Button>
+    <a
+      href="/publications"
+      class={buttonVariants({ className: "mt-4 ml-auto" })}
+    >
+      More publications
+    </a>
   </div>
 </section>
