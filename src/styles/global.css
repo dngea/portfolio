@@ -136,3 +136,17 @@ html {
 .debug {
   @apply border border-dashed border-red-600;
 }
+
+.main-layout {
+  color: color-mix(
+    in srgb,
+    var(--color-light) var(--text-focus, 0%),
+    var(--color-dark)
+  );
+  transition: color 0.1s linear;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.3s;
+}

@@ -12,7 +12,7 @@ img: /images/prev/paper-prev-2.png
 collection: frontend
 ---
 
-## **Overview**
+## Overview
 
 This project presents an interactive repository designed to explore how sound can assist in navigating urban and indoor spaces, particularly for blind or visually impaired (BVI) individuals. Building on spatial cognition and auditory perception, the sonification method maps object properties, like material, width, interaction, distance, and position, to specific sound cues using pitch, timbre, gain, and panning. This web tool allows users to explore object-sonification pairings used during the experimental phases of the research.
 

@@ -8,7 +8,7 @@ import Card from "@/components/atoms/ProjectCard.astro";
 
 // TODO añadir debajo de project un pequeño titulo aclaratoriom de cuando son y por qué están
 
-const categories = [
+export const CATEGORIES = [
   { label: "UX/UI", id: "ux" },
   { label: "frontend", id: "frontend" },
   { label: "creative coding", id: "creative-coding" },
@@ -33,7 +33,7 @@ const { pathname } = Astro.url;
 
       <div class="flex flex-wrap gap-4">
         {
-          categories.map((category) => (
+          CATEGORIES.map((category) => (
             <button class="cursor-pointer" data-category={category.id}>
               <Badge variant="outline" className="px-3 py-1 capitalize">
                 {category.label}
@@ -48,7 +48,11 @@ const { pathname } = Astro.url;
       {
         projects.map((project) => {
           return (
-            <a class="block" href={`${pathname}/${project.id}`}>
+            <a
+              class="block"
+              href={`${pathname}/${project.id}`}
+              data-category={project.data.collection}
+            >
               <Card data={project} />
             </a>
           );
@@ -68,6 +72,21 @@ const { pathname } = Astro.url;
       border-color: var(--color-cream) !important;
     }
   }
+
+  a[data-category] {
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease;
+  }
+  .card-hidden {
+    transition:
+      opacity 0.2s ease,
+      transform 02s ease !important;
+    opacity: 0 !important;
+    transform: scale(1) translateY(20px);
+    pointer-events: none !important;
+    position: absolute;
+  }
 </style>
 
 <script>
@@ -77,7 +96,7 @@ const { pathname } = Astro.url;
     ) as NodeListOf<HTMLButtonElement>;
 
     const cards = document.querySelectorAll(
-      "article[data-category]",
+      "a[data-category]",
     ) as NodeListOf<HTMLElement>;
 
     buttons.forEach((button) => {
@@ -98,7 +117,7 @@ const { pathname } = Astro.url;
       if (button.classList.contains("active")) {
         buttons.forEach((button) => button.classList.remove("active"));
 
-        cards.forEach((card) => (card.style.display = ""));
+        cards.forEach((card) => card.classList.remove("card-hidden"));
         return;
       }
 
@@ -109,9 +128,9 @@ const { pathname } = Astro.url;
 
       cards.forEach((card) => {
         if (card.dataset.category != category) {
-          card.style.display = "none";
+          card.classList.add("card-hidden");
         } else {
-          card.style.display = "";
+          card.classList.remove("card-hidden");
         }
       });
     }

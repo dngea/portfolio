@@ -23,7 +23,7 @@ export default function Form() {
   };
 
   return (
-    <div className="@container overflow-hidden rounded-2xl p-8 shadow-2xl">
+    <div className="bg-light @container overflow-hidden rounded-2xl p-8 shadow-2xl">
       <form onSubmit={handleSubmit} className="space-y-8">
         <fieldset className="space-y-8">
           <div className="flex flex-col gap-4 @xs:flex-row">

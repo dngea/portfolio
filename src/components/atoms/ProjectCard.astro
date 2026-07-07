@@ -3,7 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Image } from "astro:assets";
 import { formatMonthYear } from "@/utils/helper";
 import type { CollectionEntry } from "astro:content";
-import type { CollectionKey } from "astro:content";
+import { CATEGORIES } from "@/pages/projects.astro";
 
 interface Props {
   data: CollectionEntry<"projects">;
@@ -12,9 +12,15 @@ interface Props {
 const { data } = Astro.props;
 
 const item = data.data;
+
+const category = Object.values(CATEGORIES).find((category) => {
+  if (category.id === item.collection) {
+    return true;
+  }
+})?.label;
 ---
 
-<article class="flex items-stretch gap-8" data-category={item.collection}>
+<article class="flex items-stretch gap-8 group hover:bg-dark/3 rounded-2xl transition duration-500 p-4">
   <div class="w-full max-w-100">
     <figure
       class="relative aspect-4/3 w-full shrink-0 overflow-hidden rounded-xl"
@@ -22,7 +28,7 @@ const item = data.data;
       <Image
         src={item.img}
         alt=""
-        class="h-full w-full object-cover"
+        class="h-full w-full object-cover group-hover:scale-105 transition duration-200 ease-in-out"
         width={850}
         height={850}
         aria-hidden="true"
@@ -31,9 +37,15 @@ const item = data.data;
   </div>
   <div class="flex w-full max-w-160 flex-col justify-end space-y-4 p-1">
     <div>
-      <time datetime={item.date.toISOString()} class="text-sm"
-        >{formatMonthYear(item.date, true)}</time
-      >
+      <div class="flex items-center gap-2 text-sm">
+        <time datetime={item.date.toISOString()}
+          >{formatMonthYear(item.date, true)}</time
+        >
+        {category && (
+          <span aria-hidden="true">·</span>
+          <span class="capitalize">{category}</span>
+        )}
+      </div>
       <h3 class="py-1 text-3xl font-medium">{item.title}</h3>
     </div>
     <p class="text-balance">

@@ -35,6 +35,30 @@ const { pathname } = Astro.url;
 if (!pathname) return Astro.redirect("/404");
 
 const backLink = `/${pathname.split("/").filter(Boolean).slice(0, -1)}`;
+
+export function getYouTubeId(url: string): string | null {
+  const patterns = [
+    /youtu\.be\/([^?&]+)/,
+    /youtube\.com\/watch\?v=([^?&]+)/,
+    /youtube\.com\/embed\/([^?&]+)/,
+  ];
+
+  for (const pattern of patterns) {
+    const match = url.match(pattern);
+    if (match) return match[1];
+  }
+
+  return null;
+}
+
+export function isYouTubeLink(url: string): boolean {
+  return url.includes("youtube.com") || url.includes("youtu.be");
+}
+
+const youTubeId =
+  project.data.videos?.[0] && isYouTubeLink(project.data.videos[0])
+    ? getYouTubeId(project.data.videos[0])
+    : null;
 ---
 
 <Layout>
@@ -46,6 +70,7 @@ const backLink = `/${pathname.split("/").filter(Boolean).slice(0, -1)}`;
       >
         ← Back to projects
       </a>
+
       <figure class="mb-12 aspect-video w-full overflow-hidden rounded-2xl">
         <Image
           src={project.data.img}
@@ -71,7 +96,7 @@ const backLink = `/${pathname.split("/").filter(Boolean).slice(0, -1)}`;
           </div>
         </div>
 
-        <aside class="sticky top-8 space-y-4">
+        <aside class="space-y-4">
           <div class="space-y-4 rounded-xs border-b p-4">
             <p class="text-sm tracking-wider uppercase">Technologies</p>
             <div class="flex flex-wrap gap-2">
@@ -80,6 +105,93 @@ const backLink = `/${pathname.split("/").filter(Boolean).slice(0, -1)}`;
           </div>
         </aside>
       </div>
+
+      {
+        project.data.videos && (
+          <div class="space-y-8 pt-100 pb-50">
+            {project.data.videoCaption && (
+              <div class="space-y-1.5">
+                <h3 class="text-light text-2xl font-semibold">
+                  {project.data.videoCaption[0]}
+                </h3>
+                <p class="text-light text-base italic">
+                  {project.data.videoCaption[1]}
+                </p>
+              </div>
+            )}
+            <figure class="aspect-video">
+              {youTubeId ? (
+                <iframe
+                  id="project-video"
+                  class="h-full w-full"
+                  src={`https://www.youtube.com/embed/${youTubeId}`}
+                  title={project.data.title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                />
+              ) : (
+                <video
+                  class="playsinline w-full object-cover"
+                  loop
+                  controls
+                  id="project-video"
+                >
+                  {/* <!-- TODO: prefer motion reduce --> */}
+                  {project.data.videos.map((video) => {
+                    if (video.startsWith("https")) {
+                    }
+                    const type = video.endsWith(".webm")
+                      ? "video/webm"
+                      : "video/mp4";
+
+                    return <source src={video} type={type} />;
+                  })}
+                </video>
+              )}
+            </figure>
+          </div>
+        )
+      }
     </div>
   </MainLayout>
 </Layout>
+
+<script>
+  function initFocusVideo() {
+    const video = document.getElementById("project-video");
+    const overlay = document.getElementById("dark-overlay") as HTMLElement;
+    const mainLayout = document.querySelector(".main-layout") as HTMLElement;
+
+    if (video && overlay && mainLayout) {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          const rootRect = entry.rootBounds;
+          if (!rootRect) return;
+
+          const stripHeight = rootRect.height;
+          const videoHeight = entry.boundingClientRect.height;
+
+          const maxPossibleRatio = Math.min(1, stripHeight / videoHeight);
+
+          const focus =
+            maxPossibleRatio > 0
+              ? Math.min(1, entry.intersectionRatio / maxPossibleRatio)
+              : 0;
+
+          const percent = `${(focus * 100).toFixed(1)}%`;
+
+          overlay.style.opacity = focus.toString();
+          mainLayout.style.setProperty("--text-focus", percent);
+        },
+        {
+          rootMargin: "-45% 0px -45% 0px",
+          threshold: Array.from({ length: 21 }, (_, i) => i / 20),
+        },
+      );
+
+      observer.observe(video);
+    }
+  }
+
+  document.addEventListener("astro:page-load", initFocusVideo);
+</script>
