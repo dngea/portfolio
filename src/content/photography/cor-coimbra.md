@@ -1,6 +1,6 @@
 ---
 title: A cor de Coimbra
-dates: 01/2021
+date: "2021-01-01"
 img: /images/prev/columpio.webp
 ---
 

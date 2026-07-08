@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import { Button } from "./ui/button";
 import { buttonVariants } from "./ui/button";
+import ScrollHint from "./atoms/ScrollHint.astro";
 
 const name = "Daniel Gea";
 const rol = "Frontend Developer · UX Designer";
@@ -69,11 +70,5 @@ const description =
     </div>
   </div>
 
-  <!-- Scroll hint -->
-  <div
-    class="text-dark absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-1.5"
-  >
-    <div class="from-dark/70 h-9 w-px bg-gradient-to-b to-transparent"></div>
-    <span class="text-[10px] tracking-widest uppercase opacity-70">scroll</span>
-  </div>
+  <ScrollHint className="bottom-8" />
 </section>

@@ -7,32 +7,36 @@ const { data, dark = false } = Astro.props;
 const publication = data.data;
 ---
 
-<article class="flex gap-8">
-  <figure
-    class={`relative w-65 shrink-0 aspect-video ${dark ? "border-light" : "border-dark"}`}
+<a href={`/publications/${data.id}`} class="block">
+  <article
+    class="group hover:bg-dark/3 flex gap-8 rounded-2xl p-4 transition duration-300 ease-in-out"
   >
-    <Image
-      src={publication.img}
-      alt=""
-      width={500}
-      height={500}
-      class="object-cover w-full h-full"
-    />
-  </figure>
-  <div class="space-y-1 flex items-start justify-start flex-col w-full">
-    <h3 class="text-2xl font-normal">{publication.title}</h3>
-    <p class="">
-      Published by
-      <a href="/" class={` underline ${dark ? "text-cream" : "text-clay"} `}>
-        {publication.publisher}
-      </a>
-    </p>
-    <p class="italic">
-      {publication.keywords}
-    </p>
+    <figure
+      class={`relative w-68 shrink-0 rounded-xl overflow-hidden aspect-9/6 transition duration-300 ease-in-out ${dark ? "border-light" : "border-dark"}`}
+    >
+      <Image
+        src={publication.img}
+        alt=""
+        width={500}
+        height={500}
+        class="h-full w-full object-cover transition duration-200 ease-in-out group-hover:scale-104"
+      />
+    </figure>
+    <div class="flex w-full flex-col items-start justify-start space-y-1">
+      <h3 class="text-2xl font-normal">{publication.title}</h3>
+      <p class="">
+        Published by
+        <span class={`${dark ? "text-cream" : "text-clay"} `}>
+          {publication.publisher}
+        </span>
+      </p>
+      <p class="italic">
+        {publication.keywords}
+      </p>
 
-    <time datetime={publication.date} class="mt-auto">
-      {formatMonthYear(publication.date)}
-    </time>
-  </div>
-</article>
+      <time datetime={publication.date} class="mt-auto">
+        {formatMonthYear(publication.date)}
+      </time>
+    </div>
+  </article>
+</a>

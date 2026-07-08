@@ -9,6 +9,8 @@ import { Divide } from "lucide-react";
 import { render } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import MainLayout from "@/layouts/MainLayout.astro";
+import BackLink from "@/components/atoms/BackLink.astro";
+import ScrollHint from "@/components/atoms/ScrollHint.astro";
 
 export const prerender = true;
 
@@ -64,12 +66,7 @@ const youTubeId =
 <Layout>
   <MainLayout>
     <div class="mx-auto space-y-12">
-      <a
-        href={backLink}
-        class="hover:text-clay flex w-fit items-center gap-2 font-semibold text-gray-600 transition transition-opacity"
-      >
-        ← Back to projects
-      </a>
+      <BackLink label="Back to projects" href="/projects" />
 
       <figure class="mb-12 aspect-video w-full overflow-hidden rounded-2xl">
         <Image
@@ -108,7 +105,8 @@ const youTubeId =
 
       {
         project.data.videos && (
-          <div class="space-y-8 pt-100 pb-50">
+          <div class="relative space-y-8 pt-100 pb-50">
+            <ScrollHint className="top-25" />
             {project.data.videoCaption && (
               <div class="space-y-1.5">
                 <h3 class="text-light text-2xl font-semibold">

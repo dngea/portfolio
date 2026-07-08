@@ -1,0 +1,15 @@
+---
+import clsx from "clsx";
+
+const { className } = Astro.props;
+---
+
+<div
+  class={clsx(
+    "text-dark absolute  left-1/2 flex -translate-x-1/2 flex-col items-center gap-1.5",
+    className,
+  )}
+>
+  <div class="from-dark/70 h-9 w-px bg-gradient-to-b to-transparent"></div>
+  <span class="text-[10px] tracking-widest uppercase opacity-70">scroll</span>
+</div>

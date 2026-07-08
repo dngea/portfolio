@@ -35,7 +35,7 @@ export default function Form() {
                 name
               </label>
               <input
-                className="border-clay mt-1.5 h-10 border-b-2"
+                className="border-clay mt-1.5 h-8 border-b-2 px-1"
                 type="text"
                 name="name"
                 id="name"
@@ -52,7 +52,7 @@ export default function Form() {
                 type="text"
                 name="surname"
                 id="surname"
-                className="border-clay mt-1.5 h-10 border-b-2"
+                className="border-clay mt-1.5 h-8 border-b-2 px-1"
               />
             </div>
           </div>
@@ -67,7 +67,7 @@ export default function Form() {
               name="companyName"
               id="companyName"
               type="text"
-              className="border-clay mt-1.5 h-10 border-b-2"
+              className="border-clay mt-1.5 h-8 border-b-2 px-1"
             />
           </div>
         </fieldset>
@@ -82,7 +82,7 @@ export default function Form() {
             type="email"
             name="email"
             id="email"
-            className="border-clay mt-1.5 h-10 border-b-2"
+            className="border-clay mt-1.5 h-8 border-b-2 px-1"
           />
         </fieldset>
         <fieldset className="flex flex-col">
@@ -96,7 +96,7 @@ export default function Form() {
             rows={3}
             name="message"
             id="message"
-            className="border-clay mt-1.5 h-10 border-b-2"
+            className="border-clay mt-1.5 h-8 border-b-2 px-1"
           ></textarea>
         </fieldset>
 

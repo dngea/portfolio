@@ -7,6 +7,10 @@ import PublicationCard from "@/components/atoms/PublicationCard.astro";
 
 const publications: CollectionEntry<"publications">[] =
   await getCollection("publications");
+
+publications.sort((a, b) => {
+  return b.data.date.getTime() - a.data.date.getTime();
+});
 ---
 
 <Layout>
@@ -15,7 +19,7 @@ const publications: CollectionEntry<"publications">[] =
       <h1 class="text-4xl font-bold uppercase">Publications</h1>
     </div>
 
-    <div class="space-y-16">
+    <div class="space-y-12">
       {
         publications.map((publication) => (
           <PublicationCard data={publication} />

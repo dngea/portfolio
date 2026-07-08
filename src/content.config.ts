@@ -36,7 +36,7 @@ const photography = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/photography" }),
   schema: z.object({
     title: z.string(),
-    dates: z.string(),
+    date: z.coerce.date(),
     img: z.string(),
   }),
 });

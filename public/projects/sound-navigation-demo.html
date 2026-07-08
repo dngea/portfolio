@@ -1,0 +1,788 @@
+<link
+  href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap"
+  rel="stylesheet"
+/>
+
+<link rel="stylesheet" crossorigin href="/css/index-B9RoG2fB.css" />
+
+<div
+  class="grid h-screen grid-cols-1 overflow-hidden sm:grid-cols-[150px_1fr] lg:grid-cols-[250px_1fr]"
+  x-data="imageSoundPlayer"
+>
+  <aside class="hidden h-full w-full flex-col sm:flex">
+    <nav
+      class="shadow-dark/20 bg-light relative z-50 flex h-full w-full flex-col shadow-[4px_0_12px_0px_rgba(0,0,0,0.05)]"
+      @mouseleave="megaMenu = false"
+    >
+      <ul
+        class="relative z-20 flex h-full w-full flex-col items-center justify-center gap-20 p-8"
+      >
+        <li class="aspect-square size-30 rounded-lg">
+          <button
+            @mouseenter="list_ext = true; megaMenu = true; list_int = false"
+            aria-haspopup="true"
+            :aria-expanded="open.toString()"
+            aria-label="Exterior Items"
+            class="text-dark/80 trasition-all flex h-full w-full items-center justify-center rounded-lg duration-100 hover:-translate-y-[2px] hover:bg-zinc-200 hover:shadow-lg focus:outline-none"
+            :class="list_ext && megaMenu ? '-translate-y-[2px] shadow-lg shadow-dark/40' : ''"
+          >
+            <img
+              src="/images/sound-navigation/ext.png"
+              alt=""
+              class="aspect-square h-auto w-full rounded-lg object-cover"
+            />
+          </button>
+          <h3 class="text-dark mt-2 w-full text-center text-sm font-medium">
+            Exterior Space
+          </h3>
+        </li>
+
+        <li class="aspect-square size-30 rounded-lg">
+          <button
+            @mouseenter="list_ext = false; megaMenu = true; list_int = true"
+            aria-haspopup="true"
+            :aria-expanded="open.toString()"
+            aria-label="Interior Items"
+            class="trasition-all text-dark/80 flex h-full w-full items-center justify-center rounded-lg duration-100 hover:-translate-y-[2px] hover:bg-zinc-200 hover:shadow-lg focus:outline-none"
+            :class="list_int && megaMenu ? '-translate-y-[2px] shadow-lg shadow-dark/40' : ''"
+          >
+            <img
+              src="/images/sound-navigation/int2.jpg"
+              alt=""
+              class="aspect-square h-auto w-full rounded-lg object-cover"
+            />
+          </button>
+          <h3 class="text-dark mt-2 w-full text-center text-sm font-medium">
+            Interior Space
+          </h3>
+        </li>
+
+        <li class="aspect-square size-25 rounded-lg">
+          <a
+            @mouseenter="list_ext = false; megaMenu = false; list_int = false"
+            href="/projects/sound-navigation-about.html"
+            class="text-dark/80 hover:bg-dark/10 flex h-full w-full items-center justify-center rounded-lg focus:outline-none"
+            aria-haspopup="true"
+          >
+            <svg
+              width="50"
+              height="50"
+              viewBox="0 0 15 15"
+              fill="none"
+              class="text-dark"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M0.877075 7.49972C0.877075 3.84204 3.84222 0.876892 7.49991 0.876892C11.1576 0.876892 14.1227 3.84204 14.1227 7.49972C14.1227 11.1574 11.1576 14.1226 7.49991 14.1226C3.84222 14.1226 0.877075 11.1574 0.877075 7.49972ZM7.49991 1.82689C4.36689 1.82689 1.82708 4.36671 1.82708 7.49972C1.82708 10.6327 4.36689 13.1726 7.49991 13.1726C10.6329 13.1726 13.1727 10.6327 13.1727 7.49972C13.1727 4.36671 10.6329 1.82689 7.49991 1.82689ZM8.24993 10.5C8.24993 10.9142 7.91414 11.25 7.49993 11.25C7.08571 11.25 6.74993 10.9142 6.74993 10.5C6.74993 10.0858 7.08571 9.75 7.49993 9.75C7.91414 9.75 8.24993 10.0858 8.24993 10.5ZM6.05003 6.25C6.05003 5.57211 6.63511 4.925 7.50003 4.925C8.36496 4.925 8.95003 5.57211 8.95003 6.25C8.95003 6.74118 8.68002 6.99212 8.21447 7.27494C8.16251 7.30651 8.10258 7.34131 8.03847 7.37854L8.03841 7.37858C7.85521 7.48497 7.63788 7.61119 7.47449 7.73849C7.23214 7.92732 6.95003 8.23198 6.95003 8.7C6.95004 9.00376 7.19628 9.25 7.50004 9.25C7.8024 9.25 8.04778 9.00601 8.05002 8.70417L8.05056 8.7033C8.05924 8.6896 8.08493 8.65735 8.15058 8.6062C8.25207 8.52712 8.36508 8.46163 8.51567 8.37436L8.51571 8.37433C8.59422 8.32883 8.68296 8.27741 8.78559 8.21506C9.32004 7.89038 10.05 7.35382 10.05 6.25C10.05 4.92789 8.93511 3.825 7.50003 3.825C6.06496 3.825 4.95003 4.92789 4.95003 6.25C4.95003 6.55376 5.19628 6.8 5.50003 6.8C5.80379 6.8 6.05003 6.55376 6.05003 6.25Z"
+                fill="currentColor"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+          </a>
+        </li>
+      </ul>
+      <!-- Mega menu -->
+      <div
+        x-show="megaMenu"
+        @mouseenter="megaMenu = true"
+        @mouseleave="megaMenu = false"
+        x-cloak
+        x-transition:enter="transition ease-out duration-200"
+        x-transition:enter-start="opacity-0 transform -translate-x-4"
+        x-transition:enter-end="opacity-100 transform translate-x-0"
+        x-transition:leave="transition ease-in duration-200"
+        x-transition:leave-start="opacity-100 transform translate-x-0"
+        x-transition:leave-end="opacity-0 transform -translate-x-4"
+        class="bg-light absolute top-0 bottom-0 left-full z-10 w-[400px] overflow-hidden rounded-r-lg shadow-[8px_0_12px_-2px_rgba(0,0,0,0.2)] transition-all ease-in-out"
+      >
+        <div class="h-full w-full overflow-x-hidden overflow-y-auto p-4">
+          <!-- Exterior -->
+          <div x-show="list_ext" class="mb-8 w-full">
+            <ul class="flex w-full flex-col items-center justify-center gap-8">
+              <template
+                x-for="img in imagesItems.filter(i => i.category === 'exterior')"
+                :key="img.name"
+              >
+                <li class="flex flex-col items-center space-y-2 text-center">
+                  <button
+                    @click="selectedImage = img; megaMenu = false"
+                    class="hover:border-primary size-34 cursor-pointer overflow-hidden rounded-lg border-2 hover:border-4"
+                  >
+                    <img
+                      :src="img.path"
+                      :alt="img.translation"
+                      class="h-full w-full object-cover"
+                    />
+                  </button>
+                  <small x-text="img.translation" class="capitalize"></small>
+                </li>
+              </template>
+            </ul>
+          </div>
+
+          <!-- Interior -->
+          <div x-show="list_int" class="w-full">
+            <ul class="flex w-full flex-col items-center justify-center gap-8">
+              <template
+                x-for="img in imagesItems.filter(i => i.category === 'interior')"
+                :key="img.name"
+              >
+                <li class="flex flex-col items-center space-y-2 text-center">
+                  <button
+                    @click="selectedImage = img; megaMenu = false"
+                    class="hover:border-primary size-34 cursor-pointer overflow-hidden rounded-lg border-2 hover:border-4"
+                  >
+                    <img
+                      :src="img.path"
+                      :alt="img.translation"
+                      class="h-full w-full object-cover"
+                    />
+                  </button>
+                  <small x-text="img.translation" class="capitalize"></small>
+                </li>
+              </template>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </aside>
+
+  <!-- Botón Hamburguesa (solo en mobile) -->
+  <div class="flex w-full justify-end px-4 sm:hidden">
+    <button
+      @click="mobileMenu = !mobileMenu"
+      class="text-dark hover:text-dark/75 inline-block cursor-pointer"
+    >
+      <!-- Ícono hamburguesa -->
+      <svg
+        class="h-8 w-8"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M4 6h16M4 12h16M4 18h16"
+        ></path>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Nav -->
+  <div
+    class="bg-light fixed top-0 left-0 z-50 h-full w-[85%] max-w-xs shadow-lg transition-transform duration-300 sm:hidden"
+    x-show="mobileMenu"
+    x-cloak
+    x-transition:enter="transition ease-out duration-300"
+    x-transition:enter-start="-translate-x-full"
+    x-transition:enter-end="translate-x-0"
+    x-transition:leave="transition ease-in duration-300"
+    x-transition:leave-start="translate-x-0"
+    x-transition:leave-end="-translate-x-full"
+    @click.outside="mobileMenu = false"
+  >
+    <nav class="flex h-full w-full flex-col overflow-y-auto p-6">
+      <ul class="flex flex-col items-center gap-10">
+        <!-- Exterior -->
+        <li class="aspect-square size-24">
+          <button
+            @click="list_ext = true; list_int = false; mobileMegaMenu = true"
+            class="h-full w-full transform overflow-hidden rounded-lg shadow-md transition-all duration-200 focus:outline-none"
+            :class="list_ext ? 'shadow-xl -translate-y-[2px]':''"
+          >
+            <img
+              src="/images/sound-navigation/ext.png"
+              alt="Exterior"
+              class="h-full w-full object-cover"
+            />
+          </button>
+          <p class="mt-2 text-center text-sm">Exterior Space</p>
+        </li>
+
+        <!-- Interior -->
+        <li class="aspect-square size-24">
+          <button
+            @click="list_int = true; list_ext = false; mobileMegaMenu = true"
+            class="h-full w-full transform overflow-hidden rounded-lg shadow-md transition-all duration-200 focus:outline-none"
+            :class="list_int ? 'shadow-xl -translate-y-[2px]':''"
+          >
+            <img
+              src="/images/sound-navigation/int2.jpg"
+              alt="Interior"
+              class="h-full w-full object-cover"
+            />
+          </button>
+          <p class="mt-2 text-center text-sm">Interior Space</p>
+        </li>
+
+        <!-- About -->
+        <li class="size-16">
+          <a
+            href="/about.html"
+            class="text-dark hover:bg-dark/10 block h-full w-full rounded-full p-3"
+          >
+            <svg
+              width="100%"
+              height="100%"
+              viewBox="0 0 15 15"
+              fill="none"
+              class="text-dark"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <!-- icon path same as original -->
+              <path
+                d="M0.877075 7.49972C0.877075 3.84204 3.84222 0.876892 7.49991 0.876892C11.1576 0.876892 14.1227 3.84204 14.1227 7.49972C14.1227 11.1574 11.1576 14.1226 7.49991 14.1226C3.84222 14.1226 0.877075 11.1574 0.877075 7.49972ZM7.49991 1.82689C4.36689 1.82689 1.82708 4.36671 1.82708 7.49972C1.82708 10.6327 4.36689 13.1726 7.49991 13.1726C10.6329 13.1726 13.1727 10.6327 13.1727 7.49972C13.1727 4.36671 10.6329 1.82689 7.49991 1.82689ZM8.24993 10.5C8.24993 10.9142 7.91414 11.25 7.49993 11.25C7.08571 11.25 6.74993 10.9142 6.74993 10.5C6.74993 10.0858 7.08571 9.75 7.49993 9.75C7.91414 9.75 8.24993 10.0858 8.24993 10.5ZM6.05003 6.25C6.05003 5.57211 6.63511 4.925 7.50003 4.925C8.36496 4.925 8.95003 5.57211 8.95003 6.25C8.95003 6.74118 8.68002 6.99212 8.21447 7.27494C8.16251 7.30651 8.10258 7.34131 8.03847 7.37854L8.03841 7.37858C7.85521 7.48497 7.63788 7.61119 7.47449 7.73849C7.23214 7.92732 6.95003 8.23198 6.95003 8.7C6.95004 9.00376 7.19628 9.25 7.50004 9.25C7.8024 9.25 8.04778 9.00601 8.05002 8.70417L8.05056 8.7033C8.05924 8.6896 8.08493 8.65735 8.15058 8.6062C8.25207 8.52712 8.36508 8.46163 8.51567 8.37436L8.51571 8.37433C8.59422 8.32883 8.68296 8.27741 8.78559 8.21506C9.32004 7.89038 10.05 7.35382 10.05 6.25C10.05 4.92789 8.93511 3.825 7.50003 3.825C6.06496 3.825 4.95003 4.92789 4.95003 6.25C4.95003 6.55376 5.19628 6.8 5.50003 6.8C5.80379 6.8 6.05003 6.55376 6.05003 6.25Z"
+                fill="currentColor"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+          </a>
+        </li>
+      </ul>
+
+      <!-- Mega Menu Mobile -->
+      <div x-show="mobileMegaMenu" x-cloak class="mt-6">
+        <!-- Exterior Items -->
+        <div x-show="list_ext">
+          <h3 class="mb-4 text-lg font-semibold">Exterior Items</h3>
+          <ul class="grid grid-cols-2 gap-4">
+            <template
+              x-for="img in imagesItems.filter(i => i.category === 'exterior')"
+              :key="img.name"
+            >
+              <li class="flex flex-col items-center space-y-1">
+                <button
+                  @click="selectedImage = img; mobileMenu = false; mobileMegaMenu = false"
+                  class="hover:border-primary h-28 w-28 overflow-hidden rounded-lg border-2"
+                >
+                  <img
+                    :src="img.path"
+                    :alt="img.translation"
+                    class="h-full w-full object-cover"
+                  />
+                </button>
+                <small
+                  x-text="img.translation"
+                  class="text-xs capitalize"
+                ></small>
+              </li>
+            </template>
+          </ul>
+        </div>
+
+        <!-- Interior Items -->
+        <div x-show="list_int">
+          <h3 class="mb-4 text-lg font-semibold">Interior Items</h3>
+          <ul class="grid grid-cols-2 gap-4">
+            <template
+              x-for="img in imagesItems.filter(i => i.category === 'interior')"
+              :key="img.name"
+            >
+              <li class="flex flex-col items-center space-y-1">
+                <button
+                  @click="selectedImage = img; mobileMenu = false; mobileMegaMenu = false"
+                  class="hover:border-primary h-28 w-28 overflow-hidden rounded-lg border-2"
+                >
+                  <img
+                    :src="img.path"
+                    :alt="img.translation"
+                    class="h-full w-full object-cover"
+                  />
+                </button>
+                <small
+                  x-text="img.translation"
+                  class="text-xs capitalize"
+                ></small>
+              </li>
+            </template>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <div
+    class="h-full bg-white p-4 lg:p-8"
+    x-data="{
+              valueX: 0,
+              valueZ: 0, 
+
+              updatePanning() {
+                const panValue = this.valueX / 50;
+                if (window.panner) {
+                  window.panner.pan.value = -panValue;
+                }
+              },
+              updateVolume() {
+              if (window.volumeGainNode) {
+                const valueZNum = Number(this.valueZ);
+                console.log('valueZ actual:', valueZNum);
+                const minGain = 0.1;
+                const maxGain = 1.0;
+                const normalized = minGain + ((valueZNum + 50) / 100) * (maxGain - minGain);
+                window.volumeGainNode.gain.value = normalized;
+                console.log('Volumen ajustado a:', normalized);
+              }
+            },
+              async maybePlay() {
+                if (!window.player || window.player.state === 'started') return;
+                await Tone.start();
+                window.player.start();
+                console.log('Auto-play triggered');
+              },
+              onSliderInput() {
+                this.updatePanning();
+                this.updateVolume();
+                this.maybePlay();
+              },
+              resetValueXWithAnimation() {
+                const step = () => {
+                  if (Math.abs(this.valueX) <= 1) {
+                    this.valueX = 0;
+                    this.onSliderInput(); // actualizar estado cuando llegue a 0
+                    return;
+                  }
+                  this.valueX += this.valueX > 0 ? -2 : 2; // reduce hacia 0 en pasos de 2
+                  this.onSliderInput(); // actualizar mientras anima
+                  requestAnimationFrame(step);
+                }
+                step();
+              },
+              resetValueZWithAnimation() {
+                const step = () => {
+                  const currentValue = Number(this.valueZ);
+                  if (Math.abs(currentValue) <= 1) {
+                    this.valueZ = 0;
+                    this.onSliderInput(); // actualizar estado con valueZ en 0
+                    return;
+                  }
+                  if (currentValue > 0) {
+                    this.valueZ = Math.max(0, currentValue - 2);
+                  } else {
+                    this.valueZ = Math.min(0, currentValue + 2);
+                  }
+                  this.onSliderInput(); // actualizar mientras anima
+                  requestAnimationFrame(step);
+                };
+                step();
+              }
+            }"
+  >
+    <div class="flex h-full w-full flex-col gap-6 lg:flex-row">
+      <section
+        class="flex h-full w-full flex-col items-center justify-between overflow-hidden px-4 lg:w-4/6 lg:p-6"
+      >
+        <header
+          class="text-dark text-2xl leading-7 font-extrabold sm:leading-12 md:text-3xl lg:text-4xl"
+        >
+          <span
+            class="to-primary-darker from-primary bg-gradient-to-r bg-clip-text text-transparent"
+            >Semantic and Spatial</span
+          >
+          Sound-Object Recognition for Assistive Navigation
+        </header>
+        <div
+          class="relative flex aspect-square max-h-[300px] w-full max-w-md overflow-hidden rounded-xl sm:max-h-[400px] lg:max-h-none"
+        >
+          <template x-if="selectedImage">
+            <img
+              class="absolute top-1/2 left-1/2 w-auto sm:max-h-[375px] lg:max-h-[500px]"
+              :style="`
+                      transform-origin: center center;
+                      transform: perspective(600px)
+                                translateX(${ -50 + (-valueX * 1.25) }%)
+                                translateY(-50%)
+                                rotateY(${ valueX * 0.4 }deg)
+                                scale(${1 + valueZ * 0.01})
+                    `"
+              :src="selectedImage.path"
+              :alt="selectedImage.translation"
+            />
+          </template>
+        </div>
+        <footer
+          class="text-dark/60 hidden w-full justify-between text-sm font-semibold text-pretty lg:flex"
+        >
+          <p>Master's Thesis Project at University of Porto, Portugal</p>
+          <a
+            class="hover:text-primary"
+            href="https://danielgea.com"
+            target="_blank"
+            >Daniel Gea</a
+          >
+        </footer>
+      </section>
+
+      <aside
+        class="shadow-dark/30 text-dark bg-light flex w-full flex-row justify-between gap-10 rounded-lg p-4 shadow-xl lg:w-2/6 lg:flex-col lg:p-8"
+      >
+        <div class="hidden w-full space-y-4 sm:block">
+          <button
+            data-role="playBtn"
+            disabled
+            type="button"
+            class="border-dark shadow-dark/20 text-light bg-primary flex w-full transform cursor-pointer items-center justify-center gap-2 rounded-md border-0 p-4 text-lg font-semibold transition-all duration-200 hover:-translate-y-[2px] hover:shadow-md active:translate-y-[0px] active:shadow-none"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#fff"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-audio-lines-icon lucide-audio-lines"
+            >
+              <path d="M2 10v3"></path>
+              <path d="M6 6v11"></path>
+              <path d="M10 3v18"></path>
+              <path d="M14 8v7"></path>
+              <path d="M18 5v13"></path>
+              <path d="M22 10v3"></path>
+            </svg>
+            Play Sound
+          </button>
+          <!-- slider 1 -->
+          <div class="mx-auto w-full max-w-md lg:mt-10">
+            <div class="relative h-6">
+              <!-- Barra base gris -->
+              <div
+                class="absolute top-1/2 left-0 h-1.5 w-full -translate-y-1/2 rounded-full bg-gray-300"
+              ></div>
+
+              <!-- Barra activa azul, desde el centro hacia izquierda o derecha -->
+              <div
+                class="bg-dark absolute top-1/2 h-1.5 -translate-y-1/2 rounded-full"
+                :style="valueX >= 0
+          ? `left: 50%; width: ${valueX}%; transform: translateX(0);`
+          : `left: calc(50% + ${valueX}%); width: ${-(valueX)}%; transform: translateX(0);`"
+              ></div>
+
+              <!-- Input range invisible -->
+              <input
+                type="range"
+                min="-50"
+                max="50"
+                step="1"
+                @input="onSliderInput"
+                @mouseup="resetValueXWithAnimation()"
+                @touchend="resetValueXWithAnimation()"
+                x-model.number="valueX"
+                class="absolute top-0 left-0 h-6 w-full cursor-pointer appearance-none bg-transparent"
+                style="z-index: 10"
+              />
+
+              <!-- Thumb personalizado -->
+              <!-- <div
+                      class="absolute top-1/2 w-5 h-5 bg-white border-2 border-blue-600 rounded-full shadow -translate-y-1/2 pointer-events-none"
+                      :style="`left: calc(50% + ${valueX}%); transform: translateX(-50%);`"
+                    ></div> -->
+            </div>
+
+            <div class="mt-4 text-center font-medium text-gray-700">
+              Panning Camera
+              <!-- <span x-text="value"></span> -->
+            </div>
+          </div>
+
+          <!-- slider 2 -->
+          <div class="mx-auto w-full max-w-md lg:mt-10" id="volumeSlider">
+            <div class="relative h-6">
+              <!-- Barra base gris -->
+              <div
+                class="absolute top-1/2 left-0 h-1.5 w-full -translate-y-1/2 rounded-full bg-gray-300"
+              ></div>
+
+              <!-- Barra activa azul -->
+              <div
+                class="bg-dark absolute top-1/2 h-1.5 -translate-y-1/2 rounded-full"
+                :style="valueZ >= 0
+              ? `left: 50%; width: ${valueZ}%; transform: translateX(0);`
+              : `left: calc(50% + ${valueZ}%); width: ${-valueZ}%; transform: translateX(0);`"
+              ></div>
+
+              <!-- Input range invisible -->
+              <input
+                type="range"
+                min="-50"
+                max="50"
+                step="1"
+                x-model="valueZ"
+                @mouseup="resetValueZWithAnimation()"
+                @touchend="resetValueZWithAnimation()"
+                @input="onSliderInput()"
+                class="absolute top-0 left-0 h-6 w-full cursor-pointer appearance-none bg-transparent"
+                style="z-index: 10"
+              />
+
+              <!-- Thumb personalizado -->
+              <!-- <div
+                      class="absolute top-1/2 w-5 h-5 bg-white border-2 border-blue-600 rounded-full shadow -translate-y-1/2 pointer-events-none"
+                      :style="`left: calc(50% + ${valueZ}%); transform: translateX(-50%);`"
+                    ></div> -->
+            </div>
+
+            <div class="mt-4 text-center font-medium text-gray-700">
+              Distance Camera
+              <!-- <span x-text="valueZ"></span> -->
+            </div>
+          </div>
+        </div>
+
+        <!-- info -->
+        <div
+          class="bg-light text-dark mx-auto w-full max-w-md space-y-2 font-sans lg:space-y-6"
+        >
+          <!-- Título principal -->
+          <h2
+            x-text="selectedImage.translation"
+            class="mb-4 border-b border-gray-300 pb-2 text-3xl font-semibold capitalize"
+          ></h2>
+
+          <!-- Descripción del sonido -->
+          <div
+            class="flex items-center gap-4 text-base leading-relaxed lg:mt-4 lg:flex-col lg:items-start lg:gap-0"
+          >
+            <h3 class="mb-1 text-sm font-medium">Sound</h3>
+            <template x-if="selectedImage.sound === 'audio/wood.wav'">
+              <p
+                class="text-dark bg-dark/20 sm:bg-primary inline-block rounded-sm px-2 py-1 text-sm sm:whitespace-nowrap sm:text-white"
+              >
+                Wood sound
+              </p>
+            </template>
+            <template x-if="selectedImage.sound === 'audio/metal.wav'">
+              <p
+                class="text-dark bg-dark/20 sm:bg-primary inline-block rounded-sm px-2 py-1 text-sm sm:whitespace-nowrap sm:text-white"
+              >
+                Metal sound
+              </p>
+            </template>
+            <template x-if="selectedImage.sound === 'audio/delimiter.wav'">
+              <p
+                class="text-dark bg-dark/20 sm:bg-primary inline-block rounded-sm px-2 py-1 text-sm sm:whitespace-nowrap sm:text-white"
+              >
+                Delimiter sound
+              </p>
+            </template>
+            <template x-if="selectedImage.sound === 'audio/step_down.wav'">
+              <p
+                class="text-dark bg-dark/20 sm:bg-primary inline-block rounded-sm px-2 py-1 text-sm sm:whitespace-nowrap sm:text-white"
+              >
+                Step down sound
+              </p>
+            </template>
+            <template x-if="selectedImage.sound === 'audio/step_up.wav'">
+              <p
+                class="text-dark bg-dark/20 sm:bg-primary inline-block rounded-sm px-2 py-1 text-sm sm:whitespace-nowrap sm:text-white"
+              >
+                Step up sound
+              </p>
+            </template>
+            <template x-if="selectedImage.sound === 'audio/glass.wav'">
+              <p
+                class="text-dark bg-dark/20 sm:bg-primary inline-block rounded-sm px-2 py-1 text-sm sm:whitespace-nowrap sm:text-white"
+              >
+                Glass sound
+              </p>
+            </template>
+          </div>
+
+          <!-- Modulation / Interaction -->
+          <div
+            class="flex items-center gap-4 lg:mt-4 lg:flex-col lg:items-start lg:gap-0"
+          >
+            <div class="flex items-center gap-2 lg:w-full lg:py-2">
+              <h3 class="mb-1 text-sm font-medium">Interaction level</h3>
+              <span
+                x-data="{ show: false }"
+                @mouseenter="show = true"
+                @mouseleave="show = false"
+                class="relative isolate inline-block cursor-pointer"
+              >
+                <!-- SVG -->
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 15 15"
+                  fill="none"
+                  class="text-dark"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M0.877075 7.49972C0.877075 3.84204 3.84222 0.876892 7.49991 0.876892C11.1576 0.876892 14.1227 3.84204 14.1227 7.49972C14.1227 11.1574 11.1576 14.1226 7.49991 14.1226C3.84222 14.1226 0.877075 11.1574 0.877075 7.49972ZM7.49991 1.82689C4.36689 1.82689 1.82708 4.36671 1.82708 7.49972C1.82708 10.6327 4.36689 13.1726 7.49991 13.1726C10.6329 13.1726 13.1727 10.6327 13.1727 7.49972C13.1727 4.36671 10.6329 1.82689 7.49991 1.82689ZM8.24993 10.5C8.24993 10.9142 7.91414 11.25 7.49993 11.25C7.08571 11.25 6.74993 10.9142 6.74993 10.5C6.74993 10.0858 7.08571 9.75 7.49993 9.75C7.91414 9.75 8.24993 10.0858 8.24993 10.5ZM6.05003 6.25C6.05003 5.57211 6.63511 4.925 7.50003 4.925C8.36496 4.925 8.95003 5.57211 8.95003 6.25C8.95003 6.74118 8.68002 6.99212 8.21447 7.27494C8.16251 7.30651 8.10258 7.34131 8.03847 7.37854L8.03841 7.37858C7.85521 7.48497 7.63788 7.61119 7.47449 7.73849C7.23214 7.92732 6.95003 8.23198 6.95003 8.7C6.95004 9.00376 7.19628 9.25 7.50004 9.25C7.8024 9.25 8.04778 9.00601 8.05002 8.70417L8.05056 8.7033C8.05924 8.6896 8.08493 8.65735 8.15058 8.6062C8.25207 8.52712 8.36508 8.46163 8.51567 8.37436L8.51571 8.37433C8.59422 8.32883 8.68296 8.27741 8.78559 8.21506C9.32004 7.89038 10.05 7.35382 10.05 6.25C10.05 4.92789 8.93511 3.825 7.50003 3.825C6.06496 3.825 4.95003 4.92789 4.95003 6.25C4.95003 6.55376 5.19628 6.8 5.50003 6.8C5.80379 6.8 6.05003 6.55376 6.05003 6.25Z"
+                    fill="currentColor"
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+
+                <!-- Tooltip -->
+                <div
+                  x-show="show"
+                  x-transition
+                  x-cloak
+                  class="absolute bottom-full left-1/2 z-50 mb-2 w-64 -translate-x-1/2 transform rounded-lg bg-gray-800 p-3 text-sm text-white shadow-lg"
+                >
+                  <strong>Interaction Level:</strong><br />
+                  Objects are grouped into <em>high</em>, <em>medium</em>, or
+                  <em>no interaction</em> based on usefulness.<br />
+                  <p class="mt-2 mb-2">
+                    <strong>High</strong> are important for navigation.
+                  </p>
+                  <p class="mt-2 mb-2">
+                    <strong>Medium</strong> are somewhat useful.
+                  </p>
+                  <p class="mt-2 mb-2"><strong>None</strong> are not useful.</p>
+                  This is represented by sound volume changes using simple tones
+                  and can be personalized for every user.
+                </div>
+              </span>
+            </div>
+
+            <template x-if="selectedImage.modulation_info === 0">
+              <p
+                class="text-dark bg-dark/20 sm:bg-primary inline-block rounded-sm px-2 py-1 text-sm sm:whitespace-nowrap sm:text-white"
+              >
+                No interaction
+              </p>
+            </template>
+            <template x-if="selectedImage.modulation_info === 1">
+              <p
+                class="text-dark bg-dark/20 sm:bg-primary inline-block rounded-sm px-2 py-1 text-sm sm:whitespace-nowrap sm:text-white"
+              >
+                Medium-level interaction
+              </p>
+            </template>
+            <template x-if="selectedImage.modulation_info === 2">
+              <p
+                class="text-dark bg-dark/20 sm:bg-primary inline-block rounded-sm px-2 py-1 text-sm sm:whitespace-nowrap sm:text-white"
+              >
+                High-level interaction
+              </p>
+            </template>
+          </div>
+
+          <!-- Pitch / Width -->
+          <div
+            class="flex items-center gap-4 lg:mt-4 lg:flex-col lg:items-start lg:gap-0"
+          >
+            <div class="flex items-center gap-2 lg:w-full lg:py-2">
+              <h3 class="mb-1 text-sm font-medium">Object width</h3>
+              <span
+                x-data="{ show: false }"
+                @mouseenter="show = true"
+                @mouseleave="show = false"
+                class="relative isolate inline-block cursor-pointer"
+              >
+                <!-- SVG -->
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 15 15"
+                  fill="none"
+                  class="text-dark"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M0.877075 7.49972C0.877075 3.84204 3.84222 0.876892 7.49991 0.876892C11.1576 0.876892 14.1227 3.84204 14.1227 7.49972C14.1227 11.1574 11.1576 14.1226 7.49991 14.1226C3.84222 14.1226 0.877075 11.1574 0.877075 7.49972ZM7.49991 1.82689C4.36689 1.82689 1.82708 4.36671 1.82708 7.49972C1.82708 10.6327 4.36689 13.1726 7.49991 13.1726C10.6329 13.1726 13.1727 10.6327 13.1727 7.49972C13.1727 4.36671 10.6329 1.82689 7.49991 1.82689ZM8.24993 10.5C8.24993 10.9142 7.91414 11.25 7.49993 11.25C7.08571 11.25 6.74993 10.9142 6.74993 10.5C6.74993 10.0858 7.08571 9.75 7.49993 9.75C7.91414 9.75 8.24993 10.0858 8.24993 10.5ZM6.05003 6.25C6.05003 5.57211 6.63511 4.925 7.50003 4.925C8.36496 4.925 8.95003 5.57211 8.95003 6.25C8.95003 6.74118 8.68002 6.99212 8.21447 7.27494C8.16251 7.30651 8.10258 7.34131 8.03847 7.37854L8.03841 7.37858C7.85521 7.48497 7.63788 7.61119 7.47449 7.73849C7.23214 7.92732 6.95003 8.23198 6.95003 8.7C6.95004 9.00376 7.19628 9.25 7.50004 9.25C7.8024 9.25 8.04778 9.00601 8.05002 8.70417L8.05056 8.7033C8.05924 8.6896 8.08493 8.65735 8.15058 8.6062C8.25207 8.52712 8.36508 8.46163 8.51567 8.37436L8.51571 8.37433C8.59422 8.32883 8.68296 8.27741 8.78559 8.21506C9.32004 7.89038 10.05 7.35382 10.05 6.25C10.05 4.92789 8.93511 3.825 7.50003 3.825C6.06496 3.825 4.95003 4.92789 4.95003 6.25C4.95003 6.55376 5.19628 6.8 5.50003 6.8C5.80379 6.8 6.05003 6.55376 6.05003 6.25Z"
+                    fill="currentColor"
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+
+                <!-- Tooltip -->
+                <div
+                  x-show="show"
+                  x-transition
+                  x-cloak
+                  class="absolute bottom-full left-1/2 z-50 mb-2 w-64 -translate-x-1/2 transform rounded-lg bg-gray-800 p-3 text-sm text-white shadow-lg"
+                >
+                  <strong>Obstacle Width to Pitch Mapping:</strong>
+                  <p class="mt-2 mb-2">
+                    The width of an object is represented by the pitch of its
+                    sound.
+                  </p>
+                  <p class="mb-2">
+                    We use three discrete categories: <em>narrow</em>,
+                    <em>medium</em>, and <em>wide</em>.
+                  </p>
+                  <p class="mb-2">
+                    <strong>Medium</strong> is the baseline pitch.
+                  </p>
+                  <p class="mb-2">
+                    <strong>Narrow</strong> objects sound one octave higher.
+                  </p>
+                  <p class="mb-2">
+                    <strong>Wide</strong> objects sound one octave lower.
+                  </p>
+                </div>
+              </span>
+            </div>
+
+            <template x-if="selectedImage.pitch_info === 0">
+              <p
+                class="text-dark bg-dark/20 sm:bg-primary inline-block rounded-sm px-2 py-1 text-sm sm:whitespace-nowrap sm:text-white"
+              >
+                Wide object
+              </p>
+            </template>
+            <template x-if="selectedImage.pitch_info === 1">
+              <p
+                class="text-dark bg-dark/20 sm:bg-primary inline-block rounded-sm px-2 py-1 text-sm sm:whitespace-nowrap sm:text-white"
+              >
+                Medium width
+              </p>
+            </template>
+            <template x-if="selectedImage.pitch_info === 2">
+              <p
+                class="text-dark bg-dark/20 sm:bg-primary inline-block rounded-sm px-2 py-1 text-sm sm:whitespace-nowrap sm:text-white"
+              >
+                Narrow object
+              </p>
+            </template>
+          </div>
+          <!-- only mobile button -->
+          <button
+            data-role="playBtn"
+            disabled
+            type="button"
+            class="hover:bg-primary-darker border-dark shadow-dark/20 text-light bg-primary mt-4 flex w-full transform cursor-pointer items-center justify-center gap-2 rounded-md border-0 p-4 text-base font-semibold transition-all duration-200 hover:-translate-y-[2px] hover:shadow-md active:translate-y-[0px] active:shadow-none sm:hidden"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#fff"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-audio-lines-icon lucide-audio-lines"
+            >
+              <path d="M2 10v3"></path>
+              <path d="M6 6v11"></path>
+              <path d="M10 3v18"></path>
+              <path d="M14 8v7"></path>
+              <path d="M18 5v13"></path>
+              <path d="M22 10v3"></path>
+            </svg>
+            Play Sound
+          </button>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<script type="module" crossorigin src="/js/index-CI6LeUK-.js"></script>
+<script src="http://unpkg.com/tone"></script>

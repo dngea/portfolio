@@ -1,0 +1,74 @@
+---
+import { getCollection, render } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import MainLayout from "@/layouts/MainLayout.astro";
+import { Image } from "astro:assets";
+import { formatMonthYear } from "@/utils/helper";
+import BackLink from "@/components/atoms/BackLink.astro";
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const publications = await getCollection("publications");
+  return publications.map((publication) => ({
+    params: { slug: publication.id },
+    props: { publication },
+  }));
+}
+
+interface Props {
+  publication: CollectionEntry<"publications">;
+}
+
+const { publication } = Astro.props;
+const { Content } = await render(publication);
+---
+
+<Layout>
+  <MainLayout>
+    <div class="mx-auto space-y-12">
+      <BackLink label="Back to publications" href="/publications" />
+
+      <figure class="mb-12 aspect-video w-full overflow-hidden rounded-2xl">
+        <Image
+          src={publication.data.img}
+          alt={publication.data.title}
+          width={1200}
+          height={675}
+          class="h-full w-full object-cover"
+        />
+      </figure>
+
+      <div>
+        <time class="text-xs tracking-widest uppercase opacity-50">
+          {formatMonthYear(publication.data.date, true)}
+        </time>
+        <h1 class="mt-2 mb-2 text-4xl font-medium">{publication.data.title}</h1>
+        <p class="mb-1 text-base">
+          Published by <a
+            href={publication.data.link}
+            class="text-clay transition hover:underline"
+            target="_blank">{publication.data.publisher}</a
+          >
+        </p>
+        <p class="mb-10 italic opacity-70">{publication.data.keywords}</p>
+
+        <div class="prose prose-neutral max-w-none space-y-6 border-t pt-8">
+          <Content />
+        </div>
+      </div>
+    </div>
+  </MainLayout>
+</Layout>
+
+<style>
+  .prose :global(a:hover) {
+    transition: all 200ms;
+    color: var(--color-clay) !important;
+  }
+
+  .prose :global(a) {
+    text-decoration: underline !important;
+  }
+</style>

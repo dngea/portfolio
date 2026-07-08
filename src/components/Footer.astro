@@ -43,15 +43,15 @@ const sitemap = [
 ---
 
 <footer class="w-full p-8 sm:p-4">
-  <div class="w-full max-w-6xl mx-auto">
-    <div class="flex gap-12 justify-between">
+  <div class="mx-auto w-full max-w-6xl">
+    <div class="flex justify-between gap-12">
       <section class="space-y-8">
         <h3 class="text-4xl underline">dngeap@gmail.com</h3>
         <p class="text-balance">
-          Designed in Figma and built using Astro with React and Tailwind CSS.
-          The code is available on <a
-            href="https://github.com/dngea"
-            class="hover:text-dark hover:bg-cream transition-all w-fit"
+          Designed in Figma and built using Astro with TypeScript, React and
+          Tailwind CSS. The code is available on <a
+            href="https://github.com/dngea/portfolio"
+            class="hover:text-dark hover:bg-cream w-fit transition-all"
             target="_blank">github.com/dngea</a
           >.
         </p>
@@ -60,12 +60,12 @@ const sitemap = [
       <section class="flex gap-8">
         <!-- links -->
         <div class="flex flex-col gap-2">
-          <p class="font-medium uppercase px-0.5 text-light">LINKS</p>
+          <p class="text-light px-0.5 font-medium uppercase">LINKS</p>
           {
             links.map((link) => (
               <a
                 href={link.href}
-                class="hover:text-dark px-0.5 hover:bg-cream  transition-all w-fit"
+                class="hover:text-dark hover:bg-cream w-fit px-0.5 transition-all"
                 target={link.external ? "_blank" : "_self"}
               >
                 {link.label}
@@ -75,11 +75,11 @@ const sitemap = [
         </div>
         <!-- sitemap -->
         <div class="flex flex-col gap-2">
-          <p class="font-medium uppercase px-0.5 text-light">SITEMAP</p>
+          <p class="text-light px-0.5 font-medium uppercase">SITEMAP</p>
           {
             sitemap.map((link) => (
               <a
-                class="hover:text-dark px-0.5  hover:bg-cream transition-all w-fit"
+                class="hover:text-dark hover:bg-cream w-fit px-0.5 transition-all"
                 href={link.href}
               >
                 {link.label}
@@ -91,7 +91,7 @@ const sitemap = [
     </div>
 
     <!-- Daniel Gea -- 2025 -->
-    <section class="flex justify-between items-end">
+    <section class="flex items-end justify-between">
       <h1 class="text-7xl font-semibold">Daniel Gea</h1>
       <h4>2025</h4>
     </section>

@@ -111,8 +111,13 @@ const currentPath = Astro.url.pathname;
     const hoverPill = nav?.querySelector(".hover-pill") as HTMLElement;
     const lis = nav?.querySelectorAll("li");
     const activeLi = nav?.querySelector(".active");
-    const activeLiRect = activeLi?.getBoundingClientRect();
-    const ulRect = ul?.getBoundingClientRect();
+
+    function getNavMeasures() {
+      const activeLiRect = activeLi?.getBoundingClientRect();
+      const ulRect = ul?.getBoundingClientRect();
+
+      return { activeLiRect, ulRect };
+    }
 
     if (hoverPill) hoverPill.style.transition = "none";
 
@@ -126,6 +131,8 @@ const currentPath = Astro.url.pathname;
     });
 
     function moveTo(event: Event) {
+      const { ulRect } = getNavMeasures();
+
       const li = event.currentTarget as HTMLLIElement;
 
       if (!ulRect || !li || !hoverPill) return;
@@ -143,6 +150,8 @@ const currentPath = Astro.url.pathname;
     }
 
     function defaultPropertiesActive() {
+      const { activeLiRect, ulRect } = getNavMeasures();
+
       if (!activeLiRect || !ulRect || !hoverPill) return;
 
       const x = activeLiRect.left - ulRect.left;
