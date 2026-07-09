@@ -10,6 +10,11 @@ technologies:
   - Pure Data
 img: /images/prev/paper-prev-2.png
 collection: frontend
+links:
+  - label: See project
+    url: /projects/sound-navigation-demo.html
+  - label: See related publication
+    url: /publications/semantic-and-spatial-sound-object-recognition
 ---
 
 ## Overview

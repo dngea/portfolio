@@ -13,6 +13,14 @@ const projects = defineCollection({
     img: z.string(),
     videos: z.array(z.string()).optional(),
     videoCaption: z.array(z.string()).optional(),
+    links: z
+      .array(
+        z.object({
+          label: z.string(),
+          url: z.string(),
+        }),
+      )
+      .optional(),
   }),
 });
 

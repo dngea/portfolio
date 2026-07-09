@@ -79,6 +79,7 @@ const currentPath = Astro.url.pathname;
     left: 0;
     transform: translateX(var(--x, 0px));
     width: var(--w, 4rem);
+    filter: contrast(var(--contrast, 100%));
     height: 100%;
     transition:
       transform 300ms,
@@ -144,6 +145,7 @@ const currentPath = Astro.url.pathname;
 
       hoverPill.style.setProperty("--x", `${x}px`);
       hoverPill.style.setProperty("--w", `${w}px`);
+      hoverPill.style.setProperty("--contrast", `110%`);
 
       lis?.forEach((li) => li.classList.remove("pill-on"));
       li.classList.add("pill-on");
@@ -160,6 +162,7 @@ const currentPath = Astro.url.pathname;
       hoverPill.style.setProperty("--x", `${x}px`);
       hoverPill.style.setProperty("--w", `${w}px`);
       hoverPill.style.setProperty("--opacity", "0");
+      hoverPill.style.setProperty("--contrast", "100%");
 
       lis?.forEach((li) => li.classList.remove("pill-on"));
 

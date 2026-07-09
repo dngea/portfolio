@@ -1,13 +1,19 @@
 ---
 id: purpulse
 title: Purpulse
-description: A two-week EU-funded project involving six European universities, focused on accessible design. The first week centered on research and ideation at the home universities. The second week in Umeå, Sweden, involved designing an app in Figma and prototyping a connected wearable display.
+description: A two-week EU-funded project <a href="https://mtflabs.net/openminds/" class="hover:underline font-medium" target="_blank">Open Minds</a> involving six European universities, focused on accessible design. The first week centered on research and ideation at the home universities. The second week in Umeå, Sweden, involved designing an app in Figma and prototyping a connected wearable display.
 date: "2023-10-01"
 technologies:
   - Figma
   - Arduino
 img: /images/prev/purpulse-prev.png
 collection: ux
+links:
+  - label: Figma Prototype
+    url: https://www.figma.com/design/lvO5eFk3eccCz5Lyv2sZyD/Epilepsy-Bracelet-App?node-id=0-1&t=qxxcOdkLemx4V8JR-1
+
+  - label: Open Minds
+    url: https://mtflabs.net/openminds/
 ---
 
 ## Overview

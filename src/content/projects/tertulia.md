@@ -9,4 +9,7 @@ technologies:
   - Figma
 img: /images/prev/tertulia-prev.webp
 collection: frontend
+links:
+  - label: See project
+    url: https://tertulia-daniel.netlify.app/
 ---

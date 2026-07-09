@@ -7,6 +7,11 @@ technologies:
   - Figma
 img: /images/prev/nai-prev.jpg
 collection: ux
+links:
+  - label: Figma Prototype
+    url: https://www.figma.com/design/b6Pk2qwaXsfRSY0jqujeXT/Interfaces-Multimodais--NAI-?node-id=16-3&p=f&t=f6kB5BXQBL8F5dZJ-0
+  - label: Report
+    url: https://drive.google.com/file/d/1GXs-APWVsHg2VoBBkakzrlukBzBj0IUo/view
 ---
 
 ## Overview

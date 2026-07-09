@@ -9,6 +9,9 @@ technologies:
   - CSS
 img: /images/prev/dm1-prev.jpg
 collection: ux
+link:
+  - label: Figma Prototype
+    url: https://www.figma.com/design/hBDuA3wgLGOXsPL9Qtwtxz/Prototype-workspace?node-id=0-1&t=vVdU6gDpa9ROX3RY-0
 ---
 
 ## Overview

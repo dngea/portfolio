@@ -10,4 +10,7 @@ technologies:
   - Bootstrap
 img: /images/prev/silversun-prev.jpg
 collection: frontend
+links:
+  - label: See project
+    url: https://harmonious-cheesecake-257cf6.netlify.app/
 ---
