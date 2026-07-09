@@ -150,3 +150,8 @@ html {
 ::view-transition-new(root) {
   animation-duration: 0.3s;
 }
+
+::selection {
+  background-color: var(--color-gray-600);
+  color: var(--color-light);
+}

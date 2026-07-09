@@ -1,25 +1,25 @@
 ---
-const skills = [
-  "HTML",
-  "Next.js",
-  "TypeScript",
-  "Astro",
+const stack = [
+  "TypeScript / JavaScript",
   "React",
-  "Alpine.js",
-  "Vitest/Jest",
+  "Next.js",
   "Tailwind CSS",
+  "HTML",
   "CSS",
+  "REST / GraphQL",
+  "Astro",
+  "Vitest / Jest",
   "Sass",
   "Storybook",
+  "Alpine.js",
   "Figma",
-  "REST/GraphQL", // TODO
 ];
 ---
 
 <!-- todo: scroll top -margin -->
-<section class="mx-auto max-w-5xl space-y-8" id="skills">
+<section class="mx-auto max-w-5xl scroll-mt-50 space-y-8" id="stack">
   <h2 class="text-light text-3xl font-bold">Stack</h2>
   <ul class="grid h-full w-full grid-flow-col grid-rows-4 gap-2">
-    {skills.map((i) => <li class="text-light w-fit">{i}</li>)}
+    {stack.map((i) => <li class="text-light w-fit">{i}</li>)}
   </ul>
 </section>

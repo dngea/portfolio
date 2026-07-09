@@ -4,12 +4,14 @@ import { Image } from "astro:assets";
 import { formatMonthYear } from "@/utils/helper";
 import type { CollectionEntry } from "astro:content";
 import { CATEGORIES } from "@/pages/projects.astro";
+import clsx from "clsx";
 
 interface Props {
   data: CollectionEntry<"projects">;
+  className?: string
 }
 
-const { data } = Astro.props;
+const { data, className } = Astro.props;
 
 const item = data.data;
 
@@ -20,7 +22,7 @@ const category = Object.values(CATEGORIES).find((category) => {
 })?.label;
 ---
 
-<article class="flex items-stretch gap-8 group hover:bg-dark/3 rounded-2xl transition duration-500 p-4">
+<article class={clsx("flex items-stretch gap-8 group rounded-2xl transition duration-500", className)}>
   <div class="w-full max-w-100">
     <figure
       class="relative aspect-4/3 w-full shrink-0 overflow-hidden rounded-xl"

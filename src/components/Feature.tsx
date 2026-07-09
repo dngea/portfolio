@@ -58,7 +58,7 @@ const Feature = ({
   return (
     <section className={cn("py-16", className)}>
       <div className="container mx-auto space-y-8">
-        <h2 className="text-3xl font-bold">Behind the work</h2>
+        <h2 className="text-3xl font-bold">Where it started</h2>
 
         <div className="flex w-full items-stretch justify-between gap-12">
           <div className="w-full md:w-1/2">

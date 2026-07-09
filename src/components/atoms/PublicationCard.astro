@@ -1,15 +1,27 @@
 ---
 import { formatMonthYear } from "@/utils/helper";
 import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import type { boolean } from "astro:schema";
+import clsx from "clsx";
 
-const { data, dark = false } = Astro.props;
+interface PublicationProps {
+  data: CollectionEntry<"publications">;
+  dark?: boolean;
+  className?: string;
+}
+
+const { data, dark = false, className } = Astro.props;
 
 const publication = data.data;
 ---
 
 <a href={`/publications/${data.id}`} class="block">
   <article
-    class="group hover:bg-dark/3 flex gap-8 rounded-2xl p-4 transition duration-300 ease-in-out"
+    class={clsx(
+      "group  flex gap-8 rounded-2xl  transition duration-300 ease-in-out",
+      className,
+    )}
   >
     <figure
       class={`relative w-68 shrink-0 rounded-xl overflow-hidden aspect-9/6 transition duration-300 ease-in-out ${dark ? "border-light" : "border-dark"}`}
