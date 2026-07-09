@@ -1,7 +1,7 @@
 ---
 id: purpulse
 title: Purpulse
-description: A two-week EU-funded project <a href="https://mtflabs.net/openminds/" class="hover:underline font-medium" target="_blank">Open Minds</a> involving six European universities, focused on accessible design. The first week centered on research and ideation at the home universities. The second week in Umeå, Sweden, involved designing an app in Figma and prototyping a connected wearable display.
+description: Turning seizure alerts into a wearable. A two-week EU design sprint with Open Minds reimagining concert safety for people with epilepsy.
 date: "2023-10-01"
 technologies:
   - Figma
@@ -18,7 +18,7 @@ links:
 
 ## Overview
 
-I participated in a two-week EU-funded programme in Umeå, Sweden, collaborating with five other universities to explore accessible design and its importance. During the first week, based at my home university, we conducted research and ideation sessions using brainstorming card decks to find a scneario to focus on. After presenting the idea to university, we traveled to Umeå, where we worked in groups of six to design an application in Figma and prototype a wearable physical display that connected to the app.
+I participated in a two-week EU-funded [Open Minds](https://mtflabs.net/openminds/) programme in Umeå, Sweden, collaborating with five other universities to explore accessible design and its importance. During the first week, based at my home university, we conducted research and ideation sessions using brainstorming card decks to find a scneario to focus on. After presenting the idea to university, we traveled to Umeå, where we worked in groups of six to design an application in Figma and prototype a wearable physical display that connected to the app.
 
 ## Project Goals
 

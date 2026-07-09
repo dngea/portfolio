@@ -12,7 +12,7 @@ const description =
 ---
 
 <section
-  class="relative flex min-h-[92vh] items-center justify-center overflow-hidden p-8"
+  class="relative flex min-h-[92vh] items-center justify-center overflow-hidden p-6 sm:p-8"
 >
   <!-- Dot grid texture -->
   <!-- <div
@@ -28,21 +28,25 @@ const description =
   >
   </div> -->
 
-  <div class="relative z-10 flex w-full max-w-5xl items-center gap-12">
+  <div
+    class="relative z-10 flex w-full max-w-5xl flex-col-reverse items-center gap-8 md:flex-row md:gap-12"
+  >
     <!-- Text -->
-    <div class="text-dark flex flex-1 translate-y-8 flex-col gap-8 pb-2">
+    <div
+      class="text-dark flex flex-1 flex-col gap-6 pb-2 text-center md:translate-y-8 md:gap-8 md:text-left"
+    >
       <div>
-        <h1 class="text-5xl leading-tight font-semibold">
+        <h1 class="text-4xl leading-tight font-semibold sm:text-5xl">
           {name}
         </h1>
         <p class="mt-2.5 text-lg font-normal opacity-70">{rol}</p>
       </div>
 
-      <p class="max-w-[44ch] text-sm leading-relaxed opacity-80">
+      <p class="mx-auto max-w-[44ch] text-sm leading-relaxed opacity-80 md:mx-0">
         {description}
       </p>
 
-      <div class="flex items-center gap-3">
+      <div class="flex items-center justify-center gap-3 md:justify-start">
         <a
           href="#work"
           class={buttonVariants({ variant: "default", size: "default" })}
@@ -57,7 +61,7 @@ const description =
     </div>
 
     <!-- Image -->
-    <div class="relative w-80 shrink-0">
+    <div class="relative w-48 shrink-0 sm:w-64 md:w-80">
       <figure class="aspect-3/4 w-full overflow-hidden rounded-2xl shadow-xl">
         <Image
           src={image}

@@ -9,7 +9,7 @@ import { ClientRouter } from "astro:transitions";
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
     <meta name="generator" content={Astro.generator} />
@@ -18,7 +18,7 @@ import { ClientRouter } from "astro:transitions";
 
     <ClientRouter />
   </head>
-  <body class="bg-dark space-y-32">
+  <body class="bg-dark min-w-xs space-y-32">
     <Nav />
     <slot />
     <Footer />

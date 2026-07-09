@@ -1,7 +1,7 @@
 ---
 id: sound-navigation
 title: Sound Navigation
-description: Mapping the world to sound — an interactive look at sonification for blind and visually impaired navigation.
+description: Mapping the world to sound. An interactive look at sonification for blind and visually impaired navigation.
 date: "2025-06-01"
 technologies:
   - HTML

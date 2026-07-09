@@ -79,7 +79,7 @@ const youTubeId =
         />
       </figure>
 
-      <div class="grid grid-cols-[1fr_280px] items-start gap-16">
+      <div class="grid grid-cols-1 items-start gap-16 lg:grid-cols-[1fr_280px]">
         <div>
           <time class="text-xs tracking-widest uppercase opacity-50"
             >{formatMonthYear(project.data.date, true)}</time
@@ -108,7 +108,7 @@ const youTubeId =
             project.data.links && (
               <div class="space-y-4 rounded-xs border-b px-4 py-6">
                 <p class="text-sm tracking-wider uppercase">Links</p>
-                <div class="flex flex-wrap gap-1.5">
+                <div class="flex flex-col gap-1.5">
                   {project.data.links.map(
                     (link: { label: string; url: string }) => {
                       console.log("link >>", link);

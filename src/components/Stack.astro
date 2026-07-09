@@ -19,7 +19,9 @@ const stack = [
 <!-- todo: scroll top -margin -->
 <section class="mx-auto max-w-5xl scroll-mt-50 space-y-8" id="stack">
   <h2 class="text-light text-3xl font-bold">Stack</h2>
-  <ul class="grid h-full w-full grid-flow-col grid-rows-4 gap-2">
+  <ul
+    class="grid h-full w-full grid-flow-row grid-cols-2 gap-2 sm:grid-flow-col sm:grid-cols-none sm:grid-rows-4"
+  >
     {stack.map((i) => <li class="text-light w-fit">{i}</li>)}
   </ul>
 </section>

@@ -22,8 +22,8 @@ const category = Object.values(CATEGORIES).find((category) => {
 })?.label;
 ---
 
-<article class={clsx("flex items-stretch gap-8 group rounded-2xl transition duration-500", className)}>
-  <div class="w-full max-w-100">
+<article class={clsx("flex flex-col items-stretch gap-8 group rounded-2xl transition duration-500 sm:flex-row", className)}>
+  <div class="w-full sm:max-w-100">
     <figure
       class="relative aspect-4/3 w-full shrink-0 overflow-hidden rounded-xl"
     >
@@ -37,7 +37,7 @@ const category = Object.values(CATEGORIES).find((category) => {
       />
     </figure>
   </div>
-  <div class="flex w-full max-w-160 flex-col justify-end space-y-4 p-1">
+  <div class="flex w-full flex-col justify-end space-y-4 p-1 sm:max-w-160">
     <div>
       <div class="flex items-center gap-2 text-sm">
         <time datetime={item.date.toISOString()}
@@ -48,7 +48,7 @@ const category = Object.values(CATEGORIES).find((category) => {
           <span class="capitalize">{category}</span>
         )}
       </div>
-      <h3 class="py-1 text-3xl font-medium">{item.title}</h3>
+      <h3 class="py-1 text-2xl font-medium md:text-3xl">{item.title}</h3>
     </div>
     <p class="text-balance">
       {item.description}

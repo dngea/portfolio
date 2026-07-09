@@ -1,9 +1,7 @@
 ---
 id: metamorphosis
 title: Metamorphosis
-description:
-  A four-week interactive performance project inspired by Kafka’s The Metamorphosis, combining real-time sound and generative visuals.
-  he project featured four distinct soundscapes created in Pure Data and audio-reactive visuals developed in TouchDesigner. UI controls were built in Processing, with all components integrated via OSC for seamless transitions.
+description: Kafka's nightmare, rendered in sound and light. Four soundscapes and generative visuals inspired by The Metamorphosis.
 date: "2023-06-01"
 technologies:
   - Pure data
