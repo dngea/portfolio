@@ -359,19 +359,19 @@
               updateVolume() {
               if (window.volumeGainNode) {
                 const valueZNum = Number(this.valueZ);
-                console.log('valueZ actual:', valueZNum);
+
                 const minGain = 0.1;
                 const maxGain = 1.0;
                 const normalized = minGain + ((valueZNum + 50) / 100) * (maxGain - minGain);
                 window.volumeGainNode.gain.value = normalized;
-                console.log('Volumen ajustado a:', normalized);
+
               }
             },
               async maybePlay() {
                 if (!window.player || window.player.state === 'started') return;
                 await Tone.start();
                 window.player.start();
-                console.log('Auto-play triggered');
+
               },
               onSliderInput() {
                 this.updatePanning();

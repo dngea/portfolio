@@ -137,8 +137,7 @@ function Do(n, t) {
     });
 }
 function iu(n) {
-  for (n._x_effects?.forEach(Kc); n._x_cleanups?.length; )
-    n._x_cleanups.pop()();
+  for (n._x_effects?.forEach(Kc); n._x_cleanups?.length;) n._x_cleanups.pop()();
 }
 var Pi = new MutationObserver(qi),
   Fi = !1;
@@ -160,7 +159,7 @@ function ru() {
   bn.push(() => n.length > 0 && qi(n));
   let t = bn.length;
   queueMicrotask(() => {
-    if (bn.length === t) for (; bn.length > 0; ) bn.shift()();
+    if (bn.length === t) for (; bn.length > 0;) bn.shift()();
   });
 }
 function at(n) {
@@ -540,7 +539,7 @@ function vu(n) {
   let t = Symbol();
   ((Uo = t), Cn.set(t, []));
   let e = () => {
-      for (; Cn.get(t).length; ) Cn.get(t).shift()();
+      for (; Cn.get(t).length;) Cn.get(t).shift()();
       Cn.delete(t);
     },
     s = () => {
@@ -660,7 +659,7 @@ function Pe(n, t) {
   let e = !1;
   if ((t(n, () => (e = !0)), e)) return;
   let s = n.firstElementChild;
-  for (; s; ) (Pe(s, t), (s = s.nextElementSibling));
+  for (; s;) (Pe(s, t), (s = s.nextElementSibling));
 }
 function Dt(n, ...t) {
   console.warn(`Alpine Warning: ${n}`, ...t);
@@ -778,7 +777,7 @@ function zi(n = () => {}) {
   );
 }
 function _i() {
-  for ($i = !1; mi.length; ) mi.shift()();
+  for ($i = !1; mi.length;) mi.shift()();
 }
 function Nu() {
   $i = !0;
@@ -1079,7 +1078,7 @@ function Pu(n, t) {
       this.beforeCancels.push(o);
     },
     cancel: gi(function () {
-      for (; this.beforeCancels.length; ) this.beforeCancels.shift()();
+      for (; this.beforeCancels.length;) this.beforeCancels.shift()();
       r();
     }),
     finish: r,
@@ -1426,7 +1425,7 @@ function nl(n) {
 }
 function _a(n, t, e) {
   let s = [];
-  for (; s.length; ) s.pop()();
+  for (; s.length;) s.pop()();
   let i = Object.entries(t).map(([o, a]) => ({ name: o, value: a })),
     r = Bo(i);
   return (
@@ -1439,7 +1438,7 @@ function _a(n, t, e) {
       (s.push(o.runCleanups), o());
     }),
     () => {
-      for (; s.length; ) s.pop()();
+      for (; s.length;) s.pop()();
     }
   );
 }
@@ -3153,7 +3152,7 @@ const ah = (n) => ({ cancelTime: n, type: "cancelAndHold" }),
     const e = [];
     let s = n.replace(/^[\s]+/, ""),
       i = s.match(oo);
-    for (; i !== null; ) {
+    for (; i !== null;) {
       const r = i[1].slice(1, -1),
         o = i[0]
           .replace(/([\s]+)?;?$/, "")
@@ -8444,7 +8443,7 @@ const Hf =
   },
   Un = (n, t, e, s) => {
     let i = n;
-    for (; !i.hasOwnProperty(t); ) i = Object.getPrototypeOf(i);
+    for (; !i.hasOwnProperty(t);) i = Object.getPrototypeOf(i);
     const { get: r, set: o } = Object.getOwnPropertyDescriptor(i, t);
     Object.defineProperty(n, t, { get: e(r), set: s(o) });
   },
@@ -9151,7 +9150,7 @@ class Ft extends oe {
     const i = this._timeline.length;
     let r = i;
     if (i > 0 && this._timeline[i - 1][e] <= t) return i - 1;
-    for (; s < r; ) {
+    for (; s < r;) {
       let o = Math.floor(s + (r - s) / 2);
       const a = this._timeline[o],
         c = this._timeline[o + 1];
@@ -9197,7 +9196,7 @@ class Ft extends oe {
   }
   forEachFrom(t, e) {
     let s = this._search(t);
-    for (; s >= 0 && this._timeline[s].time >= t; ) s--;
+    for (; s >= 0 && this._timeline[s].time >= t;) s--;
     return (this._iterate(e, s + 1), this);
   }
   forEachAtTime(t, e) {
@@ -9871,8 +9870,7 @@ class st extends oe {
   }
   static loaded() {
     return ft(this, void 0, void 0, function* () {
-      for (yield Promise.resolve(); st.downloads.length; )
-        yield st.downloads[0];
+      for (yield Promise.resolve(); st.downloads.length;) yield st.downloads[0];
     });
   }
 }
@@ -9906,7 +9904,7 @@ class br extends Gn {
   _renderClock(t) {
     return ft(this, void 0, void 0, function* () {
       let e = 0;
-      for (; this._duration - this._currentTime >= 0; ) {
+      for (; this._duration - this._currentTime >= 0;) {
         (this.emit("tick"), (this._currentTime += 128 / this.sampleRate), e++);
         const s = Math.floor(this.sampleRate / 128);
         t && e % s === 0 && (yield new Promise((i) => setTimeout(i, 1)));
@@ -9938,7 +9936,6 @@ function O_() {
 }
 if (Et && !Et.TONE_SILENCE_LOGGING) {
   const t = ` * Tone.js v${Va} * `;
-  console.log(`%c${t}`, "background: #000; color: #fff");
 }
 function E_(n) {
   return Math.pow(10, n / 20);
@@ -10947,12 +10944,12 @@ function ie(n, t, e = 0, s = 0) {
     t instanceof W || t instanceof Z;
   )
     z(t.input) && (t = t.input);
-  for (; n instanceof W; ) z(n.output) && (n = n.output);
+  for (; n instanceof W;) z(n.output) && (n = n.output);
   Le(t) ? n.connect(t, e) : n.connect(t, e, s);
 }
 function qc(n, t, e = 0, s = 0) {
-  if (z(t)) for (; t instanceof W; ) t = t.input;
-  for (; !fe(n); ) z(n.output) && (n = n.output);
+  if (z(t)) for (; t instanceof W;) t = t.input;
+  for (; !fe(n);) z(n.output) && (n = n.output);
   Le(t) ? n.disconnect(t, e) : fe(t) ? n.disconnect(t, e, s) : n.disconnect();
 }
 class Y extends W {
@@ -11629,7 +11626,7 @@ class Nr extends At {
       let l = Math.ceil(u) - u;
       l = Vt(l, 1) ? 0 : l;
       let h = this.frequency.getTimeOfTick(a + l);
-      for (; h < e; ) {
+      for (; h < e;) {
         try {
           s(h, Math.round(this.getTicksAtTime(h)));
         } catch (d) {
@@ -12154,7 +12151,7 @@ class q_ extends oe {
       if (e > 0)
         if (t.left.right === null) ((s = t.left), (s.right = t.right), (i = s));
         else {
-          for (s = t.left.right; s.right !== null; ) s = s.right;
+          for (s = t.left.right; s.right !== null;) s = s.right;
           s.parent &&
             ((s.parent.right = s.left),
             (i = s.parent),
@@ -12164,7 +12161,7 @@ class q_ extends oe {
       else if (t.right.left === null)
         ((s = t.right), (s.left = t.left), (i = s));
       else {
-        for (s = t.right.left; s.left !== null; ) s = s.left;
+        for (s = t.right.left; s.left !== null;) s = s.left;
         s.parent &&
           ((s.parent.left = s.right),
           (i = s.parent),
@@ -15319,7 +15316,7 @@ class Ks extends an {
   }
   _findClosest(t) {
     let s = 0;
-    for (; s < 96; ) {
+    for (; s < 96;) {
       if (this._buffers.has(t + s)) return -s;
       if (this._buffers.has(t - s)) return s;
       s++;
@@ -15382,7 +15379,7 @@ class Ks extends an {
     const e = this.toSeconds(t);
     return (
       this._activeSources.forEach((s) => {
-        for (; s.length; ) s.shift().stop(e);
+        for (; s.length;) s.shift().stop(e);
       }),
       this
     );
@@ -16108,7 +16105,7 @@ async function Co(n, t = 1, e = 0) {
 }
 $c.forEach((n) => {
   n.addEventListener("click", async () => {
-    de && (await O_(), de.start(), console.log("Audio reproduciéndose"));
+    de && (await O_(), de.start());
   });
 });
 window.addEventListener("alpine:init", () => {
@@ -16131,16 +16128,8 @@ window.addEventListener("alpine:init", () => {
         ),
         this.$watch("selectedImage", (n) => {
           n?.sound
-            ? (console.log(
-                "Antes de cargar sonido:",
-                n.name,
-                "pitch:",
-                n.pitch,
-                "modulation:",
-                n.modulation,
-              ),
-              Co(n.sound, n.pitch ?? 1, n.modulation ?? 0))
-            : console.warn("Imagen seleccionada sin sonido:", n);
+            ? Co(n.sound, n.pitch ?? 1, n.modulation ?? 0)
+            : console.warn("No sound for selected image:", n);
         }));
     },
   }));
