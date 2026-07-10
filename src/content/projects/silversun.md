@@ -8,7 +8,7 @@ technologies:
   - CSS
   - JavaScript
   - Bootstrap
-img: /images/prev/silversun-prev.jpg
+img: /images/frontend/silversun/prev.jpg
 collection: frontend
 links:
   - label: See project

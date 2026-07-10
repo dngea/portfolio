@@ -8,7 +8,7 @@ technologies:
   - Tailwind CSS
   - Alpine.js
   - Pure Data
-img: /images/prev/paper-prev-2.png
+img: /images/frontend/sound-navigation/prev.png
 collection: frontend
 links:
   - label: See project

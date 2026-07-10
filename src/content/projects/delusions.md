@@ -7,7 +7,7 @@ technologies:
   - Pure data
   - TouchDesigner
   - Processing
-img: /images/prev/delusions-prev.webp
+img: /images/multimedia/delusions/prev.webp
 collection: creative-coding
 videos:
   - https://www.youtube.com/watch?v=dfXvGeOue3o

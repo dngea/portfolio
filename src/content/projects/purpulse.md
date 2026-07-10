@@ -6,7 +6,7 @@ date: "2023-10-01"
 technologies:
   - Figma
   - Arduino
-img: /images/prev/purpulse-prev.png
+img: /images/ux/purpulse/prev.png
 collection: ux
 links:
   - label: Figma Prototype
@@ -14,6 +14,12 @@ links:
 
   - label: Open Minds
     url: https://mtflabs.net/openminds/
+
+gallery:
+  - /images/ux/purpulse/purpulse1.webp
+  - /images/ux/purpulse/purpulse2.webp
+  - /images/ux/purpulse/purpulse3.webp
+  - /images/ux/purpulse/purpulse4.webp
 ---
 
 ## Overview

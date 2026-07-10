@@ -38,14 +38,14 @@ const Feature = ({
     {
       id: 3,
       title: "Creative coding, sound and installations",
-      image: "/images/prev/imtermediartes-prev.jpg",
+      image: "/images/multimedia/intermediartes/prev.jpg",
       description:
         "During my Master's in Multimedia at the University of Porto, I had the opportunity to explore technology beyond the browser. Through interactive installations, generative music, reactive visuals, Arduino projects, and digital storytelling, I discovered new ways of connecting creativity, art, and technology. These experiences continue to influence how I approach experimentation and innovation today.",
     },
     {
       id: 4,
       title: "Why Vienna",
-      image: "/images/home/vienna-prev.jpg",
+      image: "/images/about/vienna.jpg",
       description: `I've always imagined myself living abroad. The challenge of adapting to new environments, meeting people from different cultures, and learning new languages has always excited me, even if languages don't come naturally to me. Vienna first entered my life through <a href="https://www.uxcon.io/" target="_blank" class="hover:underline! font-medium transition">uxcon Vienna</a>, but what started as a professional opportunity soon became something more. I found a city that constantly encourages growth, curiosity, and new perspectives, making it the perfect place to continue both my personal and professional journey.`,
     },
   ],

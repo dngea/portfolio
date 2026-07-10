@@ -3,15 +3,16 @@ import type { GetStaticPaths } from "astro";
 import { getEntry } from "astro:content";
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
-import { formatMonthYear } from "@/utils/helper";
+import { formatMonthYear, isYouTubeLink, getYouTubeId } from "@/utils/helper";
 import { Badge } from "@/components/ui/badge";
-import { ArrowRight, Divide } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { render } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import MainLayout from "@/layouts/MainLayout.astro";
 import BackLink from "@/components/atoms/BackLink.astro";
 import ScrollHint from "@/components/atoms/ScrollHint.astro";
-import { url } from "astro:schema";
+import Gallery from "@/components/atoms/Gallery";
+import { getImage } from "astro:assets";
 
 export const prerender = true;
 
@@ -24,49 +25,27 @@ export const getStaticPaths = (async () => {
 const { slug } = Astro.params;
 
 const project = await getEntry("projects", slug);
-
-if (!project) {
-  return Astro.redirect("/404");
-}
+if (!project) return Astro.redirect("/404");
 
 // markdown
 const { Content } = await render(project);
-
-console.log("project >>", project);
 
 const { pathname } = Astro.url;
 if (!pathname) return Astro.redirect("/404");
 
 const backLink = `/${pathname.split("/").filter(Boolean).slice(0, -1)}`;
 
-export function getYouTubeId(url: string): string | null {
-  const patterns = [
-    /youtu\.be\/([^?&]+)/,
-    /youtube\.com\/watch\?v=([^?&]+)/,
-    /youtube\.com\/embed\/([^?&]+)/,
-  ];
-
-  for (const pattern of patterns) {
-    const match = url.match(pattern);
-    if (match) return match[1];
-  }
-
-  return null;
-}
-
-export function isYouTubeLink(url: string): boolean {
-  return url.includes("youtube.com") || url.includes("youtu.be");
-}
-
 const youTubeId =
   project.data.videos?.[0] && isYouTubeLink(project.data.videos[0])
     ? getYouTubeId(project.data.videos[0])
     : null;
+
+const gallery = project.data.gallery ?? null;
 ---
 
 <Layout>
   <MainLayout>
-    <div class="mx-auto space-y-12">
+    <div class="mx-auto space-y-16">
       <BackLink label="Back to projects" href={backLink} />
 
       <figure class="mb-12 aspect-video w-full overflow-hidden rounded-2xl">
@@ -79,7 +58,9 @@ const youTubeId =
         />
       </figure>
 
-      <div class="grid grid-cols-1 items-start gap-16 lg:grid-cols-[1fr_280px]">
+      <section
+        class="grid grid-cols-1 items-start gap-16 lg:grid-cols-[1fr_280px]"
+      >
         <div>
           <time class="text-xs tracking-widest uppercase opacity-50"
             >{formatMonthYear(project.data.date, true)}</time
@@ -91,7 +72,7 @@ const youTubeId =
           />
 
           <div
-            class="prose prose-neutral prose:h2 max-w-none space-y-6 border-t pt-8"
+            class="prose prose-neutral prose-h3:text-xl prose-h3:font-semibold prose-h2:text-2xl prose-h2:font-semibold prose-h3:text-clay max-w-none space-y-6 border-t pt-8"
           >
             <Content />
           </div>
@@ -133,11 +114,22 @@ const youTubeId =
             )
           }
         </aside>
-      </div>
+      </section>
+
+      {
+        gallery && gallery.length > 0 && (
+          <section class="space-y-4">
+            <h2 class="text-dark/90 text-2xl font-medium sm:text-3xl">
+              Gallery
+            </h2>
+            <Gallery images={gallery} client:load />
+          </section>
+        )
+      }
 
       {
         project.data.videos && (
-          <div class="relative space-y-8 pt-100 pb-50">
+          <section class="relative space-y-8 pt-100 pb-50">
             <ScrollHint className="top-25" />
             {project.data.videoCaption && (
               <div class="space-y-1.5">
@@ -179,7 +171,7 @@ const youTubeId =
                 </video>
               )}
             </figure>
-          </div>
+          </section>
         )
       }
     </div>

@@ -7,7 +7,7 @@ technologies:
   - Figma
   - React
   - CSS
-img: /images/prev/dm1-prev.jpg
+img: /images/ux/dm/prev.jpg
 collection: ux
 link:
   - label: Figma Prototype

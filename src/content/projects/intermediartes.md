@@ -5,7 +5,7 @@ description: Kinetic marbles, analog textures, and Arduino sensors combine in a 
 date: "2023-06-01"
 technologies:
   - Arduino
-img: /images/prev/imtermediartes-prev.jpg
+img: /images/multimedia/intermediartes/prev.jpg
 collection: creative-coding
 ---
 

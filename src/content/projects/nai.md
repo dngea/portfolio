@@ -5,7 +5,7 @@ description: Endless clicks and bureaucracy for students who need it most. A UX 
 date: "2023-06-01"
 technologies:
   - Figma
-img: /images/prev/nai-prev.jpg
+img: /images/ux/nai/prev.jpg
 collection: ux
 links:
   - label: Figma Prototype

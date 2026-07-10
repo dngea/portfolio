@@ -17,6 +17,7 @@
     "astro": "^6.4.8",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "embla-carousel-react": "^8.6.0",
     "lucide-react": "^0.562.0",
     "radix-ui": "^1.5.0",
     "react": "^19.2.3",
@@ -28,6 +29,7 @@
   },
   "devDependencies": {
     "@astrojs/react": "^5.0.7",
+    "@tailwindcss/typography": "^0.5.20",
     "@types/react": "^19.2.7",
     "prettier": "^3.8.4",
     "prettier-plugin-astro": "^0.14.1",

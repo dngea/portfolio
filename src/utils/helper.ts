@@ -25,3 +25,22 @@ export function formatMonthYear(
 
   return `${month} ${year}`;
 }
+
+export function getYouTubeId(url: string): string | null {
+  const patterns = [
+    /youtu\.be\/([^?&]+)/,
+    /youtube\.com\/watch\?v=([^?&]+)/,
+    /youtube\.com\/embed\/([^?&]+)/,
+  ];
+
+  for (const pattern of patterns) {
+    const match = url.match(pattern);
+    if (match) return match[1];
+  }
+
+  return null;
+}
+
+export function isYouTubeLink(url: string): boolean {
+  return url.includes("youtube.com") || url.includes("youtu.be");
+}

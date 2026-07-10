@@ -7,7 +7,7 @@ technologies:
   - React
   - Tailwind
   - Figma
-img: /images/prev/tertulia-prev.webp
+img: /images/frontend/tertulia/prev.webp
 collection: frontend
 links:
   - label: See project
