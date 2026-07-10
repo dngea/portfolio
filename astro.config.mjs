@@ -9,7 +9,7 @@ import netlify from "@astrojs/netlify";
 export default defineConfig({
   output: "server",
   adapter: netlify(),
-  site: "https://cerulean-donut-2a1cbe.netlify.app",
+  site: "https://danielgea.com",
   integrations: [react()],
   vite: {
     plugins: [tailwindcss()],
