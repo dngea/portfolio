@@ -1,5 +1,6 @@
 ---
 import clsx from "clsx";
+import { Menu, NotebookPen, X } from "lucide-react";
 
 const menu = [
   {
@@ -47,10 +48,14 @@ function isActivePath(path: string) {
       <a
         href="/"
         class={clsx(
-          " px-3 text-sm font-semibold",
+          " px-3 text-base font-semibold flex items-center gap-1.5",
           currentPath === "/" ? "text-clay" : "text-dark",
-        )}>Portfolio</a
+        )}
       >
+        <NotebookPen className="size-[15px] shrink-0" />
+        Portfolio</a
+      >
+
       <button
         id="menu-toggle"
         type="button"
@@ -59,37 +64,14 @@ function isActivePath(path: string) {
         aria-label="Toggle menu"
         class="text-dark flex w-8 shrink-0 cursor-pointer items-center justify-center"
       >
-        <svg
-          id="icon-open"
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-        >
-          <path d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
-        <svg
-          id="icon-close"
-          class="hidden"
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-        >
-          <path d="M18 6 6 18"></path>
-          <path d="m6 6 12 12"></path>
-        </svg>
+        <Menu id="icon-open" className="size-5" />
+
+        <X id="icon-close" className="hidden size-5" />
       </button>
     </div>
 
     <!-- mobile menu: plain list, no hover animation, active item flagged in bg-clay -->
-    <ul id="mobile-menu" class="mobile-menu flex-col gap-1 sm:hidden">
+    <ul id="mobile-menu" class="mobile-menu flex-col gap-2 sm:hidden">
       {
         menu.map((item) => {
           const isActive = isActivePath(item.path);
@@ -101,7 +83,7 @@ function isActivePath(path: string) {
               <a
                 href={item.path}
                 class={clsx(
-                  "block rounded-full px-3 py-2 text-sm font-medium whitespace-nowrap",
+                  "block w-fit rounded-full px-3 py-1.5 text-base font-medium whitespace-nowrap",
                   isActive ? "bg-clay text-light" : "text-dark",
                 )}
               >
@@ -126,7 +108,7 @@ function isActivePath(path: string) {
             <li class={clsx("text-dark relative", isActive ? "active" : "")}>
               <a
                 href={item.path}
-                class="relative z-10 block px-2.5 py-1.5 text-sm font-medium whitespace-nowrap sm:px-4 sm:py-2 sm:text-base"
+                class="relative z-10 block px-2.5 py-1.5 text-sm font-medium whitespace-nowrap sm:px-4 sm:py-2 sm:text-base sm:no-underline!"
               >
                 {item.label}
               </a>

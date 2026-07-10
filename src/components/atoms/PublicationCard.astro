@@ -16,7 +16,7 @@ const { data, dark = false, className } = Astro.props;
 const publication = data.data;
 ---
 
-<a href={`/publications/${data.id}`} class="block">
+<a href={`/publications/${data.id}`} class="block no-underline!">
   <article
     class={clsx(
       "group flex flex-col gap-6 sm:gap-8 rounded-2xl transition duration-300 ease-in-out sm:flex-row",

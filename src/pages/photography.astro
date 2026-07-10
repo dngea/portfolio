@@ -27,7 +27,7 @@ photographyProjects.sort((a, b) => {
     <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
       {
         photographyProjects.map((project) => (
-          <a href={`/photography/${project.id}`}>
+          <a href={`/photography/${project.id}`} class="no-underline!">
             <article class="group relative aspect-3/4 overflow-hidden rounded-sm transition duration-200 hover:shadow-sm hover:contrast-105">
               <Image
                 src={project.data.img}

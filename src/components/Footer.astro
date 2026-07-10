@@ -60,7 +60,7 @@ const sitemap = [
             links.map((link) => (
               <a
                 href={link.href}
-                class="hover:text-dark hover:bg-cream w-fit px-0.5 transition-all"
+                class="hover:text-dark active:bg-cream hover:bg-cream w-fit px-0.5 transition-all hover:no-underline!"
                 target={link.external ? "_blank" : "_self"}
               >
                 {link.label}
@@ -74,7 +74,7 @@ const sitemap = [
           {
             sitemap.map((link) => (
               <a
-                class="hover:text-dark hover:bg-cream w-fit px-0.5 transition-all"
+                class="hover:text-dark hover:bg-cream active:bg-cream w-fit px-0.5 no-underline! transition-all"
                 href={link.href}
               >
                 {link.label}

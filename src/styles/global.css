@@ -156,3 +156,9 @@ html {
   background-color: var(--color-gray-600);
   color: var(--color-light);
 }
+
+a:not(.bg-clay):not(.bg-primary):not(.bg-dark):not(.bg-cream):not(
+    .bg-light
+  ):not(.button):active {
+  @apply underline;
+}

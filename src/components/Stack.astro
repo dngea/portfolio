@@ -20,8 +20,8 @@ const stack = [
 <section class="mx-auto max-w-5xl scroll-mt-50 space-y-8" id="stack">
   <h2 class="text-light text-3xl font-bold">Stack</h2>
   <ul
-    class="grid h-full w-full grid-flow-row grid-cols-2 gap-2 sm:grid-flow-col sm:grid-cols-none sm:grid-rows-4"
+    class="grid h-full w-full grid-flow-row grid-cols-2 gap-x-8 gap-y-2 sm:grid-flow-col sm:grid-cols-none sm:grid-rows-4 sm:gap-2"
   >
-    {stack.map((i) => <li class="text-light w-fit">{i}</li>)}
+    {stack.map((i) => <li class="text-light w-fit whitespace-nowrap">{i}</li>)}
   </ul>
 </section>

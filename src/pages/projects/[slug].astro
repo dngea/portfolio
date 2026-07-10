@@ -30,6 +30,8 @@ if (!project) return Astro.redirect("/404");
 // markdown
 const { Content } = await render(project);
 
+const hasContent = Boolean(project.body?.trim().length);
+
 const { pathname } = Astro.url;
 if (!pathname) return Astro.redirect("/404");
 
@@ -45,75 +47,83 @@ const gallery = project.data.gallery ?? null;
 
 <Layout>
   <MainLayout>
-    <div class="mx-auto space-y-16">
+    <div class="mx-auto space-y-8 sm:space-y-16">
       <BackLink label="Back to projects" href={backLink} />
 
-      <figure class="mb-12 aspect-video w-full overflow-hidden rounded-2xl">
-        <Image
-          src={project.data.img}
-          alt={project.data.title}
-          width={1200}
-          height={675}
-          class="h-full w-full object-cover"
-        />
-      </figure>
-
-      <section
-        class="grid grid-cols-1 items-start gap-16 lg:grid-cols-[1fr_280px]"
-      >
-        <div>
-          <time class="text-xs tracking-widest uppercase opacity-50"
-            >{formatMonthYear(project.data.date, true)}</time
-          >
-          <h1 class="mt-2 mb-6 text-4xl font-medium">{project.data.title}</h1>
-          <p
-            class="mb-10 leading-relaxed"
-            set:html={project.data.description}
+      <div class="space-y-4 sm:space-y-12">
+        <figure class="aspect-video w-full overflow-hidden rounded-2xl">
+          <Image
+            src={project.data.img}
+            alt={project.data.title}
+            width={1200}
+            height={675}
+            class="h-full w-full object-cover"
           />
+        </figure>
 
-          <div
-            class="prose prose-neutral prose-h3:text-xl prose-h3:font-semibold prose-h2:text-2xl prose-h2:font-semibold prose-h3:text-clay max-w-none space-y-6 border-t pt-8"
-          >
-            <Content />
-          </div>
-        </div>
+        <section
+          class="grid grid-cols-1 items-start gap-4 sm:gap-16 lg:grid-cols-[1fr_280px]"
+        >
+          <div>
+            <time class="text-xs tracking-widest uppercase opacity-50"
+              >{formatMonthYear(project.data.date, true)}</time
+            >
+            <h1 class="mt-2 mb-6 text-4xl font-medium">{project.data.title}</h1>
+            <p
+              class="mb-5 leading-relaxed sm:mb-10"
+              set:html={project.data.description}
+            />
 
-        <aside class="">
-          <div class="space-y-4 rounded-xs border-b px-4 py-6">
-            <p class="text-sm tracking-wider uppercase">Technologies</p>
-            <div class="flex flex-wrap gap-2">
-              {project.data.technologies.map((t: string) => <Badge>{t}</Badge>)}
-            </div>
-          </div>
-          {
-            project.data.links && (
-              <div class="space-y-4 rounded-xs border-b px-4 py-6">
-                <p class="text-sm tracking-wider uppercase">Links</p>
-                <div class="flex flex-col gap-1.5">
-                  {project.data.links.map(
-                    (link: { label: string; url: string }) => {
-                      const target = link.url.startsWith("https")
-                        ? "_blank"
-                        : "_self";
-
-                      return (
-                        <a
-                          href={link.url}
-                          target={target}
-                          class="flex items-center gap-0.75 transition hover:underline"
-                        >
-                          <ArrowRight className="size-4" />
-                          {link.label}
-                        </a>
-                      );
-                    },
-                  )}
+            {
+              hasContent && (
+                <div class="prose prose-neutral prose-h3:text-xl prose-h3:font-semibold prose-h2:text-2xl prose-h2:font-semibold prose-h3:text-clay max-w-none space-y-6 border-t pt-8">
+                  <Content />
                 </div>
+              )
+            }
+          </div>
+
+          <aside>
+            <div class="space-y-4 rounded-xs border-b py-6 sm:px-4">
+              <p class="text-sm tracking-wider uppercase">Technologies</p>
+              <div class="flex flex-wrap gap-2">
+                {
+                  project.data.technologies.map((t: string) => (
+                    <Badge>{t}</Badge>
+                  ))
+                }
               </div>
-            )
-          }
-        </aside>
-      </section>
+            </div>
+            {
+              project.data.links && (
+                <div class="space-y-4 rounded-xs border-b py-6 sm:px-4">
+                  <p class="text-sm tracking-wider uppercase">Links</p>
+                  <div class="flex flex-col gap-1.5">
+                    {project.data.links.map(
+                      (link: { label: string; url: string }) => {
+                        const target = link.url.startsWith("https")
+                          ? "_blank"
+                          : "_self";
+
+                        return (
+                          <a
+                            href={link.url}
+                            target={target}
+                            class="flex items-center gap-0.75 transition hover:underline"
+                          >
+                            <ArrowRight className="size-4" />
+                            {link.label}
+                          </a>
+                        );
+                      },
+                    )}
+                  </div>
+                </div>
+              )
+            }
+          </aside>
+        </section>
+      </div>
 
       {
         gallery && gallery.length > 0 && (

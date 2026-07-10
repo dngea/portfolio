@@ -49,7 +49,7 @@ const { pathname } = Astro.url;
         projects.map((project) => {
           return (
             <a
-              class="block"
+              class="block no-underline!"
               href={`${pathname}/${project.id}`}
               data-category={project.data.collection}
             >
