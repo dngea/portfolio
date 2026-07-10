@@ -15877,7 +15877,7 @@ window.imagesData = [
   {
     name: "ascensor",
     translation: "elevator",
-    path: "/images/sound-navigation/ascensor.jpg",
+    path: "/images/frontend/sound-navigation/ascensor.jpg",
     category: "interior",
     sound: "/audio/glasslow.wav",
     modulation: 2,
@@ -15888,7 +15888,7 @@ window.imagesData = [
   {
     name: "banco",
     translation: "bench",
-    path: "/images/sound-navigation/banco.jpg",
+    path: "/images/frontend/sound-navigation/banco.jpg",
     category: "exterior",
     sound: "/audio/woodlow.wav",
     modulation: 1,
@@ -15899,7 +15899,7 @@ window.imagesData = [
   {
     name: "bolardo",
     translation: "bollard",
-    path: "/images/sound-navigation/bolardo.jpg",
+    path: "/images/frontend/sound-navigation/bolardo.jpg",
     category: "exterior",
     sound: "/audio/metal.wav",
     modulation: 0,
@@ -15910,7 +15910,7 @@ window.imagesData = [
   {
     name: "columna",
     translation: "column",
-    path: "/images/sound-navigation/columna.jpg",
+    path: "/images/frontend/sound-navigation/columna.jpg",
     category: "exterior",
     sound: "/audio/delimiter1.wav",
     modulation: 0,
@@ -15921,7 +15921,7 @@ window.imagesData = [
   {
     name: "crosswalk1",
     translation: "crosswalk",
-    path: "/images/sound-navigation/crosswalk1.jpg",
+    path: "/images/frontend/sound-navigation/crosswalk1.jpg",
     category: "exterior",
     sound: "/audio/step_down.wav",
     modulation: 2,
@@ -15932,7 +15932,7 @@ window.imagesData = [
   {
     name: "escaleras",
     translation: "stairs",
-    path: "/images/sound-navigation/escaleras.jpg",
+    path: "/images/frontend/sound-navigation/escaleras.jpg",
     sound: "/audio/starisUp.wav",
     category: "interior",
     modulation: 2,
@@ -15943,12 +15943,12 @@ window.imagesData = [
   {
     name: "ext",
     translation: "exterior",
-    path: "/images/sound-navigation/ext.png",
+    path: "/images/frontend/sound-navigation/ext.png",
   },
   {
     name: "farola",
     translation: "street lamp",
-    path: "/images/sound-navigation/farola.jpg",
+    path: "/images/frontend/sound-navigation/farola.jpg",
     category: "exterior",
     sound: "/audio/metal.wav",
     modulation: 0,
@@ -15959,12 +15959,12 @@ window.imagesData = [
   {
     name: "int",
     translation: "interior",
-    path: "/images/sound-navigation/int.png",
+    path: "/images/frontend/sound-navigation/int.png",
   },
   {
     name: "mesa",
     translation: "table",
-    path: "/images/sound-navigation/mesa.jpg",
+    path: "/images/frontend/sound-navigation/mesa.jpg",
     category: "interior",
     sound: "/audio/woodlow.wav",
     modulation: 0,
@@ -15975,7 +15975,7 @@ window.imagesData = [
   {
     name: "muro",
     translation: "wall",
-    path: "/images/sound-navigation/muro.jpg",
+    path: "/images/frontend/sound-navigation/muro.jpg",
     category: "exterior",
     sound: "/audio/brick.wav",
     modulation: 0,
@@ -15986,7 +15986,7 @@ window.imagesData = [
   {
     name: "papelera",
     translation: "trash can",
-    path: "/images/sound-navigation/papelera.jpg",
+    path: "/images/frontend/sound-navigation/papelera.jpg",
     category: "exterior",
     sound: "/audio/metal.wav",
     modulation: 1,
@@ -15997,7 +15997,7 @@ window.imagesData = [
   {
     name: "puerta",
     translation: "door",
-    path: "/images/sound-navigation/puerta.jpg",
+    path: "/images/frontend/sound-navigation/puerta.jpg",
     category: "interior",
     sound: "/audio/wood.wav",
     modulation: 2,
@@ -16008,7 +16008,7 @@ window.imagesData = [
   {
     name: "semaforo",
     translation: "traffic light",
-    path: "/images/sound-navigation/semaforo.jpg",
+    path: "/images/frontend/sound-navigation/semaforo.jpg",
     category: "exterior",
     sound: "/audio/metal.wav",
     modulation: 2,
@@ -16019,7 +16019,7 @@ window.imagesData = [
   {
     name: "silla",
     translation: "chair",
-    path: "/images/sound-navigation/silla.jpg",
+    path: "/images/frontend/sound-navigation/silla.jpg",
     category: "interior",
     sound: "/audio/wood.wav",
     modulation: 1,
@@ -16030,7 +16030,7 @@ window.imagesData = [
   {
     name: "ventana",
     translation: "window",
-    path: "/images/sound-navigation/ventana.png",
+    path: "/images/frontend/sound-navigation/ventana.png",
     category: "interior",
     sound: "/audio/glass.wav",
     modulation: 1,
@@ -16041,7 +16041,7 @@ window.imagesData = [
   {
     name: "buzon",
     translation: "mailbox",
-    path: "/images/sound-navigation/buzon.jpg",
+    path: "/images/frontend/sound-navigation/buzon.jpg",
     category: "exterior",
     sound: "/audio/metallow.wav",
     modulation: 1,
@@ -16052,7 +16052,7 @@ window.imagesData = [
   {
     name: "valla",
     translation: "fence",
-    path: "/images/sound-navigation/valla.jpg",
+    path: "/images/frontend/sound-navigation/valla.jpg",
     category: "exterior",
     sound: "/audio/delimiter1.wav",
     modulation: 0,
