@@ -35,7 +35,7 @@ export default function Email({ email }: { email: string }) {
       className="group relative cursor-pointer"
       aria-describedby={tooltipId}
     >
-      <span>{email}</span>z{" "}
+      <span>{email}</span>
       <span
         id={tooltipId}
         role="tooltip"
