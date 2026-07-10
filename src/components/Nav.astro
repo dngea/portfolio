@@ -1,5 +1,4 @@
 ---
-import { isActionError } from "astro:actions";
 import clsx from "clsx";
 
 const menu = [
@@ -31,36 +30,113 @@ const menu = [
 ];
 
 const currentPath = Astro.url.pathname;
+console.log("currentPath >>", currentPath);
+
+function isActivePath(path: string) {
+  return currentPath === path || currentPath.startsWith(path + "/");
+}
 ---
 
 <header
-  class="bg-light/95 fixed top-4 left-1/2 z-20 max-w-[calc(100vw-1.5rem)] -translate-x-1/2 rounded-full px-2 py-2 shadow-xl sm:top-8 sm:px-4"
+  id="nav-header"
+  class="bg-light/95 fixed top-4 right-4 z-20 max-w-[calc(100vw-1.5rem)] rounded-full px-2 py-2 shadow-xl sm:top-8 sm:right-auto sm:left-1/2 sm:-translate-x-1/2 sm:px-4"
 >
-  <nav id="nav" class="overflow-x-auto">
-    <ul class="relative flex gap-1 sm:gap-2">
+  <nav id="nav">
+    <!-- mobile bar -->
+    <div class="flex items-center justify-between gap-4 py-1 sm:hidden">
+      <a
+        href="/"
+        class={clsx(
+          " px-3 text-sm font-semibold",
+          currentPath === "/" ? "text-clay" : "text-dark",
+        )}>Portfolio</a
+      >
+      <button
+        id="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        aria-label="Toggle menu"
+        class="text-dark flex w-8 shrink-0 cursor-pointer items-center justify-center"
+      >
+        <svg
+          id="icon-open"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+        >
+          <path d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+        <svg
+          id="icon-close"
+          class="hidden"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+        >
+          <path d="M18 6 6 18"></path>
+          <path d="m6 6 12 12"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- mobile menu: plain list, no hover animation, active item flagged in bg-clay -->
+    <ul id="mobile-menu" class="mobile-menu flex-col gap-1 sm:hidden">
       {
         menu.map((item) => {
-          const isActive =
-            currentPath === item.path ||
-            currentPath.startsWith(item.path + "/");
+          const isActive = isActivePath(item.path);
+
+          if (item.id === "portfolio") return;
 
           return (
-            <>
-              <li class={clsx("text-dark relative", isActive ? "active" : "")}>
-                <a
-                  href={item.path}
-                  class={`relative z-10 block px-2.5 py-1.5 text-sm font-medium whitespace-nowrap sm:px-4 sm:py-2 sm:text-base`}
-                >
-                  {item.label}
-                </a>
-                {isActive && (
-                  <span
-                    id="initial-active"
-                    class="bg-clay absolute top-1/2 right-0 left-0 h-8 -translate-y-1/2 rounded-full sm:h-10 sm:min-w-16"
-                  />
+            <li>
+              <a
+                href={item.path}
+                class={clsx(
+                  "block rounded-full px-3 py-2 text-sm font-medium whitespace-nowrap",
+                  isActive ? "bg-clay text-light" : "text-dark",
                 )}
-              </li>
-            </>
+              >
+                {item.label}
+              </a>
+            </li>
+          );
+        })
+      }
+    </ul>
+
+    <!-- desktop: pill hover animation stays here only -->
+    <ul
+      id="desktop-menu"
+      class="relative hidden gap-1 overflow-x-auto sm:flex sm:gap-2"
+    >
+      {
+        menu.map((item) => {
+          const isActive = isActivePath(item.path);
+
+          return (
+            <li class={clsx("text-dark relative", isActive ? "active" : "")}>
+              <a
+                href={item.path}
+                class="relative z-10 block px-2.5 py-1.5 text-sm font-medium whitespace-nowrap sm:px-4 sm:py-2 sm:text-base"
+              >
+                {item.label}
+              </a>
+              {isActive && (
+                <span
+                  id="initial-active"
+                  class="bg-clay absolute top-1/2 right-0 left-0 h-8 -translate-y-1/2 rounded-full sm:h-10 sm:min-w-16"
+                />
+              )}
+            </li>
           );
         })
       }
@@ -71,122 +147,185 @@ const currentPath = Astro.url.pathname;
       </span>
     </ul>
   </nav>
+
+  <style>
+    .hover-pill {
+      opacity: 0;
+      left: 0;
+      transform: translateX(var(--x, 0px));
+      width: var(--w, 4rem);
+      filter: contrast(var(--contrast, 100%));
+      height: 100%;
+      transition:
+        transform 300ms,
+        width 300ms;
+    }
+
+    #desktop-menu li {
+      color: var(--color-dark);
+      transition: color 150ms ease 100ms;
+
+      &.active {
+        color: var(--color-light);
+      }
+
+      &.pill-on {
+        color: var(--color-light);
+      }
+    }
+
+    #desktop-menu:hover > li.active:not(.pill-on) {
+      color: var(--color-dark);
+      transition: color 150ms ease 0ms;
+    }
+
+    .mobile-menu {
+      box-sizing: border-box;
+      overflow: hidden;
+      max-height: 0px;
+      transition:
+        max-height 300ms ease,
+        padding 200ms ease;
+
+      &.open {
+        display: flex;
+        max-height: 250px;
+        padding: 4px 0 6px;
+      }
+    }
+
+    #nav-header {
+      transition: border-radius 300ms ease 200ms;
+
+      &.open {
+        border-radius: 16px;
+        transition: border-radius 0ms ease 0ms;
+      }
+    }
+  </style>
+
+  <script>
+    let currentMatchCleanUp: (() => void) | null = null;
+
+    function initNavHover() {
+      const desktopMenu = document.getElementById("desktop-menu");
+      const hoverPill = desktopMenu?.querySelector(
+        ".hover-pill",
+      ) as HTMLElement;
+      const lis = desktopMenu?.querySelectorAll("li");
+      const activeLi = desktopMenu?.querySelector(".active");
+
+      function getNavMeasures() {
+        const activeLiRect = activeLi?.getBoundingClientRect();
+        const ulRect = desktopMenu?.getBoundingClientRect();
+
+        return { activeLiRect, ulRect };
+      }
+
+      if (hoverPill) hoverPill.style.transition = "none";
+
+      defaultPropertiesActive();
+
+      requestAnimationFrame(() => {
+        if (hoverPill) {
+          hoverPill.style.opacity = "1";
+          hoverPill.style.transition = "";
+        }
+      });
+
+      function moveTo(event: Event) {
+        const { ulRect } = getNavMeasures();
+
+        const li = event.currentTarget as HTMLLIElement;
+
+        if (!ulRect || !li || !hoverPill) return;
+
+        const liRect = li.getBoundingClientRect();
+
+        const x = liRect.left - ulRect.left;
+        const w = liRect.width;
+
+        hoverPill.style.setProperty("--x", `${x}px`);
+        hoverPill.style.setProperty("--w", `${w}px`);
+        hoverPill.style.setProperty("--contrast", `110%`);
+
+        lis?.forEach((li) => li.classList.remove("pill-on"));
+        li.classList.add("pill-on");
+      }
+
+      function defaultPropertiesActive() {
+        const { activeLiRect, ulRect } = getNavMeasures();
+
+        if (!activeLiRect || !ulRect || !hoverPill) return;
+
+        const x = activeLiRect.left - ulRect.left;
+        const w = activeLiRect.width;
+
+        hoverPill.style.setProperty("--x", `${x}px`);
+        hoverPill.style.setProperty("--w", `${w}px`);
+        hoverPill.style.setProperty("--opacity", "0");
+        hoverPill.style.setProperty("--contrast", "100%");
+
+        lis?.forEach((li) => li.classList.remove("pill-on"));
+
+        // remove initial span with active background
+        const span = activeLi?.querySelector("span");
+        if (span) {
+          span.style.display = "none";
+        }
+      }
+
+      lis?.forEach((li: HTMLLIElement) => {
+        li.addEventListener("mouseenter", moveTo);
+      });
+
+      desktopMenu?.addEventListener("mouseleave", defaultPropertiesActive);
+
+      const match = window.matchMedia("(min-width: 640px)");
+
+      match.addEventListener("change", defaultPropertiesActive);
+      currentMatchCleanUp = () =>
+        match.removeEventListener("change", defaultPropertiesActive);
+    }
+
+    function initMobileToggle() {
+      const header = document.getElementById("nav-header");
+      const menu = document.getElementById("mobile-menu");
+      const toggle = document.getElementById("menu-toggle");
+      const iconOpen = document.getElementById("icon-open");
+      const iconClose = document.getElementById("icon-close");
+
+      if (!header || !menu || !toggle || !iconOpen || !iconClose) return;
+
+      function close() {
+        menu?.classList.remove("open");
+        header?.classList.remove("open");
+        header?.classList.add("rounded-full");
+        toggle?.setAttribute("aria-expanded", "false");
+        iconOpen?.classList.remove("hidden");
+        iconClose?.classList.add("hidden");
+      }
+
+      function open() {
+        menu?.classList.add("open");
+        header?.classList.remove("rounded-full");
+        header?.classList.add("open");
+        toggle?.setAttribute("aria-expanded", "true");
+        iconOpen?.classList.add("hidden");
+        iconClose?.classList.remove("hidden");
+      }
+
+      toggle.addEventListener("click", () => {
+        const isOpen = menu.classList.contains("open");
+        isOpen ? close() : open();
+      });
+
+      document.addEventListener("click", (event) => {
+        if (!header.contains(event.target as Node)) close();
+      });
+    }
+
+    document.addEventListener("astro:page-load", initMobileToggle);
+    document.addEventListener("astro:page-load", initNavHover);
+  </script>
 </header>
-
-<style>
-  .hover-pill {
-    opacity: 0;
-    left: 0;
-    transform: translateX(var(--x, 0px));
-    width: var(--w, 4rem);
-    filter: contrast(var(--contrast, 100%));
-    height: 100%;
-    transition:
-      transform 300ms,
-      width 300ms;
-  }
-
-  li {
-    color: var(--color-dark);
-    transition: color 150ms ease 100ms;
-
-    &.active {
-      color: var(--color-light);
-    }
-
-    &.pill-on {
-      color: var(--color-light);
-    }
-  }
-
-  ul:hover > li.active:not(.pill-on) {
-    color: var(--color-dark);
-    transition: color 150ms ease 0ms;
-  }
-</style>
-
-<script>
-  let currentMatchCleanUp: (() => void) | null = null;
-
-  function initNavHover() {
-    const nav = document.getElementById("nav");
-    const ul = nav?.querySelector("ul");
-    const hoverPill = nav?.querySelector(".hover-pill") as HTMLElement;
-    const lis = nav?.querySelectorAll("li");
-    const activeLi = nav?.querySelector(".active");
-
-    function getNavMeasures() {
-      const activeLiRect = activeLi?.getBoundingClientRect();
-      const ulRect = ul?.getBoundingClientRect();
-
-      return { activeLiRect, ulRect };
-    }
-
-    if (hoverPill) hoverPill.style.transition = "none";
-
-    defaultPropertiesActive();
-
-    requestAnimationFrame(() => {
-      if (hoverPill) {
-        hoverPill.style.opacity = "1";
-        hoverPill.style.transition = "";
-      }
-    });
-
-    function moveTo(event: Event) {
-      const { ulRect } = getNavMeasures();
-
-      const li = event.currentTarget as HTMLLIElement;
-
-      if (!ulRect || !li || !hoverPill) return;
-
-      const liRect = li.getBoundingClientRect();
-
-      const x = liRect.left - ulRect.left;
-      const w = liRect.width;
-
-      hoverPill.style.setProperty("--x", `${x}px`);
-      hoverPill.style.setProperty("--w", `${w}px`);
-      hoverPill.style.setProperty("--contrast", `110%`);
-
-      lis?.forEach((li) => li.classList.remove("pill-on"));
-      li.classList.add("pill-on");
-    }
-
-    function defaultPropertiesActive() {
-      const { activeLiRect, ulRect } = getNavMeasures();
-
-      if (!activeLiRect || !ulRect || !hoverPill) return;
-
-      const x = activeLiRect.left - ulRect.left;
-      const w = activeLiRect.width;
-
-      hoverPill.style.setProperty("--x", `${x}px`);
-      hoverPill.style.setProperty("--w", `${w}px`);
-      hoverPill.style.setProperty("--opacity", "0");
-      hoverPill.style.setProperty("--contrast", "100%");
-
-      lis?.forEach((li) => li.classList.remove("pill-on"));
-
-      // remove initial span with active background
-      const span = activeLi?.querySelector("span");
-      if (span) {
-        span.style.display = "none";
-      }
-    }
-
-    lis?.forEach((li: HTMLLIElement) => {
-      li.addEventListener("mouseenter", moveTo);
-    });
-
-    nav?.addEventListener("mouseleave", defaultPropertiesActive);
-
-    const match = window.matchMedia("(min-width: 640px)");
-
-    match.addEventListener("change", defaultPropertiesActive);
-    currentMatchCleanUp = () =>
-      match.removeEventListener("change", defaultPropertiesActive);
-  }
-
-  document.addEventListener("astro:page-load", initNavHover);
-</script>
