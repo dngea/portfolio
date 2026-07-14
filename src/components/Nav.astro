@@ -159,7 +159,8 @@ function isActivePath(path: string) {
     }
   }
 
-  #desktop-menu:hover > li.active:not(.pill-on) {
+  #desktop-menu:hover > li.active:not(.pill-on),
+  #desktop-menu.is-navigating > li.active:not(.pill-on) {
     color: var(--color-dark);
     transition: color 150ms ease 0ms;
   }
@@ -241,6 +242,7 @@ function isActivePath(path: string) {
 
     function stickTo() {
       isNavigating = true;
+      desktopMenu?.classList.add("is-navigating");
     }
 
     function defaultPropertiesActive() {

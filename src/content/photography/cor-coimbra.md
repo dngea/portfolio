@@ -1,4 +1,5 @@
 ---
+id: coimbra
 title: A cor de Coimbra
 date: "2021-01-01"
 img: /images/photography/coimbra/prev.webp

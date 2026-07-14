@@ -4,8 +4,8 @@ import Layout from "../layouts/Layout.astro";
 import MainLayout from "@/layouts/MainLayout.astro";
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
-import Image from "astro/components/Image.astro";
 import { formatMonthYear } from "@/utils/helper";
+import clsx from "clsx";
 
 const photographyProjects: CollectionEntry<"photography">[] =
   await getCollection("photography");
@@ -28,14 +28,20 @@ photographyProjects.sort((a, b) => {
       {
         photographyProjects.map((project) => (
           <a href={`/photography/${project.id}`} class="no-underline!">
-            <article class="group relative aspect-3/4 overflow-hidden rounded-sm transition duration-200 hover:shadow-sm hover:contrast-105">
-              <Image
-                src={project.data.img}
-                class="absolute h-full w-full object-cover transition duration-250 group-hover:scale-104"
-                width={500}
-                height={500}
-                alt=""
-              />
+            <article class="group relative transition duration-200 hover:shadow-sm hover:contrast-105">
+              <div
+                class={clsx("relative aspect-3/4 overflow-hidden rounded-sm")}
+                style="container-type:inline-size;"
+              >
+                <img
+                  src={project.data.img}
+                  class={clsx(
+                    "absolute h-full w-full object-cover transition duration-250 group-hover:scale-105",
+                  )}
+                  alt=""
+                  loading="lazy"
+                />
+              </div>
 
               <div class="absolute bottom-4 left-4 flex flex-col gap-1">
                 <Badge

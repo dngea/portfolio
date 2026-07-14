@@ -46,9 +46,13 @@ const publications = defineCollection({
 const photography = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/photography" }),
   schema: z.object({
+    id: z.string(),
     title: z.string(),
+    roll: z.string().optional(),
+    description: z.string().optional(),
     date: z.coerce.date(),
     img: z.string(),
+    photoCount: z.number().optional(),
   }),
 });
 

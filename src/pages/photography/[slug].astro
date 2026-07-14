@@ -1,0 +1,140 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getEntry } from "astro:content";
+import { getCollection } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import BackLink from "@/components/atoms/BackLink.astro";
+import { formatMonthYear } from "@/utils/helper";
+import fs from "node:fs";
+import path from "node:path";
+import clsx from "clsx";
+import "photoswipe/style.css";
+
+export const prerender = true;
+
+export const getStaticPaths = (async () => {
+  const rolls = await getCollection("photography");
+  return rolls.map((roll) => ({ params: { slug: roll.id } }));
+}) satisfies GetStaticPaths;
+
+const { slug } = Astro.params;
+const roll = await getEntry("photography", slug);
+
+if (!roll) return Astro.redirect("/404");
+
+const rollDir = path.join(
+  process.cwd(),
+  "public",
+  "images",
+  "photography",
+  roll.data.id,
+);
+
+const images = fs
+  .readdirSync(rollDir)
+  .filter((file) => /\.(webp|jpg|jpeg|png)$/i.test(file))
+  .sort()
+  .map((file) => ({
+    src: `/images/photography/${roll.id}/${file}`,
+    isHorizontal: file.includes("-horizontal"),
+  }));
+---
+
+<Layout title={roll.data.title}>
+  <div class="bg-dark mt-12 min-h-screen px-4 py-16 sm:mt-24 sm:px-8">
+    <div class="mx-auto max-w-7xl space-y-10">
+      <BackLink label="Back to photography" href="/photography" dark />
+
+      <div class="space-y-2">
+        <div class="space-y-1">
+          <h1 class="text-light text-4xl font-medium">
+            {roll.data.title}
+            {roll.data.roll && ` · ${roll.data.roll}`}
+          </h1>
+          {
+            roll.data.description && (
+              <p class="text-light/80">{roll.data.description}</p>
+            )
+          }
+        </div>
+        <time class="text-light/50 text-sm tracking-wide uppercase">
+          {formatMonthYear(roll.data.date, true)}
+        </time>
+      </div>
+
+      <div class="columns-1 gap-4 sm:columns-2 lg:columns-3">
+        {
+          images.map(({ src, isHorizontal }) => (
+            <a
+              href={src}
+              data-pswp-width={isHorizontal ? 1879 : 1245}
+              data-pswp-height={isHorizontal ? 1245 : 1879}
+              class={clsx("roll-photo mb-4 block break-inside-avoid opacity-0")}
+            >
+              <img
+                src={src}
+                alt=""
+                class={clsx("w-full rounded-lg object-cover")}
+                loading="lazy"
+              />
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .roll-photo {
+    transform: translateY(20px);
+    transition:
+      opacity 600ms ease,
+      transform 600ms ease;
+
+    &.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<script>
+  function initFadeIn() {
+    const photos = document.querySelectorAll(".roll-photo");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry, i) => {
+          if (entry.isIntersecting) {
+            const el = entry.target as HTMLElement;
+            el.style.transitionDelay = `${(i % 3) * 80}ms`;
+            el.classList.add("in-view");
+            observer.unobserve(el);
+          }
+        });
+      },
+      { threshold: 0.1 },
+    );
+
+    photos.forEach((photo) => observer.observe(photo));
+  }
+
+  document.addEventListener("astro:page-load", initFadeIn);
+</script>
+
+<script>
+  import PhotoSwipeLightbox from "photoswipe/lightbox";
+
+  function initLightbox() {
+    const lightbox = new PhotoSwipeLightbox({
+      gallery: ".columns-1",
+      children: "a",
+      pswpModule: () => import("photoswipe"),
+    });
+
+    lightbox.init();
+  }
+
+  document.addEventListener("astro:page-load", initLightbox);
+</script>
