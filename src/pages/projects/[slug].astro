@@ -5,7 +5,7 @@ import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
 import { formatMonthYear, isYouTubeLink, getYouTubeId } from "@/utils/helper";
 import { Badge } from "@/components/ui/badge";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, TriangleAlert } from "lucide-react";
 import { render } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import MainLayout from "@/layouts/MainLayout.astro";
@@ -142,6 +142,14 @@ const gallery = project.data.gallery ?? null;
             <ScrollHint className="top-25" />
             {project.data.videoCaption && (
               <div class="space-y-1.5">
+                {project.data.warning && (
+                  <div class="bg-clay text-light mb-12 flex items-center gap-3 rounded-xs px-3 py-1.5 text-base">
+                    <TriangleAlert className="size-5" />
+                    <p>
+                      <strong>Warning</strong> Flashing Lights
+                    </p>
+                  </div>
+                )}
                 <h3 class="text-light text-2xl font-semibold">
                   {project.data.videoCaption[0]}
                 </h3>

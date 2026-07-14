@@ -54,7 +54,7 @@ const STUDIES = [
 
     <section class="grid grid-cols-1 items-center gap-8 sm:grid-cols-2">
       <figure
-        class="md:max-w-[350px] max-w-48 justify-self-center overflow-hidden rounded-sm shadow-xl"
+        class="max-w-48 justify-self-center overflow-hidden rounded-sm shadow-xl md:max-w-[350px]"
       >
         <Image
           src={"/images/about/profile.webp"}
@@ -142,11 +142,11 @@ const STUDIES = [
 
     <section class="grid w-full gap-8 md:grid-cols-2" id="contact">
       <div
-        class="mx-auto flex w-full flex-col justify-center gap-8 p-8 lg:w-[80%]"
+        class="mx-auto flex w-full flex-col justify-center gap-8 sm:p-4 md:p-8 lg:w-[80%]"
       >
         <h2 class="text-3xl font-bold">Get in touch</h2>
 
-        <div class="divide-y divide-gray-300">
+        <div class="divide-y divide-gray-300 max-sm:px-8">
           <div class="flex items-center gap-3 py-4">
             <div class="flex w-8 justify-center">
               <Inbox className="size-7" />

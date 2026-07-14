@@ -15,6 +15,8 @@ videos:
 videoCaption:
   - "Pure data & TouchDesigner"
   - "Generative, audio-reactive visuals built in TouchDesigner, responding to four Pure Data soundscapes with transitions driven by OSC."
+
+warning: true
 ---
 
 ## Overview

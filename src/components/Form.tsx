@@ -1,32 +1,49 @@
 import { email } from "astro:schema";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Button } from "./ui/button";
 
+type Status = "idle" | "loading" | "success" | "error";
+
 export default function Form() {
-  const [emailSuccess, setEmailSuccess] = useState<boolean>(false);
+  const [status, setStatus] = useState<Status>("idle");
+  const formRef = useRef<HTMLFormElement>(null);
+
+  useEffect(() => {
+    if (status !== "success") return;
+
+    const timer = setTimeout(() => setStatus("idle"), 5000);
+    return () => clearTimeout(timer);
+  }, [status]);
 
   const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const payload = new FormData(e.currentTarget);
 
-    const response = await fetch("/api/contact", {
-      method: "POST",
-      body: payload,
-    });
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        body: payload,
+      });
 
-    const data = await response.json();
+      const data = await response.json();
 
-    if (data.success) {
-      setEmailSuccess(true);
+      if (data.success) {
+        setStatus("success");
+        formRef.current?.reset();
+      } else {
+        setStatus("error");
+      }
+    } catch (error) {
+      setStatus("error");
     }
   };
 
   return (
-    <div className="bg-light @container overflow-hidden rounded-2xl p-8 shadow-2xl">
-      <form onSubmit={handleSubmit} className="space-y-8">
+    <div className="bg-light @container space-y-6 overflow-hidden rounded-2xl p-6 shadow-2xl sm:p-8">
+      <form ref={formRef} onSubmit={handleSubmit} className="space-y-8">
         <fieldset className="space-y-8">
-          <div className="flex flex-col gap-4 @xs:flex-row">
+          <div className="flex flex-col gap-4 @sm:flex-row">
             <div className="flex w-full flex-col">
               <label
                 className="text-dark text-sm font-semibold capitalize"
@@ -71,6 +88,7 @@ export default function Form() {
             />
           </div>
         </fieldset>
+
         <fieldset className="flex flex-col">
           <label
             className="text-dark text-sm font-semibold capitalize"
@@ -85,6 +103,7 @@ export default function Form() {
             className="border-clay mt-1.5 h-8 border-b-2 px-1"
           />
         </fieldset>
+
         <fieldset className="flex flex-col">
           <label
             className="text-dark text-sm font-semibold capitalize"
@@ -105,7 +124,21 @@ export default function Form() {
         </Button>
       </form>
 
-      {emailSuccess && <div>Email sent! Thanks for contacting.</div>}
+      {status === "success" && (
+        <div
+          className="w-fit rounded-xs bg-green-100 px-3 py-1.5 text-green-900"
+          aria-live="polite"
+        >
+          Email sent! Thanks for contacting.
+        </div>
+      )}
+
+      {status === "error" && (
+        <div className="w-fit rounded-xs bg-red-50 px-3 py-1.5 text-red-900">
+          Something went wrong. Please try again, or reach out directly at
+          dngeap@gmail.com.
+        </div>
+      )}
     </div>
   );
 }

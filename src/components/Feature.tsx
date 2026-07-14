@@ -79,7 +79,7 @@ const Feature = ({
                       setActiveImage(tab.image);
                       setActiveTabId(tab.id);
                     }}
-                    className="group cursor-pointer py-5 !no-underline transition"
+                    className="group cursor-pointer py-5 no-underline! transition"
                   >
                     <h4
                       className={`text-xl ${tab.id === activeTabId ? "text-dark" : "text-muted-foreground group-hover:text-dark transition"}`}

@@ -12,22 +12,20 @@ const description =
 ---
 
 <section
-  class="relative flex min-h-[92vh] items-center justify-center overflow-hidden p-6 sm:p-8"
+  class="relative flex h-[90vh] min-h-186 items-center justify-center overflow-hidden p-6 sm:p-8"
 >
-
-
   <div
     class="relative z-10 flex w-full max-w-5xl flex-col-reverse items-center gap-8 md:flex-row md:gap-12"
   >
     <!-- Text -->
     <div
-      class="text-dark flex flex-1 flex-col gap-6 pb-2 text-center md:translate-y-8 md:gap-8 md:text-left"
+      class="text-dark flex flex-1 flex-col gap-4 pb-2 text-center sm:gap-6 md:translate-y-8 md:gap-8 md:text-left"
     >
-      <div>
+      <div class="space-y-1 sm:space-y-2.5">
         <h1 class="text-4xl leading-tight font-semibold sm:text-5xl">
           {name}
         </h1>
-        <p class="mt-2.5 text-lg font-normal opacity-70">{rol}</p>
+        <p class="text-lg font-normal opacity-70">{rol}</p>
       </div>
 
       <p
@@ -64,5 +62,5 @@ const description =
     </div>
   </div>
 
-  <ScrollHint className="bottom-8" />
+  <ScrollHint className="bottom-4 sm:bottom-8" />
 </section>

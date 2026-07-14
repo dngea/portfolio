@@ -4,9 +4,9 @@ import clsx from "clsx";
 const { className } = Astro.props;
 ---
 
-<section
+<div
   class={clsx(
-    "bg-light main-layout relative text-dark min-h-screen p-4",
+    "bg-light main-layout relative  text-dark min-h-screen p-4",
     className,
   )}
 >
@@ -19,8 +19,8 @@ const { className } = Astro.props;
   <slot name="background" />
 
   <div
-    class="relative z-1 mx-auto mt-12 mb-16 max-w-5xl space-y-12 sm:mt-32 sm:mb-30 sm:space-y-24 md:mt-60"
+    class="relative z-1 mx-auto mt-22 mb-16 max-w-5xl space-y-12 sm:mt-32 sm:mb-30 sm:space-y-18 md:mt-40 lg:mt-50"
   >
     <slot />
   </div>
-</section>
+</div>

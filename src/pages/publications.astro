@@ -15,14 +15,22 @@ publications.sort((a, b) => {
 
 <Layout title="Publications">
   <MainLayout>
-    <div class="space-y-8">
+    <div class="space-y-4 sm:px-4">
       <h1 class="text-4xl font-bold uppercase">Publications</h1>
     </div>
 
     <div class="space-y-12">
       {
         publications.map((publication) => (
-          <PublicationCard data={publication} />
+          <a
+            href={`/publications/${publication.id}`}
+            class="block no-underline!"
+          >
+            <PublicationCard
+              data={publication}
+              className="sm:hover:bg-dark/3 sm:p-4"
+            />
+          </a>
         ))
       }
     </div>
