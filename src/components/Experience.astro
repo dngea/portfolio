@@ -1,19 +1,5 @@
 ---
-// TODO: add resaltado con underline quizas
-const abss = {
-  roleSummary:
-    "Focus on building and maintaining web applications using Next.js in collaboration with backend and design teams.",
-
-  highlights: [
-    "Developed a drag-and-drop media library, integrated into a custom CMS for non-technical client use, integrated using intertia/react.",
-    "Built a reusable React component library, packaged as a private npm module and consumed across multiple client projects.",
-    "Designed headless frontend architecture on top of a Laravel backend, keeping the two decoupled.",
-    "Implemented multi-language support (next-intl) with URL-driven filters and pagination that stay in sync across locales.",
-    "Worked with authentication flows and REST API integrations for production apps.",
-    "Added testing using Vitest for core utility, avoiding breaking features on refactors.",
-    "Designed components and flows with an accessibility-first approach (semantics, contrasts, navigation, ARIA tags).",
-  ],
-};
+import { ABSS } from "@/data";
 ---
 
 <section class="mx-auto max-w-5xl space-y-8">
@@ -45,14 +31,14 @@ const abss = {
 
             <div class="space-y-2">
               <p class="text-light">
-                {abss.roleSummary}
+                {ABSS.roleSummary}
               </p>
 
               <ul
                 class="marker:text-light/80 text-light/95 list-disc space-y-1.5 pl-5"
               >
                 {
-                  abss.highlights.map((line) => (
+                  ABSS.highlights.map((line) => (
                     <li class="text-[15px] leading-relaxed">{line}</li>
                   ))
                 }
@@ -64,47 +50,3 @@ const abss = {
     </div>
   </div>
 </section>
-
-<style>
-  .vert-hr {
-    position: relative;
-
-    &:after {
-      content: "";
-      position: absolute;
-      z-index: 0;
-      top: 1px;
-      bottom: 6px;
-      left: -12.5px;
-      border-left: 1px solid var(--color-light);
-      transform: translate(-50%);
-    }
-  }
-  .title-dot {
-    margin-left: -27px;
-    font-size: 12px;
-    z-index: 99;
-    color: var(--color-light);
-    vertical-align: middle;
-
-    &:last-child {
-      font-size: 0.4em;
-    }
-  }
-  .title-dot-sm {
-    left: 4px;
-    margin-left: -27px;
-    font-size: 10px;
-    z-index: 99;
-    color: var(--color-light);
-    vertical-align: middle;
-
-    &:last-child {
-      font-size: 0.5em;
-    }
-  }
-  .title {
-    margin-left: -22px;
-    color: var(--color-light);
-  }
-</style>
