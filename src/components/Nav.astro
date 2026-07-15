@@ -48,7 +48,7 @@ function isActivePath(path: string) {
       <a
         href="/"
         class={clsx(
-          " px-3 text-base font-semibold flex items-center gap-1.5 active:text-clay transition",
+          " px-3 text-base font-semibold flex items-center gap-1.5 active:text-clay transition no-underline!",
           currentPath === "/" ? "text-clay" : "text-dark",
         )}
       >
@@ -70,7 +70,7 @@ function isActivePath(path: string) {
       </button>
     </div>
 
-    <!-- mobile menu: plain list, no hover animation, active item flagged in bg-clay -->
+    <!-- mobile menu -->
     <ul id="mobile-menu" class="mobile-menu flex-col gap-2 sm:hidden">
       {
         menu.map((item) => {
@@ -97,7 +97,7 @@ function isActivePath(path: string) {
       }
     </ul>
 
-    <!-- desktop: pill hover animation stays here only -->
+    <!-- desktop menu-->
     <ul
       id="desktop-menu"
       class="relative hidden gap-1 overflow-x-auto sm:flex sm:gap-2"

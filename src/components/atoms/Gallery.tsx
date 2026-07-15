@@ -8,7 +8,13 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
-export default function Gallery({ images }: { images: string[] }) {
+export default function Gallery({
+  images,
+  hasMobile,
+}: {
+  images: string[];
+  hasMobile: boolean;
+}) {
   const config = {
     3: "basis-1/2 lg:basis-1/3",
   };
@@ -24,14 +30,16 @@ export default function Gallery({ images }: { images: string[] }) {
         {images.map((image, index) => {
           const mobileImageArray = image.split(".");
           mobileImageArray.splice(1, 0, "-800");
-          const mobileImage = `${mobileImageArray[0]}${mobileImageArray[1]}.${mobileImageArray[2]}`;
+          const mobileImage = hasMobile
+            ? `${mobileImageArray[0]}${mobileImageArray[1]}.${mobileImageArray[2]}`
+            : image;
 
           return (
             <CarouselItem
               key={index}
               className="bg-light flex items-center justify-center"
             >
-              <figure className="h-full w-full px-1 pt-2 pb-8">
+              <figure className="flex h-full w-full items-center justify-between px-1 pt-2 pb-8">
                 <img
                   src={mobileImage}
                   alt="todo"

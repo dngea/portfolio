@@ -13,6 +13,8 @@ import BackLink from "@/components/atoms/BackLink.astro";
 import ScrollHint from "@/components/atoms/ScrollHint.astro";
 import Gallery from "@/components/atoms/Gallery";
 import { getImage } from "astro:assets";
+import fs from "node:fs";
+import path from "node:path";
 
 export const prerender = true;
 
@@ -43,6 +45,18 @@ const youTubeId =
     : null;
 
 const gallery = project.data.gallery ?? null;
+
+const hasMobile = (() => {
+  const imageTest = gallery ? gallery[0] : null;
+
+  const isValidImage = imageTest?.trim() != "";
+
+  if (!isValidImage) return false;
+
+  const mobileImagePath = imageTest!.replace(/\.(\w+)$/, "-800.$1");
+  const fullPath = path.join(process.cwd(), "public", mobileImagePath);
+  return fs.existsSync(fullPath);
+})();
 ---
 
 <Layout>
@@ -131,7 +145,7 @@ const gallery = project.data.gallery ?? null;
             <h2 class="text-dark/90 text-2xl font-medium sm:text-3xl">
               Gallery
             </h2>
-            <Gallery images={gallery} client:load />
+            <Gallery images={gallery} hasMobile={hasMobile} client:load />
           </section>
         )
       }
