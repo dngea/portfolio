@@ -22,3 +22,5 @@ analysing acoustic differences of selected sound cues using non-parametric stati
 experiment, and conducting in-person navigation experiments in virtual reality environments. Results highlight significant acoustic differences among materials, a global accuracy of 0.69 ± 0.13
 in the online perceptual experiment, and a mean accuracy of 0.73 ± 0.16 in virtual navigation experiments. These findings suggest potential improvements in sound associations and underscore
 the influence of demographic factors on sound perception.
+
+[→ Access the Dissertation | Repositório Aberto da Universidade do Porto (FEUP)](https://repositorio-aberto.up.pt/handle/10216/161378)

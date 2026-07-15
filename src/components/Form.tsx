@@ -119,6 +119,16 @@ export default function Form() {
           ></textarea>
         </fieldset>
 
+        {/* Honeypot: hidden from real users, bots tend to fill every field */}
+        <input
+          type="text"
+          name="company_website"
+          tabIndex={-1}
+          autoComplete="off"
+          className="absolute left-[-9999px] opacity-0"
+          aria-hidden="true"
+        />
+
         <Button type="submit" size={"lg"} className="ml-auto">
           Send
         </Button>

@@ -6,7 +6,7 @@ date: "2023-10-01"
 technologies:
   - Figma
   - Arduino
-img: /images/ux/purpulse/prev.png
+img: /images/ux/purpulse/prev.webp
 collection: ux
 links:
   - label: Figma Prototype

@@ -8,13 +8,19 @@ technologies:
   - Tailwind CSS
   - Alpine.js
   - Pure Data
-img: /images/frontend/sound-navigation/prev.png
+img: /images/frontend/sound-navigation/prev.webp
 collection: frontend
 links:
   - label: See project
     url: /projects/sound-navigation-demo.html
   - label: See related publication
     url: /publications/semantic-and-spatial-sound-object-recognition
+
+gallery:
+  - /images/frontend/sound-navigation/image2.webp
+  - /images/frontend/sound-navigation/image4.webp
+  - /images/frontend/sound-navigation/image6.webp
+  - /images/frontend/sound-navigation/image7.webp
 ---
 
 ## Overview

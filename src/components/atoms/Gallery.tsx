@@ -27,17 +27,20 @@ export default function Gallery({ images }: { images: string[] }) {
           const mobileImage = `${mobileImageArray[0]}${mobileImageArray[1]}.${mobileImageArray[2]}`;
 
           return (
-            <CarouselItem key={index} className="">
-              <figure className="px-1 pt-2 pb-8">
+            <CarouselItem
+              key={index}
+              className="bg-light flex items-center justify-center"
+            >
+              <figure className="h-full w-full px-1 pt-2 pb-8">
                 <img
                   src={mobileImage}
                   alt="todo"
-                  className="rounded-xl sm:hidden"
+                  className="rounded-xl object-contain sm:hidden"
                 />
                 <img
                   src={image}
                   alt="todo"
-                  className="hidden rounded-xl sm:block"
+                  className="hidden h-full w-full rounded-xl object-contain sm:block"
                 />
               </figure>
             </CarouselItem>
