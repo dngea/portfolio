@@ -49,11 +49,12 @@ const gallery = project.data.gallery ?? null;
 const hasMobile = (() => {
   const imageTest = gallery ? gallery[0] : null;
 
-  const isValidImage = imageTest?.trim() != "";
+  const isValidImage = Boolean(imageTest?.trim());
 
   if (!isValidImage) return false;
 
   const mobileImagePath = imageTest!.replace(/\.(\w+)$/, "-800.$1");
+
   const fullPath = path.join(process.cwd(), "public", mobileImagePath);
   return fs.existsSync(fullPath);
 })();
