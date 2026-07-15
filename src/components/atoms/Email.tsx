@@ -1,6 +1,8 @@
 import React, { useState, useId } from "react";
 import { Clipboard, ClipboardCheck, type LucideIcon } from "lucide-react";
 
+// TODO on mobile, on click copy email
+
 export default function Email({ email }: { email: string }) {
   const [isCopied, setIsCopied] = useState<boolean>(false);
   const [icon, setIcon] = useState<LucideIcon>(Clipboard);

@@ -13,8 +13,11 @@ import "photoswipe/style.css";
 export const prerender = true;
 
 export const getStaticPaths = (async () => {
+  const EXCLUDED_PROJECTS = ["quien-habla", "cor-coimbra"];
   const rolls = await getCollection("photography");
-  return rolls.map((roll) => ({ params: { slug: roll.id } }));
+  return rolls
+    .filter((roll) => !EXCLUDED_PROJECTS.includes(roll.id))
+    .map((roll) => ({ params: { slug: roll.id } }));
 }) satisfies GetStaticPaths;
 
 const { slug } = Astro.params;
@@ -36,6 +39,7 @@ const images = fs
   .sort()
   .map((file) => ({
     src: `/images/photography/${roll.id}/${file}`,
+    largeSrc: `/images/photography/${roll.id}/large/${file}`,
     isHorizontal: file.includes("-horizontal"),
   }));
 ---
@@ -64,9 +68,10 @@ const images = fs
 
       <div class="columns-1 gap-4 sm:columns-2 lg:columns-3">
         {
-          images.map(({ src, isHorizontal }) => (
+          images.map(({ src, largeSrc, isHorizontal }) => (
             <a
-              href={src}
+              href={largeSrc}
+              data-pswp-srcset={`${src} 650w, ${largeSrc} ${isHorizontal ? "1879w" : "1245w"}`}
               data-pswp-width={isHorizontal ? 1879 : 1245}
               data-pswp-height={isHorizontal ? 1245 : 1879}
               class={clsx("roll-photo mb-4 block break-inside-avoid opacity-0")}
@@ -75,6 +80,9 @@ const images = fs
                 src={src}
                 alt=""
                 class={clsx("w-full rounded-lg object-cover")}
+                style={{
+                  aspectRatio: isHorizontal ? "1879/1245" : "1245/1879",
+                }}
                 loading="lazy"
               />
             </a>
@@ -100,7 +108,25 @@ const images = fs
 </style>
 
 <script>
-  function initFadeIn() {
+  // Astro freezes a static screenshot of the incoming page for the duration of the
+  // view transition; classing elements in-view before it ends animates a frame no one
+  // sees, so the real reveal looks instant. Wait until the transition attribute clears.
+  function whenTransitionSettled() {
+    return new Promise<void>((resolve) => {
+      const check = () => {
+        if (!document.documentElement.hasAttribute("data-astro-transition")) {
+          resolve();
+        } else {
+          requestAnimationFrame(check);
+        }
+      };
+      check();
+    });
+  }
+
+  async function initFadeIn() {
+    await whenTransitionSettled();
+
     const photos = document.querySelectorAll(".roll-photo");
 
     const observer = new IntersectionObserver(
