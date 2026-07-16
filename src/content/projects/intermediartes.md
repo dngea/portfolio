@@ -7,6 +7,12 @@ technologies:
   - Arduino
 img: /images/multimedia/intermediartes/prev.webp
 collection: creative-coding
+
+gallery:
+  - /images/multimedia/intermediartes/IMG_20230110_171906.webp
+  - /images/multimedia/intermediartes/IMG_20230110_171920.webp
+  - /images/multimedia/intermediartes/IMG_20230110_174617.webp
+  - /images/multimedia/intermediartes/prev.webp
 ---
 
 ## Overview

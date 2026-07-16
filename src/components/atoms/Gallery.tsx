@@ -37,18 +37,18 @@ export default function Gallery({
           return (
             <CarouselItem
               key={index}
-              className="bg-light flex items-center justify-center"
+              className="bg-light flex basis-[90%] items-center justify-center sm:basis-full"
             >
-              <figure className="flex h-full w-full items-center justify-between px-1 pt-2 pb-8">
+              <figure className="flex aspect-4/3 h-full w-full items-center justify-between overflow-hidden rounded-xl sm:aspect-video">
                 <img
                   src={mobileImage}
                   alt="todo"
-                  className="rounded-xl object-contain sm:hidden"
+                  className="rounded-xl object-cover sm:hidden"
                 />
                 <img
                   src={image}
                   alt="todo"
-                  className="hidden h-full w-full rounded-xl object-contain sm:block"
+                  className="hidden h-full w-full rounded-xl object-cover sm:block"
                 />
               </figure>
             </CarouselItem>

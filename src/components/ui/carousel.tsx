@@ -181,9 +181,9 @@ function CarouselPrevious({
     <button
       data-slot="carousel-previous"
       className={cn(
-        "group absolute flex cursor-pointer items-center justify-center transition duration-125 ease-in-out hover:bg-gray-200/20",
+        "group absolute flex cursor-pointer items-center justify-center transition duration-125 ease-in-out hover:bg-gray-200/20 max-sm:pointer-events-none",
         orientation === "horizontal"
-          ? "top-2 bottom-8 left-1 w-1/3 rounded-l-xl"
+          ? "top-0 bottom-0 left-0 w-1/3 rounded-l-xl"
           : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
         className,
       )}
@@ -191,7 +191,7 @@ function CarouselPrevious({
       onClick={scrollPrev}
       {...props}
     >
-      <ArrowLeft className="text-light opacity-0 group-hover:opacity-100" />
+      <ArrowLeft className="text-light stroke-3 opacity-0 shadow-xl group-hover:opacity-100" />
       <span className="sr-only">Previous slide</span>
     </button>
   );
@@ -209,9 +209,9 @@ function CarouselNext({
     <button
       data-slot="carousel-previous"
       className={cn(
-        "group absolute flex cursor-pointer items-center justify-center transition duration-125 ease-in-out hover:bg-gray-200/20",
+        "group absolute flex cursor-pointer items-center justify-center transition duration-125 ease-in-out hover:bg-gray-200/20 max-sm:pointer-events-none",
         orientation === "horizontal"
-          ? "top-2 right-1 bottom-8 w-1/3 rounded-r-xl"
+          ? "top-0 right-0 bottom-0 w-1/3 rounded-r-xl"
           : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
         className,
       )}
@@ -219,7 +219,7 @@ function CarouselNext({
       onClick={scrollNext}
       {...props}
     >
-      <ArrowRight className="text-light opacity-0 group-hover:opacity-100" />
+      <ArrowRight className="text-light stroke-3 opacity-0 shadow-xl group-hover:opacity-100" />
       <span className="sr-only">Previous slide</span>
     </button>
   );
