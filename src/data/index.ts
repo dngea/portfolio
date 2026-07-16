@@ -35,11 +35,11 @@ export const ABSS = {
 
   highlights: [
     "Developed a drag-and-drop media library, integrated into a custom CMS for non-technical client use, integrated using intertia/react.",
-    "Built a reusable React component library, packaged as a private npm module and consumed across multiple client projects.",
-    "Designed headless frontend architecture on top of a Laravel backend, keeping the two decoupled.",
-    "Implemented multi-language support (next-intl) with URL-driven filters and pagination that stay in sync across locales.",
-    "Worked with authentication flows and REST API integrations for production apps.",
-    "Added testing using Vitest for core utility, avoiding breaking features on refactors.",
-    "Designed components and flows with an accessibility-first approach (semantics, contrasts, navigation, ARIA tags).",
+    "Built a reusable React component library, packaged as a private npm module and consumed across multiple projects.",
+    "Designed a headless frontend architecture on top of a Laravel backend, with dynamic routing and multilanguage support using next-intl.",
+    "Built URL-driven filtering and pagination for search interfaces, ensuring filter state persists across page reloads, shared links, and browser navigation.",
+    "Integrated authentication flows using REST API.",
+    "Added testing with Vitest for core utilities, reducing regressions during refactors.",
+    "Designed components and flows with an accessibility-first approach, covering semantics, color contrast, keyboard navigation, ARIA attributes, and screen reader compatibility.",
   ],
 };
